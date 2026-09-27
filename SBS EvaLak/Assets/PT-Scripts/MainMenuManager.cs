@@ -3,9 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public AudioSource audio;
+    public void Awake()
+    {
+        audio = GetComponent<AudioSource>();
+    }
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("PT_Hangar");
     }
 
     public void QuitGame()

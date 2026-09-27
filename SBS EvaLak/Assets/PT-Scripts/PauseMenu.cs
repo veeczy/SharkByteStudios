@@ -1,5 +1,7 @@
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -7,13 +9,9 @@ public class PauseMenu : MonoBehaviour
     public AudioSource audioSource;
     public Slider audioSlider;
 
-    public float slideInSpeed;
-
     public void Start()
     {
         pausePanel.SetActive(false);
-
-        audioSource = GetComponent<AudioSource>();
 
         float savedVolume = PlayerPrefs.GetFloat("Game_Volume", 1.0f);
 
