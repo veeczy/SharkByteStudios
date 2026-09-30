@@ -52,7 +52,7 @@ public class TouchManager : MonoBehaviour
         if(clickValue > 0f) {clickHeld = true;}
         else if(clickValue == 0f) {clickHeld = false;}
 
-        Debug.Log(clickValue);
+       // Debug.Log(clickValue);
     }
 
     private void OnEnable()
@@ -79,14 +79,14 @@ public class TouchManager : MonoBehaviour
     public void TouchStartPosition(InputAction.CallbackContext context) 
     {
         locationValue = context.ReadValue<Vector2>();
-        //Debug.Log("Start Pos" + locationValue);
+        Debug.Log("Start Pos" + locationValue);
         //startPosition = camera.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
     }
 
     public void TouchPosition(InputAction.CallbackContext context) 
     {
         endLocationValue = context.ReadValue<Vector2>();
-        //Debug.Log("End Pos" + endLocationValue);
+        Debug.Log("End Pos" + endLocationValue);
         //startPosition = camera.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
     }
 
