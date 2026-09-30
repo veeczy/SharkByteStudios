@@ -49,15 +49,14 @@ public class TouchManager : MonoBehaviour
         }
         else {clickHeld = false;}*/
 
-        if(clickValue > 0f) {clickHeld = true;}
-        else if(clickValue == 0f) {clickHeld = false;}
-
        // Debug.Log(clickValue);
     }
 
     private void OnEnable()
     {
         touchPressAction.performed += TouchPressed;
+        touchPressAction.canceled += TouchReleased;
+
         touchStartPositionAction.performed += TouchStartPosition; 
         touchPositionAction.performed += TouchPosition;
         //EnhancedTouchSupport.Enable();
@@ -65,6 +64,9 @@ public class TouchManager : MonoBehaviour
 
     private void OnDisable()
     {
+        touchPressAction.performed -= TouchPressed;
+        touchPressAction.canceled -= TouchReleased;
+
         touchPressAction.performed -= TouchPressed;
         touchStartPositionAction.performed -= TouchStartPosition; 
         touchPositionAction.performed -= TouchPosition;
@@ -74,22 +76,30 @@ public class TouchManager : MonoBehaviour
     public void TouchPressed(InputAction.CallbackContext context)
     {
         clickValue = context.ReadValue<float>();
+
+        clickHeld = true;
+    }
+
+    public void TouchReleased(InputAction.CallbackContext context)
+    {
+        clickHeld = false;
     }
 
     public void TouchStartPosition(InputAction.CallbackContext context) 
     {
         locationValue = context.ReadValue<Vector2>();
-        Debug.Log("Start Pos" + locationValue);
+        //Debug.Log("Start Pos" + locationValue);
         //startPosition = camera.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
     }
 
     public void TouchPosition(InputAction.CallbackContext context) 
     {
         endLocationValue = context.ReadValue<Vector2>();
-        Debug.Log("End Pos" + endLocationValue);
+        //Debug.Log("End Pos" + endLocationValue);
         //startPosition = camera.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
     }
 
+    
 
     /*bool SwipeX()
     {
