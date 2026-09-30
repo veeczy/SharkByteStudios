@@ -27,7 +27,7 @@ public class PlayerPrefsManager : MonoBehaviour
         if (variableType == typeof(string)) { variableTypeName = "string"; }
         if (variableType == typeof(int)) { variableTypeName = "int"; }
 
-        switch(variableTypeName)
+        /*switch(variableTypeName)
         {
             case "float":
                 SaveFloat(variable);
@@ -40,7 +40,7 @@ public class PlayerPrefsManager : MonoBehaviour
                 break;
             default:
                 Console.WriteLine("ERROR Type Exception while saving " + nameof(variable) + ". Is this a float/int/string?"); break;
-        }
+        }*/
     }
 
     void SaveFloat(float variable)
