@@ -101,21 +101,31 @@ public class TouchManager : MonoBehaviour
 
     
 
-    /*bool SwipeX()
+    public int SwipeX()
     {
-        //if(EndPosition - StartPosition < Vector.Right) 
-        { return false; }
+        if(endPosition.x - startPosition.x < 0) 
+        { return -1; }
 
-        //if (EndPosition - StartPosition < Vector.Left) // insert math formula
-        { return true; }
+        if (endPosition.x - startPosition.x > 0)
+        { return 1; }
+
+        if (endPosition.x - startPosition.x == 0)
+        { return 0; }
+
+        else { return 0; }
     }
 
-    bool SwipeY()
+    public int SwipeY()
     {
-        //if(EndPosition.position - StartPosition.position < Vector.Down) 
-        { return false; }
+        if (endPosition.y - startPosition.y < 0)
+        { return -1; }
 
-        //if (EndPosition - StartPosition < Vector.Up) // insert math formula
-        { return true; }
-    }*/
+        if (endPosition.y - startPosition.y > 0)
+        { return 1; }
+
+        if (endPosition.y - startPosition.y == 0)
+        { return 0; }
+
+        else { return 0; }
+    }
 }
