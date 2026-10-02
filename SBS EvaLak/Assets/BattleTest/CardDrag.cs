@@ -23,7 +23,7 @@ public class CardDrag : MonoBehaviour
 
     private void OnMouseDown()
     {
-        mouseDownPosition = Mouse.current.position.ReadValue();
+        mouseDownPosition = Pointer.current.position.ReadValue();
 
         // Drag along the plane the card currently sits on.
         dragPlane = new Plane(transform.forward, transform.position);
@@ -38,7 +38,7 @@ public class CardDrag : MonoBehaviour
     private void OnMouseUp()
     {
         // Register clicks and drags separately, if card is not moved past the click threshold it is treated as a click
-        Vector2 mouseUpPosition = Mouse.current.position.ReadValue();
+        Vector2 mouseUpPosition = Pointer.current.position.ReadValue();
         if (Vector2.Distance(mouseUpPosition, mouseDownPosition) < clickThresholdPixels)
             card.ToggleSelected();
 
@@ -47,7 +47,7 @@ public class CardDrag : MonoBehaviour
 
     private Vector3 GetMouseWorldPosition()
     {
-        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = cam.ScreenPointToRay(Pointer.current.position.ReadValue());
         dragPlane.Raycast(ray, out float distance);
         return ray.GetPoint(distance);
     }
