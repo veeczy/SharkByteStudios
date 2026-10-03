@@ -76,7 +76,7 @@ public class Deck : MonoBehaviour
 
     public void Play()
     {
-
+        // Play card logic goes here eventually
     }
 
     private void ArrangeHand()
@@ -84,6 +84,7 @@ public class Deck : MonoBehaviour
         Transform h = hand.transform;
         int n = handCards.Count;
 
+        // Arrange cards horizontally centered on the hand gameobject transform
         for (int i = 0; i < n; i++)
         {
             float offset = (i - (n - 1) * 0.5f) * cardSpacing;
