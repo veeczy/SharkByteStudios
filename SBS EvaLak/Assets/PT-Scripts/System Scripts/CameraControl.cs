@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraControl : MonoBehaviour
 {
     [Header("Camera Variables")]
-    private float sensitivity = 1000f; // how fast the scroll is from touch/mouse input
+    private float sensitivity = 5f; // how fast the scroll is from touch/mouse input
     public Camera playerCam;
 
     private float _yaw = 0f; // if moving camera y axis
@@ -23,7 +23,7 @@ public class CameraControl : MonoBehaviour
     private TouchManager touchManager;
 
     [Header("Mini State Machine")]
-    public bool canRotate = true;
+    public bool canRotate = true; //stays true while in hanger scene, will get set to false in scenes where camera does not move
     private bool turnLeft = false;
     private bool turnRight = false;
     private bool turnUp = false;
@@ -34,89 +34,107 @@ public class CameraControl : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        touchManager = GameObject.Find("TouchManager").GetComponent<TouchManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        swipeX = touchManager.GetComponent<TouchManager>().SwipeX();
-        swipeY = touchManager.GetComponent<TouchManager>().SwipeY();
+        swipeX = touchManager.SwipeX();
+        swipeY = touchManager.SwipeY();
         
-        UpdateYawPitch();
+        CameraRotate();
         CameraStateMachine();
-        CameraRotateX();
-        CameraRotateY();
 
         //If swipe or scroll then call method to move camera
+
+        Debug.Log(Direction);
     }
 
-    private void CameraRotateX()
+    private void CameraRotate()
     {
-        if (canRotate) //if  camera can rotate
-        {
-            if (_pitch >= 0f && turnRight) //swipe right and can turn right
-            {
-                if(Direction == CameraState.left) { playerCam.transform.rotation = Quaternion.Slerp(playerCam.transform.rotation, leftRotation.transform.rotation, sensitivity); } // if facing left, right turn to normal
-                else if(Direction == CameraState.normal) { playerCam.transform.rotation = Quaternion.Slerp(playerCam.transform.rotation, rightRotation.transform.rotation, sensitivity); } // else turn right 
-            }
-            else if ( _pitch <= 0 && turnLeft) //swipe left and can turn left
-            {
-                if(Direction == CameraState.right) { playerCam.transform.rotation = Quaternion.Slerp(playerCam.transform.rotation, leftRotation.transform.rotation, sensitivity); } //if facing right, left turn to normal
-                else if(Direction == CameraState.normal) { playerCam.transform.rotation = Quaternion.Slerp(playerCam.transform.rotation, leftRotation.transform.rotation, sensitivity); } // else turn left
-            }
+        if (!canRotate)
+            {return;}
 
+        if (swipeX == 1 && turnRight) //only commenting for one block, logic is all the same. if you swipe your finger
+        {                             //right and the camera is in a position to turn right, run the block
+            if (Direction == CameraState.normal)//if your camera is facing center, or normal
+            {
+                Direction = CameraState.right; //direction set to right for state machine
+                StartCoroutine(RotateCamera(rightRotation.rotation)); //slerp it on over to the right
+            }
+            else if (Direction == CameraState.left) //if your camera is facing left
+            {
+                Direction = CameraState.normal; //direction set to normal
+                StartCoroutine(RotateCamera(defaultRotation.rotation)); //slerp it on over to the right
+            }
+        }
+
+        else if (swipeX == -1 && turnLeft)
+        {
+            if (Direction == CameraState.normal)
+            {
+                Direction = CameraState.left;
+                StartCoroutine(RotateCamera(leftRotation.rotation));
+            }
+            else if (Direction == CameraState.right)
+            {
+                Direction = CameraState.normal;
+                StartCoroutine(RotateCamera(defaultRotation.rotation));
+            }
+        }
+
+        else if (swipeY == 1 && turnUp)
+        {
+            if (Direction == CameraState.normal)
+            {
+                Direction = CameraState.up;
+                StartCoroutine(RotateCamera(upRotation.rotation));
+            }
+            else if (Direction == CameraState.down)
+            {
+                Direction = CameraState.normal;
+                StartCoroutine(RotateCamera(defaultRotation.rotation));
+            }
+        }
+
+        else if (swipeY == -1 && turnDown)
+        {
+            if (Direction == CameraState.normal)
+            {
+                Direction = CameraState.down;
+                StartCoroutine(RotateCamera(downRotation.rotation));
+            }
+            else if (Direction == CameraState.up)
+            {
+                Direction = CameraState.normal;
+                StartCoroutine(RotateCamera(defaultRotation.rotation));
+            }
         }
     }
-    private void CameraRotateY()
+
+    private IEnumerator RotateCamera(Quaternion targetRotation)
     {
-        if (canRotate) //if camera can rotate
+        //finds your current rotation
+        Quaternion startRotation = playerCam.transform.rotation;
+        float time = 0f;
+
+        while (time < 2f)
         {
-            if (_yaw >= 0f && turnUp) //swipe up and can turn up
-            {
-                if (Direction == CameraState.down) { playerCam.transform.rotation = Quaternion.Slerp(playerCam.transform.rotation, leftRotation.transform.rotation, sensitivity); } // if facing down, up turn to normal
-                else if (Direction == CameraState.normal) { playerCam.transform.rotation = Quaternion.Slerp(playerCam.transform.rotation, upRotation.transform.rotation, sensitivity); } //else turn up
-            }
-            else if (_yaw <= 0f && turnDown) //swipe down and can turn down
-            {
-                if (Direction == CameraState.up) { playerCam.transform.rotation = Quaternion.Slerp(playerCam.transform.rotation, leftRotation.transform.rotation, sensitivity); } // if facing up, down turn to normal
-                else if (Direction == CameraState.normal) { playerCam.transform.rotation = Quaternion.Slerp(playerCam.transform.rotation, downRotation.transform.rotation, sensitivity); } //else turn down
-            }
-        }
-    }
-    private void UpdateYawPitch()
-    {
-        switch (swipeX)
-        {
-            case 0: _yaw = 0f; 
-                break;
-            case 1: _yaw = 1f; 
-                break;
-            case -1: _yaw = -1f; 
-                break;
-            
-            default: break;
+            time += Time.deltaTime * sensitivity;
+            //rotates your camera based on the desired rotation
+            playerCam.transform.rotation = Quaternion.Slerp(startRotation,targetRotation,time);
+
+            yield return null;
         }
 
-        switch (swipeY)
-        {
-            case 0:
-                _pitch = 0f;
-                break;
-            case 1:
-                _pitch = 1f;
-                break;
-            case -1:
-                _pitch = -1f;
-                break;
-
-            default: break;
-        }
+        //if it hasnt rotated in time teleport it
+        playerCam.transform.rotation = targetRotation;
     }
 
     public void CameraStateMachine()
     {
-        if(playerCam.transform.rotation == Quaternion.Slerp(playerCam.transform.rotation, upRotation.transform.rotation, sensitivity))
+        /*if(playerCam.transform.rotation == Quaternion.Slerp(playerCam.transform.rotation, upRotation.transform.rotation, sensitivity))
         {
             Direction = CameraState.up;
         }
@@ -132,7 +150,7 @@ public class CameraControl : MonoBehaviour
         {
             Direction = CameraState.right;
         }
-        else { Direction = CameraState.normal; }
+        else { Direction = CameraState.normal; }*/
 
         if(Direction == CameraState.up) { turnUp = false; turnDown = true; turnLeft = false; turnRight = false; }
         else if (Direction == CameraState.down) { turnUp = true; turnDown = false; turnLeft = false; turnRight = false; }

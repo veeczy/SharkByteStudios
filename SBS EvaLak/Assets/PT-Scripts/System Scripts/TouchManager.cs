@@ -19,6 +19,8 @@ public class TouchManager : MonoBehaviour
     Vector2 locationValue;
     Vector2 endLocationValue;
 
+    [SerializeField] private float swipeThreshold = 100f;
+
 
     //private UnityEngine.InputSystem.EnhancedTouch.Touch enhancedTouch;
     //private enhanced.Touch enhancedTouch;
@@ -56,8 +58,10 @@ public class TouchManager : MonoBehaviour
     {
         touchPressAction.performed += TouchPressed;
         touchPressAction.canceled += TouchReleased;
+        touchPressAction.canceled += FinalPosition;
 
         touchStartPositionAction.performed += TouchStartPosition; 
+
         touchPositionAction.performed += TouchPosition;
         //EnhancedTouchSupport.Enable();
     }
@@ -66,9 +70,11 @@ public class TouchManager : MonoBehaviour
     {
         touchPressAction.performed -= TouchPressed;
         touchPressAction.canceled -= TouchReleased;
+        touchPressAction.canceled -= FinalPosition;
 
         touchPressAction.performed -= TouchPressed;
         touchStartPositionAction.performed -= TouchStartPosition; 
+
         touchPositionAction.performed -= TouchPosition;
         //EnhancedTouchSupport.Disable();
     }
@@ -87,7 +93,7 @@ public class TouchManager : MonoBehaviour
 
     public void TouchStartPosition(InputAction.CallbackContext context) 
     {
-        locationValue = context.ReadValue<Vector2>();
+        startPosition = context.ReadValue<Vector2>();
         //Debug.Log("Start Pos" + locationValue);
         //startPosition = camera.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
     }
@@ -99,17 +105,33 @@ public class TouchManager : MonoBehaviour
         //startPosition = camera.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
     }
 
+    public void FinalPosition(InputAction.CallbackContext context)
+    {
+        endPosition = endLocationValue;
+        //Debug.Log(endLocationValue);
+    }
     
 
     public int SwipeX()
     {
-        if(endPosition.x - startPosition.x < 0) 
-        { return -1; }
+        float difference = endPosition.x - startPosition.x;
 
-        if (endPosition.x - startPosition.x > 0)
-        { return 1; }
+        Debug.Log(difference);
 
-        if (endPosition.x - startPosition.x == 0)
+        if(Mathf.Abs(difference) < swipeThreshold)
+        {return 0;}
+
+        if(difference < 0) 
+        { 
+            //Debug.Log("Left");
+            return -1; }
+
+        if (difference > 0)
+        { 
+            //Debug.Log("Right");
+            return 1; }
+
+        if (difference == 0)
         { return 0; }
 
         else { return 0; }
@@ -117,13 +139,18 @@ public class TouchManager : MonoBehaviour
 
     public int SwipeY()
     {
-        if (endPosition.y - startPosition.y < 0)
+        float difference = endPosition.y - startPosition.y;
+
+        if(Mathf.Abs(difference) < swipeThreshold)
+        {return 0;}
+
+        if (difference < 0)
         { return -1; }
 
-        if (endPosition.y - startPosition.y > 0)
+        if (difference > 0)
         { return 1; }
 
-        if (endPosition.y - startPosition.y == 0)
+        if (difference == 0)
         { return 0; }
 
         else { return 0; }
