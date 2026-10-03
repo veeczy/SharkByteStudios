@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Put this on each card prefab.
 [RequireComponent(typeof(Card))]
 public class CardDrag : MonoBehaviour
 {
+    // Put this script on each card prefab
+
     [SerializeField] private float clickThresholdPixels = 5f;
+
+    // Read by Deck so it doesn't pull a card back to its slot while it is being dragged.
+    public bool IsDragging { get; private set; }
 
     private Deck deck;
     private Camera cam;
@@ -23,6 +27,7 @@ public class CardDrag : MonoBehaviour
 
     private void OnMouseDown()
     {
+        IsDragging = true;
         mouseDownPosition = Pointer.current.position.ReadValue();
 
         // Drag along the plane the card currently sits on.
@@ -37,6 +42,8 @@ public class CardDrag : MonoBehaviour
 
     private void OnMouseUp()
     {
+        IsDragging = false;
+
         // Register clicks and drags separately, if card is not moved past the click threshold it is treated as a click
         Vector2 mouseUpPosition = Pointer.current.position.ReadValue();
         if (Vector2.Distance(mouseUpPosition, mouseDownPosition) < clickThresholdPixels)
