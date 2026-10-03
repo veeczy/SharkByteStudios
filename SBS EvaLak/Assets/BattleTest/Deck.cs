@@ -9,8 +9,8 @@ public class Deck : MonoBehaviour
     [SerializeField] private float cardSpacing = 1.5f;
     [SerializeField] private float depthSpacing = 0.01f;
 
-    private readonly List<GameObject> deckCards = new List<GameObject>();
-    private readonly List<GameObject> handCards = new List<GameObject>();
+    private List<GameObject> deckCards = new List<GameObject>();
+    private List<GameObject> handCards = new List<GameObject>();
 
     private void Awake()
     {
