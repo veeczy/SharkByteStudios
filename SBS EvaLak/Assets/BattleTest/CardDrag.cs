@@ -8,10 +8,9 @@ public class CardDrag : MonoBehaviour
 
     [SerializeField] private float clickThresholdPixels = 5f;
 
-    // Read by Deck so it doesn't pull a card back to its slot while it is being dragged.
+    // Deck script checks this bool to avoid moving cards while being dragged by the player
     public bool IsDragging { get; private set; }
 
-    private Deck deck;
     private Camera cam;
     private Card card;
     private Plane dragPlane;
@@ -20,7 +19,6 @@ public class CardDrag : MonoBehaviour
 
     private void Awake()
     {
-        deck = FindAnyObjectByType<Deck>();
         cam = Camera.main;
         card = GetComponent<Card>();
     }
@@ -49,7 +47,7 @@ public class CardDrag : MonoBehaviour
         if (Vector2.Distance(mouseUpPosition, mouseDownPosition) < clickThresholdPixels)
             card.ToggleSelected();
 
-        deck.ReorderCard(gameObject);
+        card.Zone.Reorder(card);
     }
 
     private Vector3 GetMouseWorldPosition()

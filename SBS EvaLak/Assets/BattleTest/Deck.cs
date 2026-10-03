@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -5,113 +6,69 @@ using TMPro;
 public class Deck : MonoBehaviour
 {
     [SerializeField] private DeckManager deckManager;
-    [SerializeField] private GameObject deck;
-    [SerializeField] private GameObject hand;
-    [SerializeField] private GameObject graveyard;
+    [SerializeField] private Enemy enemy;
+    [SerializeField] private CardZone drawPile;
+    [SerializeField] private CardZone hand;
+    [SerializeField] private CardZone playArea;
+    [SerializeField] private CardZone graveyard;
     [SerializeField] private TextMeshPro remainingCardsText;
-    [SerializeField] private float cardSpacing = 1.5f;
-    [SerializeField] private float depthSpacing = 0.01f;
-    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float playDelay = 1f;
+    [SerializeField] private float cardPlayInterval = 0.5f;
 
-    private List<GameObject> deckCards = new List<GameObject>();
-    private List<GameObject> handCards = new List<GameObject>();
-
-    private void Awake()
-    {
-        foreach (Transform child in deck.transform)
-        {
-            deckCards.Add(child.gameObject);
-            child.gameObject.SetActive(false);
-        }
-    }
-
-    private void Update()
-    {
-        AnimateHand();
-    }
+    public bool isPlaying;
 
     public void DrawCards(int count)
     {
-        count = Mathf.Min(count, deckCards.Count);
+        // Cards start at the draw pile and move gradually to their hand position
+        for (int i = 0; i < count && drawPile.Count > 0; i++)
+            hand.Add(drawPile.RandomCard());
 
-        for (int i = 0; i < count; i++)
-        {
-            int index = Random.Range(0, deckCards.Count);
-            GameObject card = deckCards[index];
-            deckCards.RemoveAt(index);
-
-            // Card starts at deck position and moves gradually to hand position
-            card.transform.position = deck.transform.position;
-            card.transform.rotation = deck.transform.rotation;
-            card.SetActive(true);
-            handCards.Add(card);
-        }
-
-        remainingCardsText.text = deckCards.Count.ToString();
-    }
-
-    // When a card is dropped, moves it to the hand slot nearest its position
-    public void ReorderCard(GameObject card)
-    {
-        if (!handCards.Remove(card)) return;
-
-        // Horizontal distance from the hands center
-        float x = Vector3.Dot(card.transform.position - hand.transform.position, hand.transform.right);
-        int index = Mathf.RoundToInt(x / cardSpacing + handCards.Count * 0.5f);
-        index = Mathf.Clamp(index, 0, handCards.Count);
-
-        handCards.Insert(index, card);
+        remainingCardsText.text = drawPile.Count.ToString();
     }
 
     public void Discard()
     {
-        // Loop backwards to avoid skipping items when they are removed from list
-        for (int i = handCards.Count - 1; i >= 0; i--)
-        {
-            GameObject cardObject = handCards[i];
-            Card card = cardObject.GetComponent<Card>();
+        foreach (Card card in hand.GetSelected())
+            graveyard.Add(card);
 
-            if (!card.selected) continue;
-
-            card.ToggleSelected(); // clear selection
-            handCards.RemoveAt(i);
-
-            cardObject.SetActive(false);
-            cardObject.transform.SetParent(graveyard.transform);
-            cardObject.transform.localPosition = Vector3.zero;
-            cardObject.transform.localRotation = Quaternion.identity;
-        }
-
-        // Draw cards until the hand size is reached
-        DrawCards(deckManager.handSize - handCards.Count);
+        RefillHand();
     }
 
     public void Play()
     {
-        // Play card logic goes here eventually
+        if (!isPlaying) StartCoroutine(PlayRoutine());
     }
 
-    // Moves cards gradually towards their slot on the hand
-    private void AnimateHand()
+    private IEnumerator PlayRoutine()
     {
-        Transform h = hand.transform;
-        int n = handCards.Count;
+        // Selected cards move to the play area, keeping their left to right order
+        List<Card> playedCards = hand.GetSelected();
+        if (playedCards.Count == 0) yield break;
 
-        float t = 1f - Mathf.Exp(-moveSpeed * Time.deltaTime);
+        isPlaying = true;
+        foreach (Card card in playedCards)
+            playArea.Add(card);
 
-        for (int i = 0; i < n; i++)
+        // Wait for the cards to arrive in the play area
+        yield return new WaitForSeconds(playDelay);
+
+        // Play cards from left to right with delay in between each card, each card is sent to the graveyard after
+        foreach (Card card in playedCards)
         {
-            GameObject cardObject = handCards[i];
-
-            // Check if card is being dragged by the player, if so do not move it towards the hand
-            if (cardObject.GetComponent<CardDrag>().IsDragging) continue;
-
-            float offset = (i - (n - 1) * 0.5f) * cardSpacing;
-            Vector3 targetPosition = h.position + h.right * offset - h.forward * (i * depthSpacing);
-
-            Transform card = cardObject.transform;
-            card.position = Vector3.Lerp(card.position, targetPosition, t);
-            card.rotation = Quaternion.Slerp(card.rotation, h.rotation, t);
+            card.OnPlay();
+            graveyard.Add(card);
+            yield return new WaitForSeconds(cardPlayInterval);
         }
+
+        enemy.Attack(); // Actually do the enemy attack turn after the player turn
+
+        RefillHand();
+        isPlaying = false;
+    }
+
+    // Draw cards until the hand size is reached
+    private void RefillHand()
+    {
+        DrawCards(deckManager.handSize - hand.Count);
     }
 }
