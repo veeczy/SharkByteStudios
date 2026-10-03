@@ -1,16 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Deck : MonoBehaviour
 {
+    [SerializeField] private DeckManager deckManager;
     [SerializeField] private GameObject deck;
     [SerializeField] private GameObject hand;
     [SerializeField] private GameObject graveyard;
+    [SerializeField] private TextMeshPro remainingCardsText;
     [SerializeField] private float cardSpacing = 1.5f;
     [SerializeField] private float depthSpacing = 0.01f;
+    [SerializeField] private float moveSpeed = 10f;
 
-    private readonly List<GameObject> deckCards = new List<GameObject>();
-    private readonly List<GameObject> handCards = new List<GameObject>();
+    private List<GameObject> deckCards = new List<GameObject>();
+    private List<GameObject> handCards = new List<GameObject>();
 
     private void Awake()
     {
@@ -19,6 +23,11 @@ public class Deck : MonoBehaviour
             deckCards.Add(child.gameObject);
             child.gameObject.SetActive(false);
         }
+    }
+
+    private void Update()
+    {
+        AnimateHand();
     }
 
     public void DrawCards(int count)
@@ -31,25 +40,27 @@ public class Deck : MonoBehaviour
             GameObject card = deckCards[index];
             deckCards.RemoveAt(index);
 
+            // Card starts at deck position and moves gradually to hand position
+            card.transform.position = deck.transform.position;
+            card.transform.rotation = deck.transform.rotation;
             card.SetActive(true);
             handCards.Add(card);
         }
 
-        ArrangeHand();
+        remainingCardsText.text = deckCards.Count.ToString();
     }
 
-    // Called when a card is dropped, moves it to the hand slot nearest its position
+    // When a card is dropped, moves it to the hand slot nearest its position
     public void ReorderCard(GameObject card)
     {
         if (!handCards.Remove(card)) return;
 
-        // Horizontal distance from the hand's center, measured in slots
+        // Horizontal distance from the hands center
         float x = Vector3.Dot(card.transform.position - hand.transform.position, hand.transform.right);
         int index = Mathf.RoundToInt(x / cardSpacing + handCards.Count * 0.5f);
         index = Mathf.Clamp(index, 0, handCards.Count);
 
         handCards.Insert(index, card);
-        ArrangeHand();
     }
 
     public void Discard()
@@ -71,26 +82,36 @@ public class Deck : MonoBehaviour
             cardObject.transform.localRotation = Quaternion.identity;
         }
 
-        ArrangeHand();
+        // Draw cards until the hand size is reached
+        DrawCards(deckManager.handSize - handCards.Count);
     }
 
     public void Play()
     {
-
+        // Play card logic goes here eventually
     }
 
-    private void ArrangeHand()
+    // Moves cards gradually towards their slot on the hand
+    private void AnimateHand()
     {
         Transform h = hand.transform;
         int n = handCards.Count;
 
+        float t = 1f - Mathf.Exp(-moveSpeed * Time.deltaTime);
+
         for (int i = 0; i < n; i++)
         {
-            float offset = (i - (n - 1) * 0.5f) * cardSpacing;
-            Transform card = handCards[i].transform;
+            GameObject cardObject = handCards[i];
 
-            card.position = h.position + h.right * offset - h.forward * (i * depthSpacing);
-            card.rotation = h.rotation;
+            // Check if card is being dragged by the player, if so do not move it towards the hand
+            if (cardObject.GetComponent<CardDrag>().IsDragging) continue;
+
+            float offset = (i - (n - 1) * 0.5f) * cardSpacing;
+            Vector3 targetPosition = h.position + h.right * offset - h.forward * (i * depthSpacing);
+
+            Transform card = cardObject.transform;
+            card.position = Vector3.Lerp(card.position, targetPosition, t);
+            card.rotation = Quaternion.Slerp(card.rotation, h.rotation, t);
         }
     }
 }
