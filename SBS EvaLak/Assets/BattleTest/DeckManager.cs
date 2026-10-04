@@ -35,7 +35,6 @@ public class DeckManager : MonoBehaviour
             deck.DrawCards(1);
         }
 
-        // Recalculated every frame from the selected cards, so it also updates when cards are deselected
         int totalEnergy = SelectedEnergy();
         energyBar.fillAmount = (float)totalEnergy / (float)energyCapacity;
         energyText.text = totalEnergy + "/" + energyCapacity;

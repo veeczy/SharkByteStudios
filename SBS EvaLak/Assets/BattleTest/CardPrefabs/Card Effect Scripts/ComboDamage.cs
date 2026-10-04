@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Damage : CardEffect
+public class ComboDamage : CardEffect
 {
     public int damage = 50;
 
     public bool useDamageRange = false;
-    public int minDamage = 25;
-    public int maxDamage = 75;
+    public int minDamage = 20;
+    public int maxDamage = 30;
 
     public override void Activate()
     {
@@ -20,9 +20,12 @@ public class Damage : CardEffect
             finalDamage = Random.Range(minDamage, maxDamage + 1);
         }
 
-        enemyHP.health -= finalDamage * mod.damageMult;
+        // Each combo card played before this one doubles the damage: 1x, 2x, 4x, 8x...
+        int comboMult = 1 << mod.combo;
+
+        enemyHP.health -= finalDamage * mod.damageMult * comboMult;
 
         mod.damageMult = 1;
-        mod.combo = 0;
+        mod.combo++;
     }
 }

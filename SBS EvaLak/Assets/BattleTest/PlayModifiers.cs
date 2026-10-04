@@ -9,4 +9,11 @@ public class PlayModifiers : MonoBehaviour
     */
 
     [HideInInspector] public int damageMult = 1;
+
+    [HideInInspector] public int combo = 0;
+
+    public void EndHand()
+    {
+        combo = 0;
+    }
 }

@@ -6,6 +6,7 @@ using TMPro;
 public class Deck : MonoBehaviour
 {
     [SerializeField] private DeckManager deckManager;
+    [SerializeField] private PlayModifiers mod;
     [SerializeField] private Enemy enemy;
     [SerializeField] private CardZone drawPile;
     [SerializeField] private CardZone hand;
@@ -59,6 +60,8 @@ public class Deck : MonoBehaviour
             graveyard.Add(card);
             yield return new WaitForSeconds(cardPlayInterval);
         }
+
+        mod.EndHand(); // tell mod script that the hand has stopped playing
 
         enemy.Attack(); // Actually do the enemy attack turn after the player turn
 

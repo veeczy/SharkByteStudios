@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8201631133422834726}
   - component: {fileID: 1225487104064590353}
   - component: {fileID: 3584216419403069831}
-  - component: {fileID: 3781158304984324578}
   - component: {fileID: 8278951741294343650}
+  - component: {fileID: 8030109171196611330}
   m_Layer: 0
-  m_Name: DamageCard
+  m_Name: ComboCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,22 +159,6 @@ MonoBehaviour:
   energyCost: 2
   selected: 0
   selectionBorder: {fileID: 5018192604856036142}
---- !u!114 &3781158304984324578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935703023453732939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6393675685c348439715c36fedd3df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Damage
-  damage: 50
-  useDamageRange: 1
-  minDamage: 40
-  maxDamage: 60
 --- !u!114 &8278951741294343650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +172,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardDrag
   clickThresholdPixels: 5
+--- !u!114 &8030109171196611330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935703023453732939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4c4645e7024ff4690fa782bddf036f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ComboDamage
+  damage: 50
+  useDamageRange: 1
+  minDamage: 20
+  maxDamage: 30
 --- !u!1 &5018192604856036142
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.99, y: -1.77}
+  m_AnchoredPosition: {x: 2.99, y: -2.25}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &6428764150135564495
@@ -495,9 +495,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'BASIC STRIKE
+  m_text: 'COMBO STRIKE
 
-    40-60 DMG'
+
+    20-30 DMG'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -524,8 +525,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.4
-  m_fontSizeBase: 34.4
+  m_fontSize: 33.7
+  m_fontSizeBase: 33.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
