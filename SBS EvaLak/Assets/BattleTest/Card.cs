@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    public int energyCost = 2;
+
     public bool selected = false;
     [SerializeField] private GameObject selectionBorder;
 
@@ -10,6 +12,9 @@ public class Card : MonoBehaviour
     // Called by CardDrag when the card is clicked (not dragged).
     public void ToggleSelected()
     {
+        // Cards can always be deselected, but can only be selected if there is enough energy left
+        if (!selected && !DeckManager.Instance.CanSelect(this)) return;
+
         selected = !selected;
         selectionBorder.SetActive(selected);
     }
