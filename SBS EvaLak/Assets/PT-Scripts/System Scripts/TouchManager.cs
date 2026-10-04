@@ -19,6 +19,10 @@ public class TouchManager : MonoBehaviour
     Vector2 locationValue;
     Vector2 endLocationValue;
 
+    [SerializeField] private float swipeThreshold = 100f;
+    private int swipeX;
+    private int swipeY;
+
 
     //private UnityEngine.InputSystem.EnhancedTouch.Touch enhancedTouch;
     //private enhanced.Touch enhancedTouch;
@@ -58,6 +62,7 @@ public class TouchManager : MonoBehaviour
         touchPressAction.canceled += TouchReleased;
 
         touchStartPositionAction.performed += TouchStartPosition; 
+
         touchPositionAction.performed += TouchPosition;
         //EnhancedTouchSupport.Enable();
     }
@@ -67,8 +72,8 @@ public class TouchManager : MonoBehaviour
         touchPressAction.performed -= TouchPressed;
         touchPressAction.canceled -= TouchReleased;
 
-        touchPressAction.performed -= TouchPressed;
         touchStartPositionAction.performed -= TouchStartPosition; 
+
         touchPositionAction.performed -= TouchPosition;
         //EnhancedTouchSupport.Disable();
     }
@@ -83,11 +88,15 @@ public class TouchManager : MonoBehaviour
     public void TouchReleased(InputAction.CallbackContext context)
     {
         clickHeld = false;
+
+        endPosition = touchPositionAction.ReadValue<Vector2>();
+
+        CalculateSwipe();
     }
 
     public void TouchStartPosition(InputAction.CallbackContext context) 
     {
-        locationValue = context.ReadValue<Vector2>();
+        startPosition = context.ReadValue<Vector2>();
         //Debug.Log("Start Pos" + locationValue);
         //startPosition = camera.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
     }
@@ -98,24 +107,52 @@ public class TouchManager : MonoBehaviour
         //Debug.Log("End Pos" + endLocationValue);
         //startPosition = camera.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
     }
-
     
-
-    /*bool SwipeX()
+    private void CalculateSwipe()
     {
-        //if(EndPosition - StartPosition < Vector.Right) 
-        { return false; }
+        float differenceX = endPosition.x - startPosition.x;
+        float differenceY = endPosition.y - startPosition.y;
 
-        //if (EndPosition - StartPosition < Vector.Left) // insert math formula
-        { return true; }
+        swipeX = GetSwipeDirection(differenceX);
+        swipeY = GetSwipeDirection(differenceY);
     }
 
-    bool SwipeY()
+    private int GetSwipeDirection(float difference)
     {
-        //if(EndPosition.position - StartPosition.position < Vector.Down) 
-        { return false; }
+        if (Mathf.Abs(difference) < swipeThreshold)
+        {return 0;}
 
-        //if (EndPosition - StartPosition < Vector.Up) // insert math formula
-        { return true; }
-    }*/
+        if(difference < 0) 
+        { 
+            //Debug.Log("Left");
+            return -1; }
+
+        if (difference > 0)
+        { 
+            //Debug.Log("Right");
+            return 1; }
+
+        if (difference == 0)
+        { return 0; }
+
+        return 0;
+    }
+
+    public int SwipeX() //these store the inputs, so whenever you make the input it checks to see
+    {                   //if swipeX is 1, whice means the input is made. it then immediately get's
+        int result = swipeX; //set to zero and we return the reusult to see if our input should run
+
+        swipeX = 0;
+
+        return result;
+    }
+
+    public int SwipeY()
+    {
+        int result = swipeY;
+
+        swipeY = 0;
+
+        return result;
+    }
 }
