@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PT_Deck_Build.unity
     guid: 520c1b2163f3b5347b01f8e970754914
+  - enabled: 1
+    path: Assets/Scenes/BattleSceneTest.unity
+    guid: eec1c9138c6913b4a9fedc0dc3571873
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
