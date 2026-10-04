@@ -99,4 +99,10 @@ public class CardZone : MonoBehaviour
 
         cards.Insert(Mathf.Clamp(index, 0, cards.Count), card);
     }
+
+    public List<Card> GetAllCards()
+    {
+        //function so we can find all the cards in the zone
+        return new List<Card>(cards);
+    }
 }

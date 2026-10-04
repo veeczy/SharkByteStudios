@@ -15,24 +15,41 @@ public class Deck : MonoBehaviour
     [SerializeField] private TextMeshPro remainingCardsText;
     [SerializeField] private float playDelay = 1f;
     [SerializeField] private float cardPlayInterval = 0.5f;
+    [SerializeField] private int numDiscards;
 
     public bool isPlaying;
 
     public void DrawCards(int count)
     {
-        // Cards start at the draw pile and move gradually to their hand position
-        for (int i = 0; i < count && drawPile.Count > 0; i++)
+        for (int i = 0; i < count; i++)
+        {
+            // If the draw pile is empty, refill it from the graveyard
+            if (drawPile.Count == 0)
+            {
+                RefillDeck();
+
+                // If there are still no cards, there is nothing left to draw
+                if (drawPile.Count == 0)
+                    break;
+            }
+
             hand.Add(drawPile.RandomCard());
+        }
 
         remainingCardsText.text = drawPile.Count.ToString();
     }
 
     public void Discard()
     {
+        if(numDiscards >= 1) //you cant just infinitely discard
+            {return;}
+
         foreach (Card card in hand.GetSelected())
             graveyard.Add(card);
 
         RefillHand();
+
+        numDiscards++;
     }
 
     public void Play()
@@ -66,6 +83,9 @@ public class Deck : MonoBehaviour
         enemy.Attack(); // Actually do the enemy attack turn after the player turn
 
         RefillHand();
+
+        numDiscards = 0;
+
         isPlaying = false;
     }
 
@@ -73,5 +93,14 @@ public class Deck : MonoBehaviour
     private void RefillHand()
     {
         DrawCards(deckManager.handSize - hand.Count);
+    }
+
+    private void RefillDeck()
+    {
+        //refills the deck from the graveyard, then hand size is drawn again
+        foreach(Card card in graveyard.GetAllCards())
+        {
+            drawPile.Add(card);
+        }
     }
 }
