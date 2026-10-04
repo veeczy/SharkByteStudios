@@ -158,4 +158,9 @@ public class CameraControl : MonoBehaviour
         else if (Direction == CameraState.right) { turnUp = false; turnDown = false; turnLeft = true; turnRight = false; }
         else if (Direction == CameraState.normal) { turnUp = true; turnDown = true; turnLeft = true; turnRight = true; }
     }
+
+    public void ToggleCamera()
+    {
+        enabled = !enabled;
+    }
 }
