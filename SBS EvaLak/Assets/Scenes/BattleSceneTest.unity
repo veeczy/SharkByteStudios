@@ -3233,6 +3233,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Healthbar
   health: 0
   maxHealth: 250
+  showDamageNumbers: 1
+  damageNumberPrefab: {fileID: 5529331457234663289, guid: f4d9c388f1489e74ba56240bcb691ece, type: 3}
+  damageNumberSpeed: 1
+  damageNumberDuration: 2.5
   healthbarImage: {fileID: 328469268}
   healthText: {fileID: 1521668766}
 --- !u!114 &1459432179
@@ -3938,6 +3942,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Healthbar
   health: 0
   maxHealth: 250
+  showDamageNumbers: 1
+  damageNumberPrefab: {fileID: 5529331457234663289, guid: f4d9c388f1489e74ba56240bcb691ece, type: 3}
+  damageNumberSpeed: 1
+  damageNumberDuration: 1.5
   healthbarImage: {fileID: 323219484}
   healthText: {fileID: 1878278848}
 --- !u!1 &1754642833
