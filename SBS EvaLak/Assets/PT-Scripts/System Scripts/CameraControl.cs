@@ -48,7 +48,7 @@ public class CameraControl : MonoBehaviour
 
         //If swipe or scroll then call method to move camera
 
-        Debug.Log(Direction);
+        //Debug.Log(Direction);
     }
 
     private void CameraRotate()

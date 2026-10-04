@@ -20,6 +20,8 @@ public class TouchManager : MonoBehaviour
     Vector2 endLocationValue;
 
     [SerializeField] private float swipeThreshold = 100f;
+    private int swipeX;
+    private int swipeY;
 
 
     //private UnityEngine.InputSystem.EnhancedTouch.Touch enhancedTouch;
@@ -58,7 +60,6 @@ public class TouchManager : MonoBehaviour
     {
         touchPressAction.performed += TouchPressed;
         touchPressAction.canceled += TouchReleased;
-        touchPressAction.canceled += FinalPosition;
 
         touchStartPositionAction.performed += TouchStartPosition; 
 
@@ -70,9 +71,7 @@ public class TouchManager : MonoBehaviour
     {
         touchPressAction.performed -= TouchPressed;
         touchPressAction.canceled -= TouchReleased;
-        touchPressAction.canceled -= FinalPosition;
 
-        touchPressAction.performed -= TouchPressed;
         touchStartPositionAction.performed -= TouchStartPosition; 
 
         touchPositionAction.performed -= TouchPosition;
@@ -89,6 +88,10 @@ public class TouchManager : MonoBehaviour
     public void TouchReleased(InputAction.CallbackContext context)
     {
         clickHeld = false;
+
+        endPosition = touchPositionAction.ReadValue<Vector2>();
+
+        CalculateSwipe();
     }
 
     public void TouchStartPosition(InputAction.CallbackContext context) 
@@ -104,21 +107,19 @@ public class TouchManager : MonoBehaviour
         //Debug.Log("End Pos" + endLocationValue);
         //startPosition = camera.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
     }
-
-    public void FinalPosition(InputAction.CallbackContext context)
-    {
-        endPosition = endLocationValue;
-        //Debug.Log(endLocationValue);
-    }
     
-
-    public int SwipeX()
+    private void CalculateSwipe()
     {
-        float difference = endPosition.x - startPosition.x;
+        float differenceX = endPosition.x - startPosition.x;
+        float differenceY = endPosition.y - startPosition.y;
 
-        Debug.Log(difference);
+        swipeX = GetSwipeDirection(differenceX);
+        swipeY = GetSwipeDirection(differenceY);
+    }
 
-        if(Mathf.Abs(difference) < swipeThreshold)
+    private int GetSwipeDirection(float difference)
+    {
+        if (Mathf.Abs(difference) < swipeThreshold)
         {return 0;}
 
         if(difference < 0) 
@@ -134,25 +135,24 @@ public class TouchManager : MonoBehaviour
         if (difference == 0)
         { return 0; }
 
-        else { return 0; }
+        return 0;
+    }
+
+    public int SwipeX() //these store the inputs, so whenever you make the input it checks to see
+    {                   //if swipeX is 1, whice means the input is made. it then immediately get's
+        int result = swipeX; //set to zero and we return the reusult to see if our input should run
+
+        swipeX = 0;
+
+        return result;
     }
 
     public int SwipeY()
     {
-        float difference = endPosition.y - startPosition.y;
+        int result = swipeY;
 
-        if(Mathf.Abs(difference) < swipeThreshold)
-        {return 0;}
+        swipeY = 0;
 
-        if (difference < 0)
-        { return -1; }
-
-        if (difference > 0)
-        { return 1; }
-
-        if (difference == 0)
-        { return 0; }
-
-        else { return 0; }
+        return result;
     }
 }
