@@ -1,0 +1,13 @@
+using UnityEngine;
+
+public class Heal : CardEffect
+{
+    public int healValue = 50;
+
+    public override void Activate()
+    {
+        Healthbar playerHP = GameObject.FindWithTag("Player").GetComponent<Healthbar>();
+
+        playerHP.health = Mathf.Min(playerHP.health + healValue, playerHP.maxHealth);
+    }
+}
