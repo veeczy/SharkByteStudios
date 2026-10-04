@@ -1,10 +1,14 @@
 using UnityEngine;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
-    public int attackDamage = 100;
+    public int attackMin;
+    public int attackMax;
+    public int doubleDamageEvery = 3;
 
     private Healthbar playerHP;
+    public TextMeshProUGUI warningText;
 
     private int tracker = 0;
 
@@ -15,14 +19,26 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        if (tracker < 2)
-            playerHP.health -= Random.Range(75, 125);
-        else
+        tracker++;
+
+        if (tracker == doubleDamageEvery)
         {
-            playerHP.health -= Random.Range(75, 125) * 2;
+            playerHP.health -= Random.Range(attackMin, attackMax) * 2;
             tracker = 0;
         }
+        else
+        {
+            playerHP.health -= Random.Range(attackMin, attackMax);
+        }
             
-        tracker++;
+        RefreshText();
+    }
+
+    private void RefreshText()
+    {
+        if (tracker == doubleDamageEvery - 1)
+            warningText.text = "WARNING: X2 DAMAGE NEXT ATTACK";
+        else
+            warningText.text = "";
     }
 }
