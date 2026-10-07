@@ -14,15 +14,15 @@ public class PlayerPrefsManager : MonoBehaviour
 
     void Start() // every time a scene starts, set the data to what it is stored
     {
-        /*if (!PlayerPrefs.HasKey("Game_Volume")) //do this for every ppref variable
+        if (PlayerPrefs.HasKey("Game_Volume")) //do this for every ppref variable
         {
+            gameVolume = PlayerPrefs.GetFloat("Game_Volume"); //grab it
+
+            Debug.Log(gameVolume);
+
             PlayerPrefs.SetFloat("Game_Volume", gameVolume);
-            PlayerPrefs.Save();
-        }*/
-        gameVolume = PlayerPrefs.GetFloat("Game_Volume"); //grab it
-
-
-        PlayerPrefs.SetFloat("Game_Volume", gameVolume);
+        }
+        
         
         
         
