@@ -7,8 +7,7 @@ public class CameraControl : MonoBehaviour
     private float sensitivity = 5f; // how fast the scroll is from touch/mouse input
     public Camera playerCam;
 
-    private float _yaw = 0f; // if moving camera y axis
-    private float _pitch = 0f; // if moving camera x axis
+    
 
     [Header("Camera Rotation")]
     [SerializeField] private Transform rightRotation;
