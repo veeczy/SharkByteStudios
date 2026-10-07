@@ -6,14 +6,34 @@ using UnityEngine;
 
 public class PlayerPrefsManager : MonoBehaviour
 {
-    void Awake()
+    [Header("Floats")]
+    public float gameVolume;
+
+    //[Header("Strings")]
+
+
+    void Start() // every time a scene starts, set the data to what it is stored
     {
-        if (!PlayerPrefs.HasKey("Game_Volume"))
+        /*if (!PlayerPrefs.HasKey("Game_Volume")) //do this for every ppref variable
         {
-            PlayerPrefs.SetFloat("Game_Volume", 1.0f);
+            PlayerPrefs.SetFloat("Game_Volume", gameVolume);
             PlayerPrefs.Save();
-        }
+        }*/
+        gameVolume = PlayerPrefs.GetFloat("Game_Volume"); //grab it
+
+
+        PlayerPrefs.SetFloat("Game_Volume", gameVolume);
+        
+        
+        
     }
+
+    void Update() //check is ppref is updated 
+    {
+        //gameVolume = PlayerPrefs.GetFloat("Game_Volume");
+
+    }
+
 
     void SavePrefs()
     {

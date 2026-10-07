@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     {
         pausePanel.SetActive(false);
 
-        float savedVolume = PlayerPrefs.GetFloat("Game_Volume", 1.0f);
+        float savedVolume = PlayerPrefs.GetFloat("Game_Volume");
 
         audioSlider.value = savedVolume;   
         audioSource.volume = savedVolume;
