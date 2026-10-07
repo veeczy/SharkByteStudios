@@ -1,20 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Put this on anywhere cards can be: draw pile, hand, play area, graveyard.
-// Cards in a zone move gradually towards their slot in a row centered on this object.
+// Put this on anywhere cards can be, like draw pile, hand, play area, graveyard
 public class CardZone : MonoBehaviour
 {
     [SerializeField] private float cardSpacing = 1.5f;
     [SerializeField] private float moveSpeed = 10f;
 
-    // Piles stack their cards on this object and disable them once they arrive (draw pile, graveyard)
+    // Piles stack their cards on this object and disable them once they arrive, so they are not visible and can't be selected. Currently used for deck and graveyard piles
     [SerializeField] private bool isPile;
 
-    // Cards dropped in a reorderable zone move to the slot nearest them (hand)
+    // Cards dropped in a reorderable zone move to the slot nearest them (currently hand only)
     [SerializeField] private bool reorderable;
 
-    // Cards count as arrived at a pile once they are this close (world units)
     private const float pileArriveDistance = 0.05f;
 
     private List<Card> cards = new List<Card>();
@@ -45,7 +43,7 @@ public class CardZone : MonoBehaviour
         {
             Card card = cards[i];
 
-            // Skip cards that have arrived in a pile (disabled) and cards the player is dragging
+            // Skip disabled cards (in a pile) and cards the player is dragging
             if (!card.gameObject.activeSelf) continue;
             if (card.TryGetComponent(out CardDrag drag) && drag.IsDragging) continue;
 
