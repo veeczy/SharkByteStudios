@@ -1,12 +1,30 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
-public class DeckBuilderManager : HangarManager
+public class DeckBuilderManager : MonoBehaviour
 {
+    public AudioSource audio;
+    public AudioMixerGroup musicMixerGroup;
 
-    public override void OpenLevelSelect()
+    public void Awake()
+    {
+        audio = GetComponent<AudioSource>();
+
+        if (audio != null && musicMixerGroup != null)
+        {
+            audio.outputAudioMixerGroup = musicMixerGroup;
+        }
+    }
+
+    public void HangarReturn()
     {
         SceneManager.LoadScene("PT_Hangar");
+    }
+
+    public void MainMenuReturn()
+    {
+        SceneManager.LoadScene("PT_MainMenu");
     }
 }
 
