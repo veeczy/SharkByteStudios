@@ -8,6 +8,8 @@ public class ComboDamage : CardEffect
     public int minDamage = 20;
     public int maxDamage = 30;
 
+    private float temporaryHealth;
+
     public override void Activate()
     {
         PlayModifiers mod = GameObject.FindWithTag("Modifiers").GetComponent<PlayModifiers>();
@@ -23,7 +25,11 @@ public class ComboDamage : CardEffect
         // Each combo card played before this one doubles the damage: 1x, 2x, 4x, 8x...
         int comboMult = 1 << mod.combo;
 
-        enemyHP.health -= finalDamage * mod.damageMult * comboMult;
+        temporaryHealth = enemyHP.health;
+
+        temporaryHealth -= finalDamage * mod.damageMult * comboMult;
+
+        enemyHP.health = Mathf.RoundToInt(temporaryHealth);
 
         mod.damageMult = 1;
         mod.combo++;

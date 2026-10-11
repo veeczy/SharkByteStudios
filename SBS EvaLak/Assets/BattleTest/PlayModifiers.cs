@@ -8,7 +8,7 @@ public class PlayModifiers : MonoBehaviour
     this script keeps track of values carried across cards like that
     */
 
-    [HideInInspector] public int damageMult = 1;
+    [HideInInspector] public float damageMult = 1;
 
     [HideInInspector] public int combo = 0;
 
