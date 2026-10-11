@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 1372023281}
   - component: {fileID: 1372023280}
   - component: {fileID: 1372023279}
+  - component: {fileID: 1372023283}
   - component: {fileID: 1372023282}
   m_Layer: 0
   m_Name: DDOL
@@ -841,6 +842,57 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1372023283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372023278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a54dbe2ec7a51e46817dc8d0748b91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  fullDeckList:
+  - DamageCard-0-A
+  - DamageCard-0-B
+  - DamageCard-0-C
+  - DamageCard-1-A
+  - DamageCard-1-B
+  - DamageCard-1-C
+  - DamageCard-2-A
+  - DamageCard-2-B
+  - DamageCard-2-C
+  - RepairCard-0-A
+  - RepairCard-0-B
+  - RepairCard-0-C
+  - RepairCard-1-A
+  - RepairCard-1-B
+  - RepairCard-1-C
+  - RepairCard-2-A
+  - RepairCard-2-B
+  - BuffMultCard-0
+  - BuffMultCard-1-A
+  - BuffMultCard-1-B
+  - BuffMultCard-1-C
+  - BuffMultCard-2
+  - ComboCard-0-A
+  - ComboCard-0-B
+  - ComboCard-0-C
+  - ComboCard-0-D
+  - ComboCard-0-E
+  - ComboCard-0-F
+  - ComboCard-0-G
+  - ComboCard-1-A
+  - ComboCard-1-B
+  - ComboCard-1-C
+  - ComboCard-1-D
+  - ComboCard-1-E
+  - ComboCard-1-F
+  - ComboCard-1-G
+  deckList: []
+  cardGameObjectList: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

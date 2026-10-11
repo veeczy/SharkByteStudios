@@ -8,6 +8,8 @@ public class Damage : CardEffect
     public int minDamage = 25;
     public int maxDamage = 75;
 
+    private float temporaryHealth;
+
     public override void Activate()
     {
         PlayModifiers mod = GameObject.FindWithTag("Modifiers").GetComponent<PlayModifiers>();
@@ -20,7 +22,11 @@ public class Damage : CardEffect
             finalDamage = Random.Range(minDamage, maxDamage + 1);
         }
 
-        enemyHP.health -= finalDamage * mod.damageMult;
+        temporaryHealth = enemyHP.health; 
+
+        temporaryHealth -= finalDamage * mod.damageMult;
+
+        enemyHP.health = Mathf.RoundToInt(temporaryHealth);
 
         mod.damageMult = 1;
         mod.combo = 0;
