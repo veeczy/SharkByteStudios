@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MainMenuManager : MonoBehaviour
 {
     public AudioSource audio;
+    public AudioMixerGroup musicMixerGroup;
     public Camera playerCamera;
 
     public GameObject loadingPanel;
@@ -23,6 +25,11 @@ public class MainMenuManager : MonoBehaviour
         loadingPanel.SetActive(false);
         
         audio = GetComponent<AudioSource>();
+
+        if (audio != null && musicMixerGroup != null )
+        {
+            audio.outputAudioMixerGroup = musicMixerGroup;
+        }
     }
     public void PlayGame()
     {

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pausePanel;
-    public AudioSource audioSource;
     public Slider audioSlider;
 
     public void Start()
@@ -15,17 +14,18 @@ public class PauseMenu : MonoBehaviour
 
         float savedVolume = PlayerPrefs.GetFloat("Game_Volume", 1.0f);
 
-        audioSlider.value = savedVolume;   
-        audioSource.volume = savedVolume;
+        audioSlider.SetValueWithoutNotify(savedVolume);
+        AudioManager.Instance.SetMasterVolume(savedVolume);
 
         audioSlider.onValueChanged.AddListener(SetVolume);
     }
 
     public void SetVolume(float sliderValue)
     {
-        audioSource.volume = (sliderValue);
+        AudioManager.Instance.SetMasterVolume(sliderValue);
 
         PlayerPrefs.SetFloat("Game_Volume", sliderValue);
+        PlayerPrefs.Save();
     }
 
     public void PauseOpen()

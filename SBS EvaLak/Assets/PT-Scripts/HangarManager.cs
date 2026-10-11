@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class HangarManager : MonoBehaviour
 {
     public AudioSource audio;
+    public AudioMixerGroup musicMixerGroup;
     public Camera playerCam;
 
     public GameObject loadingPanel;
@@ -43,6 +45,11 @@ public class HangarManager : MonoBehaviour
         }
         
         audio = GetComponent<AudioSource>();
+
+        if (audio != null && musicMixerGroup != null)
+        {
+            audio.outputAudioMixerGroup = musicMixerGroup;
+        }
     }
 
     public virtual void OpenLevelSelect()
