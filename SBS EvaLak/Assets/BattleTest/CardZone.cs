@@ -19,13 +19,22 @@ public class CardZone : MonoBehaviour
 
     public int Count => cards.Count;
 
+
+    public Inventory inventory;
+    private List<string> ownedCards;
     private void Awake()
     {
+        GameObject ddolGameObject = GameObject.Find("DDOL");
+        inventory = ddolGameObject.GetComponent<Inventory>();
+        ownedCards = inventory.deckList;
+
+
         // Cards placed under this object start in this zone, piles hide them at their center
         foreach (Transform child in transform)
         {
             if (!child.TryGetComponent(out Card card)) continue;
-
+            string name = child.name;
+            if(!ownedCards.Contains(name)) continue; //only if it is inside your owned cards
             Add(card);
 
             if (!isPile) continue;
