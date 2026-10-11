@@ -7,12 +7,12 @@ public class DDOLScript : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null) 
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(transform.root.gameObject);
         }
-        else 
+        else
         {
             Destroy(gameObject);
             return;
