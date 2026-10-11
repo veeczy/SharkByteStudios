@@ -1483,7 +1483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffb4d9e93eb45464b81e88998a46c499, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19999999
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffb4d9e93eb45464b81e88998a46c499, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2658,7 +2658,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386370526}
   m_LocalRotation: {x: 0.0006778483, y: -0.00000080466276, z: -0.036446616, w: 0.9993354}
-  m_LocalPosition: {x: 0, y: 0, z: 0.11}
+  m_LocalPosition: {x: 0, y: 0, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2666,7 +2666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0.078, y: -0.003, z: -4.177}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.08999634, y: -15.639999}
+  m_AnchoredPosition: {x: -7, y: 81.5}
   m_SizeDelta: {x: -56.56, y: -55.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386370528
@@ -2755,7 +2755,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -271.2967}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3412,7 +3412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ea64afeef6042942961d7cacdd4024d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19999999
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ea64afeef6042942961d7cacdd4024d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3710,7 +3710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76bce555c42da6442925e1dc86f84c7d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19999999
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76bce555c42da6442925e1dc86f84c7d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5012,17 +5012,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645691198}
-  m_LocalRotation: {x: -0.0970518, y: -0.69378656, z: 0.09741083, w: 0.70693165}
+  m_LocalRotation: {x: -0.08018035, y: -0.6959107, z: 0.08085247, w: 0.70904326}
   m_LocalPosition: {x: 0, y: 0, z: -330.35}
   m_LocalScale: {x: 1.2646394, y: 1.2646394, z: 1.2646394}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 386370527}
   m_Father: {fileID: 279108225}
-  m_LocalEulerAnglesHint: {x: -0.118, y: -88.941, z: 15.807}
+  m_LocalEulerAnglesHint: {x: -0.067, y: -88.937, z: 13.077}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -510.37, y: -17.47}
+  m_AnchoredPosition: {x: -510.37, y: 214}
   m_SizeDelta: {x: 181.27, y: 319.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &645691200
@@ -6963,6 +6963,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeckBuilderManager
   audio: {fileID: 995425721}
+  playerCam: {fileID: 0}
+  loadingPanel: {fileID: 0}
+  hangarBottomPlane: {fileID: 0}
+  mech: {fileID: 0}
+  playerTarget: {fileID: 0}
+  mechTarget: {fileID: 0}
+  speed: 0
+  fallSpeed: 5
+  fallDuration: 2
 --- !u!1 &1038293377
 GameObject:
   m_ObjectHideFlags: 0
@@ -10799,7 +10808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 981e26f16b81f144d848dc211e1916e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19999999
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 981e26f16b81f144d848dc211e1916e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11774,7 +11783,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e56a87a4550f8474b9dbb47c30bc44c6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12529,7 +12538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68ef55c6832d6b4469dece1bbeeb47e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19999999
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 68ef55c6832d6b4469dece1bbeeb47e6, type: 3}
       propertyPath: m_LocalPosition.z

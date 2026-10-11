@@ -16,12 +16,20 @@ public class HangarManager : MonoBehaviour
     public Transform playerTarget;
     public Transform mechTarget;
 
-    [Header("Deck Build Cutscene")]
-    
-    
     public float speed;
     public float fallSpeed = 5f;
     public float fallDuration = 2f;
+
+    [Header("Deck Build Cutscene")]
+    public Transform deckBuildDoor;
+    public Transform doorOpenTarget;
+    public Transform cameraMoveTarget;
+
+    public float doorOpenDuration = 1.5f;
+    public float cameraMoveDuration = 2f;
+    
+    
+
 
     private bool isStarting;
 
@@ -96,6 +104,57 @@ public class HangarManager : MonoBehaviour
     }
     public virtual void OpenDeckBuild()
     {
+        if (!isStarting)
+        {
+            StartCoroutine(DeckBuildCutscene());
+        }
+    }
+    public IEnumerator DeckBuildCutscene()
+    {
+
+        Vector3 startPosition = deckBuildDoor.transform.position;
+        Vector3 targetPosition = doorOpenTarget.position;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < doorOpenDuration)
+        {
+            float t = elapsedTime / doorOpenDuration;
+
+            float smoothT = Mathf.SmoothStep(0f, 1f, t);
+
+            deckBuildDoor.position = Vector3.Lerp(startPosition, targetPosition, smoothT);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        deckBuildDoor.position = targetPosition;
+
+        Vector3 cameraTargetPosition = cameraMoveTarget.position;
+
+        Transform camTransform = playerCam.transform;
+
+        Vector3 cameraStartPosition = camTransform.position;
+
+        elapsedTime = 0f;
+
+        while (elapsedTime < cameraMoveDuration)
+        {
+            float t = elapsedTime / cameraMoveDuration;
+
+            float smoothT = Mathf.SmoothStep(0f, 1f, t);
+
+            camTransform.position = Vector3.Lerp(cameraStartPosition, cameraTargetPosition, smoothT);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        camTransform.position = cameraTargetPosition;
+
+        loadingPanel.SetActive(true);
+
         SceneManager.LoadScene("PT_Deck_Build");
     }
     public virtual void ReturnToMainMenu()
