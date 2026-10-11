@@ -739,6 +739,118 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1252743143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252743147}
+  - component: {fileID: 1252743146}
+  - component: {fileID: 1252743145}
+  - component: {fileID: 1252743144}
+  m_Layer: 0
+  m_Name: DDOL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1252743144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252743143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a54dbe2ec7a51e46817dc8d0748b91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  fullDeckList:
+  - DamageCard-0-A
+  - DamageCard-0-B
+  - DamageCard-0-C
+  - DamageCard-1-A
+  - DamageCard-1-B
+  - DamageCard-1-C
+  - DamageCard-2-A
+  - DamageCard-2-B
+  - DamageCard-2-C
+  - RepairCard-0-A
+  - RepairCard-0-B
+  - RepairCard-0-C
+  - RepairCard-1-A
+  - RepairCard-1-B
+  - RepairCard-1-C
+  - RepairCard-2-A
+  - RepairCard-2-B
+  - BuffMultCard-0
+  - BuffMultCard-1-A
+  - BuffMultCard-1-B
+  - BuffMultCard-1-C
+  - BuffMultCard-2
+  - ComboCard-0-A
+  - ComboCard-0-B
+  - ComboCard-0-C
+  - ComboCard-0-D
+  - ComboCard-0-E
+  - ComboCard-0-F
+  - ComboCard-0-G
+  - ComboCard-1-A
+  - ComboCard-1-B
+  - ComboCard-1-C
+  - ComboCard-1-D
+  - ComboCard-1-E
+  - ComboCard-1-F
+  - ComboCard-1-G
+  deckList: []
+  cardGameObjectList: []
+  cardScene: 0
+  sceneName: 
+--- !u!114 &1252743145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252743143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102aeac071d6b5d41bbf2085d82a17fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPrefsManager
+  gameVolume: 1
+--- !u!114 &1252743146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252743143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e22e676521776f4084f1d86632a6228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DDOLScript
+--- !u!4 &1252743147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252743143}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.12255, y: -0.00001, z: -1.50513}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1287399299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,3 +1496,4 @@ SceneRoots:
   - {fileID: 985607280}
   - {fileID: 746201336}
   - {fileID: 1473467926}
+  - {fileID: 1252743147}
