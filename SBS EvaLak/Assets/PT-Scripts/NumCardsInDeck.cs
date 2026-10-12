@@ -77,22 +77,30 @@ public class NumCardsInDeck : MonoBehaviour
     {
         switch (cardType)
         {
-            case "BuffMultCard-":
+            case "CBuffMultCard-":
+            case "RBuffMultCard-":
+            case "LBuffMultCard-":
                 buffNum++;
                 inventory.numMult++;
                 break;
 
-            case "DamageCard-":
+            case "CDamageCard-":
+            case "RDamageCard-":
+            case "LDamageCard-":
                 damageNum++;
                 inventory.numDamage++;
                 break;
 
-            case "RepairCard-":
+            case "CRepairCard-":
+            case "RRepairCard-":
+            case "LRepairCard-":
                 repairNum++;
                 inventory.numRepair++;
                 break;
 
-            case "ComboCard-":
+            case "CComboCard-":
+            case "RComboCard-":
+            case "LComboCard-":
                 comboNum++;
                 inventory.numCombo++;
                 break;
@@ -104,22 +112,30 @@ public class NumCardsInDeck : MonoBehaviour
     {
         switch (cardType)
         {
-            case "BuffMultCard-":
+            case "CBuffMultCard-":
+            case "RBuffMultCard-":
+            case "LBuffMultCard-":
                 buffNum--;
                 inventory.numMult--;
                 break;
 
-            case "DamageCard-":
+            case "CDamageCard-":
+            case "RDamageCard-":
+            case "LDamageCard-":
                 damageNum--;
                 inventory.numDamage--;
                 break;
 
-            case "RepairCard-":
+            case "CRepairCard-":
+            case "RRepairCard-":
+            case "LRepairCard-":
                 repairNum--;
                 inventory.numRepair--;
                 break;
 
-            case "ComboCard-":
+            case "CComboCard-":
+            case "RComboCard-":
+            case "LComboCard-":
                 comboNum--;
                 inventory.numCombo--;
                 break;

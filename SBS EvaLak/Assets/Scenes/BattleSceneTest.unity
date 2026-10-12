@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-2-A
+      value: LDamageCard-2-A
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554913272886439938, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48aacdd338354824f829020fb7acd9b6, type: 2}
     - target: {fileID: 7807421587623998161, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_text
       value: 'BASIC STRIKE
@@ -253,12 +257,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_Name
-      value: RepairCard-0-B
+      value: RRepairCard-0-B
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5799311145662037900, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -372,12 +380,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_Name
-      value: RepairCard-2-B
+      value: LRepairCard-2-B
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5799311145662037900, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48aacdd338354824f829020fb7acd9b6, type: 2}
     - target: {fileID: 7088774492508799830, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: healValue
       value: 150
@@ -408,7 +420,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-0-D
+      value: RComboCard-0-D
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -469,6 +481,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -489,7 +505,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-1-C
+      value: CComboCard-1-C
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -558,6 +574,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -892,7 +912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_Name
-      value: RepairCard-1-C
+      value: CRepairCard-1-C
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_IsActive
@@ -968,12 +988,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_Name
-      value: RepairCard-0-A
+      value: RRepairCard-0-A
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5799311145662037900, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1065,7 +1089,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-0-F
+      value: RComboCard-0-F
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -1126,6 +1150,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1395,7 +1423,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-1-F
+      value: CComboCard-1-F
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -1464,6 +1492,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1484,7 +1516,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-1-D
+      value: CComboCard-1-D
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -1553,6 +1585,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1682,7 +1718,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-0-A
+      value: RDamageCard-0-A
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
@@ -1732,11 +1768,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554913272886439938, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     - target: {fileID: 7807421587623998161, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_text
       value: 'BASIC STRIKE
 
         50 DMG'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347577937539109335, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1934,12 +1978,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_Name
-      value: RepairCard-2-A
+      value: LRepairCard-2-A
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5799311145662037900, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48aacdd338354824f829020fb7acd9b6, type: 2}
     - target: {fileID: 7088774492508799830, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: healValue
       value: 150
@@ -1970,7 +2018,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-1-B
+      value: CDamageCard-1-B
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
@@ -2028,6 +2076,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554913272886439938, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     - target: {fileID: 7807421587623998161, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_text
       value: 'BASIC STRIKE
@@ -2247,7 +2299,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-1-E
+      value: CComboCard-1-E
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -2316,6 +2368,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2336,7 +2392,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-0-G
+      value: RComboCard-0-G
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -2397,6 +2453,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2417,7 +2477,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-1-A
+      value: CComboCard-1-A
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -2486,6 +2546,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2824,7 +2888,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-1-A
+      value: CDamageCard-1-A
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
@@ -2882,6 +2946,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554913272886439938, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     - target: {fileID: 7807421587623998161, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_text
       value: 'BASIC STRIKE
@@ -2908,7 +2976,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-1-B
+      value: CComboCard-1-B
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -2977,6 +3045,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3418,7 +3490,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-0-E
+      value: RComboCard-0-E
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -3479,6 +3551,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3712,7 +3788,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-0-C
+      value: RDamageCard-0-C
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
@@ -3762,6 +3838,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554913272886439938, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     - target: {fileID: 7807421587623998161, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_text
       value: 'BASIC STRIKE
@@ -3916,7 +3996,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-1-C
+      value: CDamageCard-1-C
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
@@ -3974,6 +4054,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554913272886439938, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     - target: {fileID: 7807421587623998161, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_text
       value: 'BASIC STRIKE
@@ -4391,12 +4475,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_Name
-      value: RepairCard-0-C
+      value: RRepairCard-0-C
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5799311145662037900, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4596,6 +4684,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 417238450}
     m_Modifications:
+    - target: {fileID: 895349790865333511, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48aacdd338354824f829020fb7acd9b6, type: 2}
     - target: {fileID: 5911453036750299124, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.483488
@@ -4638,7 +4730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_Name
-      value: BuffMultCard-2
+      value: LBuffMultCard-2
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_IsActive
@@ -4749,7 +4841,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-0-B
+      value: RDamageCard-0-B
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
@@ -4799,6 +4891,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554913272886439938, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     - target: {fileID: 7807421587623998161, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_text
       value: 'BASIC STRIKE
@@ -4865,7 +4961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_Name
-      value: BuffMultCard-1-B
+      value: CBuffMultCard-1-B
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_IsActive
@@ -5076,7 +5172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_Name
-      value: BuffMultCard-1-C
+      value: CBuffMultCard-1-C
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_IsActive
@@ -5381,19 +5477,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_Name
-      value: BuffMultCard-1-A
+      value: CBuffMultCard-1-A
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8348406451778923175, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
-      propertyPath: multIncrease
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8680592708993388204, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
-      propertyPath: m_text
-      value: +50% DMG ON NEXT ATTACK
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5557,7 +5645,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-2-B
+      value: LDamageCard-2-B
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
@@ -5615,6 +5703,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554913272886439938, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48aacdd338354824f829020fb7acd9b6, type: 2}
     - target: {fileID: 7807421587623998161, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_text
       value: 'BASIC STRIKE
@@ -5833,7 +5925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_Name
-      value: RepairCard-1-A
+      value: CRepairCard-1-A
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_IsActive
@@ -5869,7 +5961,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-0-A
+      value: RComboCard-0-A
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -5915,21 +6007,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7807421587623998161, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
-      propertyPath: m_text
-      value: 'COMBO STRIKE
-
-
-        20 DMG'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8030109171196611330, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
-      propertyPath: damage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8030109171196611330, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
-      propertyPath: useDamageRange
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6261,7 +6342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-1-G
+      value: CComboCard-1-G
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -6330,6 +6411,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6442,7 +6527,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-0-B
+      value: RComboCard-0-B
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -6503,6 +6588,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6700,7 +6789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_Name
-      value: RepairCard-1-B
+      value: CRepairCard-1-B
       objectReference: {fileID: 0}
     - target: {fileID: 5669117738299337735, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_IsActive
@@ -6736,7 +6825,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-2-C
+      value: LDamageCard-2-C
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
@@ -6794,6 +6883,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554913272886439938, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48aacdd338354824f829020fb7acd9b6, type: 2}
     - target: {fileID: 7807421587623998161, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_text
       value: 'BASIC STRIKE
@@ -6803,7 +6896,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6042831767585036981, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
 --- !u!4 &2075359637 stripped
 Transform:
@@ -6818,6 +6914,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 417238450}
     m_Modifications:
+    - target: {fileID: 895349790865333511, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     - target: {fileID: 5911453036750299124, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.483488
@@ -6860,11 +6960,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_Name
-      value: BuffMultCard-0
+      value: RBuffMultCard-0-A
       objectReference: {fileID: 0}
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348406451778923175, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
+      propertyPath: multIncrease
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680592708993388204, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
+      propertyPath: m_text
+      value: +100% DMG ON NEXT ATTACK
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6961,7 +7069,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_Name
-      value: ComboCard-0-C
+      value: RComboCard-0-C
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
@@ -7022,6 +7130,10 @@ PrefabInstance:
       propertyPath: useDamageRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

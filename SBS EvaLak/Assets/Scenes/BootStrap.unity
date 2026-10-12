@@ -771,46 +771,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   fullDeckList:
-  - DamageCard-0-A
-  - DamageCard-0-B
-  - DamageCard-0-C
-  - DamageCard-1-A
-  - DamageCard-1-B
-  - DamageCard-1-C
-  - DamageCard-2-A
-  - DamageCard-2-B
-  - DamageCard-2-C
-  - RepairCard-0-A
-  - RepairCard-0-B
-  - RepairCard-0-C
-  - RepairCard-1-A
-  - RepairCard-1-B
-  - RepairCard-1-C
-  - RepairCard-2-A
-  - RepairCard-2-B
-  - BuffMultCard-0
-  - BuffMultCard-1-A
-  - BuffMultCard-1-B
-  - BuffMultCard-1-C
-  - BuffMultCard-2
-  - ComboCard-0-A
-  - ComboCard-0-B
-  - ComboCard-0-C
-  - ComboCard-0-D
-  - ComboCard-0-E
-  - ComboCard-0-F
-  - ComboCard-0-G
-  - ComboCard-1-A
-  - ComboCard-1-B
-  - ComboCard-1-C
-  - ComboCard-1-D
-  - ComboCard-1-E
-  - ComboCard-1-F
-  - ComboCard-1-G
+  - RDamageCard-0-A
+  - RDamageCard-0-B
+  - RDamageCard-0-C
+  - CDamageCard-1-A
+  - CDamageCard-1-B
+  - CDamageCard-1-C
+  - LDamageCard-2-A
+  - LDamageCard-2-B
+  - LDamageCard-2-C
+  - RRepairCard-0-A
+  - RRepairCard-0-B
+  - RRepairCard-0-C
+  - CRepairCard-1-A
+  - CRepairCard-1-B
+  - CRepairCard-1-C
+  - LRepairCard-2-A
+  - LRepairCard-2-B
+  - RBuffMultCard-0-A
+  - CBuffMultCard-1-A
+  - CBuffMultCard-1-B
+  - CBuffMultCard-1-C
+  - LBuffMultCard-2
+  - RComboCard-0-A
+  - RComboCard-0-B
+  - RComboCard-0-C
+  - RComboCard-0-D
+  - RComboCard-0-E
+  - RComboCard-0-F
+  - RComboCard-0-G
+  - CComboCard-1-A
+  - CComboCard-1-B
+  - CComboCard-1-C
+  - CComboCard-1-D
+  - CComboCard-1-E
+  - CComboCard-1-F
+  - CComboCard-1-G
   deckList: []
   cardGameObjectList: []
   cardScene: 0
   sceneName: 
+  deckSize: 25
+  numMult: 0
+  numDamage: 0
+  numCombo: 0
+  numRepair: 0
 --- !u!114 &1252743145
 MonoBehaviour:
   m_ObjectHideFlags: 0
