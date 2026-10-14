@@ -12,8 +12,10 @@ public class DDOLBridge : MonoBehaviour
     {
         Init();
     }
+
     public void AddRemoveCard()
     {
+        Debug.Log("BUTTON CLICKED")
         if (inventory == null)
         {
             Debug.Log("Inventory not found");
