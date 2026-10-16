@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class DDOLBridge : MonoBehaviour
 {
@@ -7,7 +9,11 @@ public class DDOLBridge : MonoBehaviour
 
     private GameObject addRemoveRef;
     private AddRemoveCardScript addRemoveScript;
+
+    public GameObject myButtonGameObject;
+    public Button myButton;
     [SerializeField] private string cardType;
+
     void Start()
     {
         Init();
@@ -15,7 +21,14 @@ public class DDOLBridge : MonoBehaviour
 
     public void AddRemoveCard()
     {
-        Debug.Log("BUTTON CLICKED")
+        Debug.Log("BUTTON CLICKED");
+
+        myButtonGameObject = EventSystem.current.currentSelectedGameObject;
+        if (myButtonGameObject == null) { Debug.Log("Unable to find GameObject."); }
+        else { myButton = myButtonGameObject.GetComponent<Button>(); cardType = myButtonGameObject.name; Debug.Log("Selected " + cardType); }
+
+        if (cardType == "") { Debug.Log("No card type found!"); }
+
         if (inventory == null)
         {
             Debug.Log("Inventory not found");
