@@ -12,15 +12,16 @@ public class HangarManager : MonoBehaviour
     public GameObject loadingPanel;
 
     [Header("Level Select Cutscene")]
-    public GameObject hangarBottomPlane;
     public GameObject mech;
+    public GameObject backButton;
+    public GameObject[] planets;
 
-    public Transform playerTarget;
-    public Transform mechTarget;
+    public Transform defaultPosition;
+    public Transform levelSelect;
 
-    public float speed;
-    public float fallSpeed = 5f;
-    public float fallDuration = 2f;
+    public float moveDuration = 2f;
+    public float fadeDuration = 1.5f;
+
 
     [Header("Deck Build Cutscene")]
     public Transform deckBuildDoor;
@@ -50,6 +51,13 @@ public class HangarManager : MonoBehaviour
         {
             audio.outputAudioMixerGroup = musicMixerGroup;
         }
+
+        foreach (GameObject planet in planets)
+        {
+            planet.SetActive(false);
+        }
+
+        backButton.SetActive(false);
     }
 
     public virtual void OpenLevelSelect()
@@ -64,50 +72,109 @@ public class HangarManager : MonoBehaviour
         isStarting = true;
 
         Transform camTransform = playerCam.transform;
+        
+        Vector3 startPosition = camTransform.position;
+        Quaternion startrotation = camTransform.rotation;
+
+        Vector3 targetPosition = levelSelect.position;
+        Quaternion targetRotation = levelSelect.rotation;
+
+        float elapsedTime = 0f;
+
+        StartCoroutine(FadeInPlanets());
+
+        while ( elapsedTime < moveDuration)
+        {
+            float t = elapsedTime / moveDuration;
+
+            float smoothT = Mathf.SmoothStep(0f, 1f, t);
+
+            camTransform.position = Vector3.Lerp(startPosition, targetPosition, smoothT);
+            camTransform.rotation = Quaternion.Slerp(startrotation, targetRotation, smoothT);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        camTransform.position = targetPosition;
+        camTransform.rotation = targetRotation;
+
+        backButton.SetActive(true);
+
+        isStarting = false;
+    }
+    private IEnumerator FadeInPlanets()
+    {
+        yield return null;
+
+        foreach (GameObject planet in planets)
+        {
+            planet.SetActive(true);
+
+            Renderer render = planet.GetComponent<Renderer>();
+            Material mat = render.material;
+
+            Color color = mat.color;
+            color.a = 0f;
+            mat.color = color;
+
+            float elapsedTime = 0f;
+
+            while (elapsedTime < fadeDuration)
+            {
+                float t = elapsedTime / fadeDuration;
+
+                color.a = Mathf.Lerp(0f, 1f, t);
+                mat.color = color;
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            color.a = 0.5f;
+            mat.color = color;
+        }
+    }
+    public void BackToDefault()
+    {
+        if (!isStarting)
+        {
+            backButton.SetActive(false);
+
+            foreach (GameObject planet in planets)
+            {
+                planet.SetActive(false);
+            }
+
+            StartCoroutine(ReturnToDefault());
+        }
+    }
+    private IEnumerator ReturnToDefault()
+    {
+        isStarting = true;
+
+        Transform camTransform = playerCam.transform;
 
         Vector3 startPosition = camTransform.position;
         Quaternion startRotation = camTransform.rotation;
 
-        Vector3 targetPosition = playerTarget.position - (playerTarget.forward * 2f);
-        Quaternion targetRotation = Quaternion.LookRotation(mechTarget.transform.position - startPosition); 
-
         float elapsedTime = 0f;
 
-        while (elapsedTime < speed)
+        while ( elapsedTime < moveDuration)
         {
-            float t = elapsedTime / speed;
-
+            float t = elapsedTime / moveDuration;
             float smoothT = Mathf.SmoothStep(0f, 1f, t);
 
-            camTransform.rotation = Quaternion.Slerp(startRotation, targetRotation, smoothT);
+            camTransform.position = Vector3.Lerp(startPosition, defaultPosition.position, smoothT);
+            camTransform.rotation = Quaternion.Slerp(startRotation, defaultPosition.rotation, smoothT);
 
             elapsedTime += Time.deltaTime;
             yield return null;
-
         }
-
-        camTransform.rotation = targetRotation;
-
-        hangarBottomPlane.SetActive(false);
-
-        yield return new WaitForSeconds(0.5f);
-
-        float fallTime = 0f;
-
-        while (fallTime < fallDuration)
-        {
-            Vector3 fallMovement = Vector3.down * fallSpeed * Time.deltaTime;
-
-            camTransform.position += fallMovement;
-            mech.transform.position += fallMovement;
-
-            fallTime += Time.deltaTime;
-            yield return null;
-        }
-
-        loadingPanel.SetActive(true);
-
-        SceneManager.LoadScene("PT_Level_Select");
+        camTransform.position = defaultPosition.position;
+        camTransform.rotation = defaultPosition.rotation;
+        
+        isStarting = false;
     }
     public virtual void OpenDeckBuild()
     {
