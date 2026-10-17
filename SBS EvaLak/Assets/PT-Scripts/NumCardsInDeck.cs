@@ -7,6 +7,8 @@ public class NumCardsInDeck : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI comboText;
     [SerializeField] private TextMeshProUGUI repairText;
+
+    [SerializeField] private TextMeshProUGUI DeckSizeText;
     private Inventory inventory;
 
     private int _buffNum;
@@ -62,6 +64,22 @@ public class NumCardsInDeck : MonoBehaviour
         }
     }
 
+    private int _DeckSize;
+    public int DeckSize
+    {
+        get { return _DeckSize; }
+        set
+        {
+            _DeckSize = value;
+            if (DeckSizeText.text != null)
+            {
+                int fullDeckLength = inventory.deckSize;
+                string tempString = "/" + fullDeckLength.ToString();
+                DeckSizeText.text = ($"Deck Size: {DeckSize}/{fullDeckLength}");
+            }
+        }
+    }
+
     void Start()
     {
         GameObject DDOL = GameObject.Find("DDOL");
@@ -71,6 +89,7 @@ public class NumCardsInDeck : MonoBehaviour
         damageNum = inventory.numDamage;
         comboNum = inventory.numCombo;
         repairNum = inventory.numRepair;
+        DeckSize = inventory.deckList.Count;
     }
 
     public void AddCards(string cardType)
@@ -82,6 +101,7 @@ public class NumCardsInDeck : MonoBehaviour
             case "LBuffMultCard-":
                 buffNum++;
                 inventory.numMult++;
+                DeckSize++;
                 break;
 
             case "CDamageCard-":
@@ -89,6 +109,7 @@ public class NumCardsInDeck : MonoBehaviour
             case "LDamageCard-":
                 damageNum++;
                 inventory.numDamage++;
+                DeckSize++;
                 break;
 
             case "CRepairCard-":
@@ -96,6 +117,7 @@ public class NumCardsInDeck : MonoBehaviour
             case "LRepairCard-":
                 repairNum++;
                 inventory.numRepair++;
+                DeckSize++;
                 break;
 
             case "CComboCard-":
@@ -103,6 +125,7 @@ public class NumCardsInDeck : MonoBehaviour
             case "LComboCard-":
                 comboNum++;
                 inventory.numCombo++;
+                DeckSize++;
                 break;
 
         }
@@ -117,6 +140,7 @@ public class NumCardsInDeck : MonoBehaviour
             case "LBuffMultCard-":
                 buffNum--;
                 inventory.numMult--;
+                DeckSize--;
                 break;
 
             case "CDamageCard-":
@@ -124,6 +148,7 @@ public class NumCardsInDeck : MonoBehaviour
             case "LDamageCard-":
                 damageNum--;
                 inventory.numDamage--;
+                DeckSize--;
                 break;
 
             case "CRepairCard-":
@@ -131,6 +156,7 @@ public class NumCardsInDeck : MonoBehaviour
             case "LRepairCard-":
                 repairNum--;
                 inventory.numRepair--;
+                DeckSize--;
                 break;
 
             case "CComboCard-":
@@ -138,6 +164,7 @@ public class NumCardsInDeck : MonoBehaviour
             case "LComboCard-":
                 comboNum--;
                 inventory.numCombo--;
+                DeckSize--;
                 break;
 
         }

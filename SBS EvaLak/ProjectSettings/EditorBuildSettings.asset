@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Bootstrapper-Old.unity
+    path: Assets/Scenes/Scrapped/Bootstrapper-Old.unity
     guid: f1871a6be1f00694bb8eac1c1e11ac62
   - enabled: 1
     path: Assets/Scenes/BootStrap.unity
@@ -26,5 +26,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleSceneTest.unity
     guid: eec1c9138c6913b4a9fedc0dc3571873
+  - enabled: 1
+    path: Assets/Scenes/LoseScene.unity
+    guid: ba2c42f441ec6b64a97bd58f5f015049
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 52c79608ac20302499e2bed69702fbdd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

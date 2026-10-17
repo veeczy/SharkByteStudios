@@ -1,8 +1,9 @@
-using NUnit.Framework;
-using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
+using NUnit.Framework;
+using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class Inventory : MonoBehaviour
     public List<string> deckList; //this is what the player owns
     public List<GameObject> cardGameObjectList; //to put the prefabs from the scene into when the cards are matching
 
+    public List<bool> checkLockList; //bool list at index of card in fulldecklist to prove if card is unlocked or not
+    public List<string> unlockedDeckList; //strings of cards that have been unlocked are added here
+
     private GameObject tempGameObject;
 
     public bool cardScene = false;
-    private List<string> sceneNameList = new List<string>() { "PT_Deck_Build", "BattleSceneTest" };
+    private List<string> sceneNameList = new List<string>() { "PT_Deck_Build", "BattleSceneTest", "WinScene" };
     public string sceneName;
     public int deckSize = 25; //at some point other scripts will update this
 
@@ -29,7 +33,8 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-
+        checkLockList = new List<bool>(new bool [fullDeckList.Count]);
+        UpdateLockedCards();
         //random population
         //while (deckList.Count < deckLength)
         //{
@@ -40,19 +45,34 @@ public class Inventory : MonoBehaviour
         //}
     }
 
+    public void UpdateLockedCards()
+    {
+        int tempIndex = 0;
+        foreach (var card in fullDeckList)
+        {
+            if(unlockedDeckList.Contains(card)) { tempIndex = fullDeckList.IndexOf(card); checkLockList[tempIndex] = true; }
+            //else { Debug.Log(card + " is currently locked."); }
+        }
+    }
     public void OnLevelWasLoaded() //at start of new scene loading
     {
         sceneName = SceneManager.GetActiveScene().name;
         if (sceneNameList.Contains(sceneName)) { cardScene = true; }
         else { cardScene = false; }
 
+        UpdateLockedCards();
 
         if (cardScene) //if scene with cards in it
         {
-            //THIS WILL BREAK IF YOU ENTER THE BATTLE FIRST (i think) WE NEED TO MAKE THIS ONLY LOAD ON DECKBUILDER SCENE
-            numCardsUI = GameObject.Find("NumCardsUI");
-            numCardsInDeck = numCardsUI.GetComponent<NumCardsInDeck>();
+            //THIS WILL BREAK IF YOU ENTER THE BATTLE FIRST (i think) WE NEED TO MAKE THIS ONLY LOAD ON DECKBUILDER SCENE 
+            // FIXED BELOW FOR YOU DREW! - Vee
+            if (sceneName == sceneNameList[0]) // if it is in deckbuilder scene run this extra stuff
+            { 
+                numCardsUI = GameObject.Find("NumCardsUI");
+                numCardsInDeck = numCardsUI.GetComponent<NumCardsInDeck>();
+            }
 
+            if(sceneName == sceneNameList[1] && deckList.Count == 0) { SceneManager.LoadScene("PT_Level_Select"); } //if enter battle with empty deck, it sends you back to level select
 
             //check to see if deck game objects are in the scene and if they are append them to the list
             foreach (string name in deckList)

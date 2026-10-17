@@ -809,6 +809,24 @@ MonoBehaviour:
   - CComboCard-1-G
   deckList: []
   cardGameObjectList: []
+  checkLockList: 
+  unlockedDeckList:
+  - CDamageCard-1-A
+  - CDamageCard-1-B
+  - CDamageCard-1-C
+  - CRepairCard-1-A
+  - CRepairCard-1-B
+  - CRepairCard-1-C
+  - CBuffMultCard-1-A
+  - CBuffMultCard-1-B
+  - CBuffMultCard-1-C
+  - CComboCard-1-A
+  - CComboCard-1-B
+  - CComboCard-1-C
+  - CComboCard-1-D
+  - CComboCard-1-E
+  - CComboCard-1-F
+  - CComboCard-1-G
   cardScene: 0
   sceneName: 
   deckSize: 25
