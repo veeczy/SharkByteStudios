@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3283641054639771824, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     - target: {fileID: 3584216419403069831, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: selected
       value: 0
@@ -24,6 +28,10 @@ PrefabInstance:
       propertyPath: energyCost
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4712051134852116432, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     - target: {fileID: 7529685850344322037, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.87

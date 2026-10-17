@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
     private GameObject tempGameObject;
 
     public bool cardScene = false;
-    private List<string> sceneNameList = new List<string>() { "PT_Deck_Build", "BattleSceneTest" };
+    private List<string> sceneNameList = new List<string>() { "PT_Deck_Build", "BattleSceneTest", "WinScene" };
     public string sceneName;
     public int deckSize = 25; //at some point other scripts will update this
 
@@ -71,6 +71,8 @@ public class Inventory : MonoBehaviour
                 numCardsUI = GameObject.Find("NumCardsUI");
                 numCardsInDeck = numCardsUI.GetComponent<NumCardsInDeck>();
             }
+
+            if(sceneName == sceneNameList[1] && deckList.Count == 0) { SceneManager.LoadScene("PT_Level_Select"); } //if enter battle with empty deck, it sends you back to level select
 
             //check to see if deck game objects are in the scene and if they are append them to the list
             foreach (string name in deckList)

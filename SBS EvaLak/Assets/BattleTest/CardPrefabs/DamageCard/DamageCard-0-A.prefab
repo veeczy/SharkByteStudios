@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-0-A Variant
+      value: DamageCard-0-A
       objectReference: {fileID: 0}
+    - target: {fileID: 3419701159153407979, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     - target: {fileID: 7529685850344322037, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -58,6 +62,10 @@ PrefabInstance:
 
         50 DMG'
       objectReference: {fileID: 0}
+    - target: {fileID: 7829123737937078117, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

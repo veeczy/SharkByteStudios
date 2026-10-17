@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3419701159153407979, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48aacdd338354824f829020fb7acd9b6, type: 2}
     - target: {fileID: 3584216419403069831, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: energyCost
       value: 3
@@ -82,6 +86,10 @@ PrefabInstance:
 
         60 DMG'
       objectReference: {fileID: 0}
+    - target: {fileID: 7829123737937078117, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 48aacdd338354824f829020fb7acd9b6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

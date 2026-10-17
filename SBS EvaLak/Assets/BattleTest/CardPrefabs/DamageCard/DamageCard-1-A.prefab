@@ -10,12 +10,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_Name
-      value: DamageCard-1-A Variant
+      value: DamageCard-1-A
       objectReference: {fileID: 0}
     - target: {fileID: 1935703023453732939, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3419701159153407979, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     - target: {fileID: 3584216419403069831, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
       propertyPath: energyCost
       value: 1
@@ -74,6 +78,10 @@ PrefabInstance:
 
         40 DMG'
       objectReference: {fileID: 0}
+    - target: {fileID: 7829123737937078117, guid: 22d351cdea5d47d45859430b4bd278f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ad1c61faccd33d04cb72211ae35036a8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
