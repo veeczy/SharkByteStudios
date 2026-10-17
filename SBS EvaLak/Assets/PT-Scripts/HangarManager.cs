@@ -24,8 +24,10 @@ public class HangarManager : MonoBehaviour
 
 
     [Header("Deck Build Cutscene")]
-    public Transform deckBuildDoor;
-    public Transform doorOpenTarget;
+    public Transform deckBuildDoorLeft;
+    public Transform deckBuildDoorRight;
+    public Transform doorOpenLeftTarget;
+    public Transform doorOpenRightTarget;
     public Transform cameraMoveTarget;
 
     public float doorOpenDuration = 1.5f;
@@ -186,8 +188,10 @@ public class HangarManager : MonoBehaviour
     public IEnumerator DeckBuildCutscene()
     {
 
-        Vector3 startPosition = deckBuildDoor.transform.position;
-        Vector3 targetPosition = doorOpenTarget.position;
+        Vector3 startPositionLeft = deckBuildDoorLeft.transform.position;
+        Vector3 startPositionRight = deckBuildDoorRight.transform.position;
+        Vector3 targetPositionLeft = doorOpenLeftTarget.position;
+        Vector3 targetPositionRight = doorOpenRightTarget.position;
 
         float elapsedTime = 0f;
 
@@ -197,15 +201,15 @@ public class HangarManager : MonoBehaviour
 
             float smoothT = Mathf.SmoothStep(0f, 1f, t);
 
-            deckBuildDoor.position = Vector3.Lerp(startPosition, targetPosition, smoothT);
+            deckBuildDoorLeft.position = Vector3.Lerp(startPositionLeft, targetPositionLeft, smoothT);
+            deckBuildDoorRight.position = Vector3.Lerp(startPositionRight, targetPositionRight, smoothT);
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+    }
 
-        deckBuildDoor.position = targetPosition;
-
-        Vector3 cameraTargetPosition = cameraMoveTarget.position;
+        /*Vector3 cameraTargetPosition = cameraMoveTarget.position;
 
         Transform camTransform = playerCam.transform;
 
@@ -227,10 +231,7 @@ public class HangarManager : MonoBehaviour
 
         camTransform.position = cameraTargetPosition;
 
-        loadingPanel.SetActive(true);
-
-        SceneManager.LoadScene("PT_Deck_Build");
-    }
+    }*/
     public virtual void ReturnToMainMenu()
     {
         SceneManager.LoadScene("PT_MainMenu");
