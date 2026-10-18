@@ -6028,7 +6028,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3686171285763053339, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3926486545127575691, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -6085,6 +6085,10 @@ PrefabInstance:
     - target: {fileID: 8081945565820046394, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680592708993388204, guid: 514fcab4fd94bb04c9fdf9e4d49da72f, type: 3}
+      propertyPath: m_text
+      value: +50% DMG ON NEXT ATTACK
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6605,7 +6609,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 30dab1b8e4c098e4f85998d7a20e5cae, type: 2}
     - target: {fileID: 6042831767585036981, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7529685850344322037, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6646,6 +6650,21 @@ PrefabInstance:
     - target: {fileID: 7529685850344322037, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807421587623998161, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: m_text
+      value: 'COMBO STRIKE
+
+
+        20 DMG'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807421587623998161, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: m_margin.w
+      value: -11.30375
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807421587623998161, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
+      propertyPath: m_margin.y
+      value: -2.6324806
       objectReference: {fileID: 0}
     - target: {fileID: 8984050127236193143, guid: 7b05c5f586805c1419f56af4c38bfddd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

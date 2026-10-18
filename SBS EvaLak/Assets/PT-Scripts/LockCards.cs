@@ -33,26 +33,28 @@ public class LockCards : MonoBehaviour
     {
         //get info from inventory and lock game objects if it is considered locked
         //currently this is set to what the index of the card name is in fulldecklist ... will need to change this to be more accepting of change in future in case of user input error when adding cards
-        if (checkLockCards[0] == false) { Hide(RDamageCard); Hide(RDamageCardButton); }
-        if (checkLockCards[3] == false) { Hide(CDamageCard); Hide(CDamageCardButton); }
-        if (checkLockCards[6] == false) { Hide(LDamageCard); Hide(LDamageCardButton); }
+        if (checkLockCards[0] == false && checkLockCards[1] == false && checkLockCards[2] == false) { Hide(RDamageCard); Hide(RDamageCardButton); }
+        if (checkLockCards[3] == false && checkLockCards[4] == false && checkLockCards[5] == false) { Hide(CDamageCard); Hide(CDamageCardButton); }
+        if (checkLockCards[6] == false && checkLockCards[7] == false && checkLockCards[8] == false) { Hide(LDamageCard); Hide(LDamageCardButton); }
 
-        if (checkLockCards[9] == false) { Hide(RRepairCard); Hide(RRepairCardButton); }
-        if (checkLockCards[12] == false) { Hide(CRepairCard); Hide(CRepairCardButton); }
-        if (checkLockCards[15] == false) { Hide(LRepairCard); Hide(LRepairCardButton); }
+        if (checkLockCards[9] == false && checkLockCards[10] == false && checkLockCards[11] == false) { Hide(RRepairCard); Hide(RRepairCardButton); }
+        if (checkLockCards[12] == false && checkLockCards[13] == false && checkLockCards[14] == false) { Hide(CRepairCard); Hide(CRepairCardButton); }
+        if (checkLockCards[15] == false && checkLockCards[16] == false) { Hide(LRepairCard); Hide(LRepairCardButton); }
 
         if (checkLockCards[17] == false) { Hide(RBuffMultCard); Hide(RBuffMultCardButton); }
-        if (checkLockCards[18] == false) { Hide(CBuffMultCard); Hide(CBuffMultCardButton); }
+        if (checkLockCards[18] == false && checkLockCards[19] == false && checkLockCards[20] == false) { Hide(CBuffMultCard); Hide(CBuffMultCardButton); }
         if (checkLockCards[21] == false) { Hide(LBuffMultCard); Hide(LBuffMultCardButton); }
 
-        if (checkLockCards[22] == false) { Hide(RComboCard); Hide(RComboCardButton); }
-        if (checkLockCards[29] == false) { Hide(CComboCard); Hide(CComboCardButton); }
+        if (checkLockCards[22] == false && checkLockCards[23] == false && checkLockCards[24] == false && checkLockCards[25] == false && checkLockCards[26] == false && checkLockCards[27] == false && checkLockCards[28] == false) { Hide(RComboCard); Hide(RComboCardButton); }
+        if (checkLockCards[29] == false && checkLockCards[30] == false && checkLockCards[31] == false && checkLockCards[32] == false && checkLockCards[33] == false && checkLockCards[34] == false && checkLockCards[35] == false) { Hide(CComboCard); Hide(CComboCardButton); }
     }
 
     public void Hide(GameObject GameObjectName)
     {
         GameObjectName.SetActive(false);
     }
+
+    public void Show(GameObject GameObjectName) { GameObjectName.SetActive(true); }
     
     public void InitializeGameObjects()
     {

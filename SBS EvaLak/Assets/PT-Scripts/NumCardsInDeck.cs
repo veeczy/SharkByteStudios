@@ -9,7 +9,11 @@ public class NumCardsInDeck : MonoBehaviour
     [SerializeField] private TextMeshProUGUI repairText;
 
     [SerializeField] private TextMeshProUGUI DeckSizeText;
+    [SerializeField] private TextMeshProUGUI DuplicatesText;
+    [SerializeField] private TextMeshProUGUI ScrapValueText;
+
     private Inventory inventory;
+
 
     private int _buffNum;
     public int buffNum
@@ -80,6 +84,34 @@ public class NumCardsInDeck : MonoBehaviour
         }
     }
 
+    private int _duplicates;
+    public int Duplicates
+    {
+        get { return _duplicates; }
+        set
+        {
+            _duplicates = value;
+            if(DuplicatesText.text != null)
+            {
+                DuplicatesText.text = ($"Duplicates: {Duplicates}");
+            }
+        }
+    }
+
+    private int _scrapValue;
+    public int ScrapValue
+    {
+        get { return _scrapValue; }
+        set
+        {
+            _scrapValue = value;
+            if(ScrapValueText.text != null)
+            {
+                ScrapValueText.text = ($"Scrap: {ScrapValue}");
+            }
+        }
+    }
+
     void Start()
     {
         GameObject DDOL = GameObject.Find("DDOL");
@@ -90,6 +122,8 @@ public class NumCardsInDeck : MonoBehaviour
         comboNum = inventory.numCombo;
         repairNum = inventory.numRepair;
         DeckSize = inventory.deckList.Count;
+        Duplicates = inventory.duplicateCards;
+        ScrapValue = inventory.totalScrap;
     }
 
     public void AddCards(string cardType)

@@ -827,6 +827,9 @@ MonoBehaviour:
   - CComboCard-1-E
   - CComboCard-1-F
   - CComboCard-1-G
+  duplicateList: []
+  duplicateCards: 0
+  scrapValueList: 010000000100000001000000020000000200000002000000030000000300000003000000020000000200000002000000010000000100000001000000030000000300000002000000010000000100000001000000030000000200000002000000020000000200000002000000020000000200000001000000010000000100000001000000010000000100000001000000
   cardScene: 0
   sceneName: 
   deckSize: 25
@@ -834,6 +837,7 @@ MonoBehaviour:
   numDamage: 0
   numCombo: 0
   numRepair: 0
+  totalScrap: 0
 --- !u!114 &1252743145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,6 +851,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPrefsManager
   gameVolume: 1
+  scrapValue: 0
+  inventory: {fileID: 0}
+  DDOL: {fileID: 0}
 --- !u!114 &1252743146
 MonoBehaviour:
   m_ObjectHideFlags: 0
