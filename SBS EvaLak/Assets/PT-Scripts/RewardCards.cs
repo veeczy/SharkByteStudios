@@ -69,11 +69,8 @@ public class RewardCards : MonoBehaviour
                 reward = false; //reset reward being given for next loop
             }
         }
-    }
 
-    public void RewardDuplicates()
-    {
-
+        inventory.UpdateLockedCards();
     }
 
     public void DisplayCards()

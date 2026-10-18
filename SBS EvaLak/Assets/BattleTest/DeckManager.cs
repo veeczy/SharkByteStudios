@@ -34,6 +34,12 @@ public class DeckManager : MonoBehaviour
         {
             deck.DrawCards(1);
         }
+        if (Keyboard.current.jKey.wasPressedThisFrame) //debug to KILL THE ENEMY IM TIRED OF FIGHTING THIS IN PLAYTEST
+        {
+            GameObject enemyHealth = GameObject.Find("EnemyHealthbar");
+            Healthbar healthbar = enemyHealth.GetComponent<Healthbar>();
+            healthbar.health = 0;
+        }
 
         int totalEnergy = SelectedEnergy();
         energyBar.fillAmount = (float)totalEnergy / (float)energyCapacity;
