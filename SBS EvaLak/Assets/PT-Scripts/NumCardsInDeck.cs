@@ -9,7 +9,10 @@ public class NumCardsInDeck : MonoBehaviour
     [SerializeField] private TextMeshProUGUI repairText;
 
     [SerializeField] private TextMeshProUGUI DeckSizeText;
+    [SerializeField] private TextMeshProUGUI DuplicatesText;
+
     private Inventory inventory;
+
 
     private int _buffNum;
     public int buffNum
@@ -80,6 +83,20 @@ public class NumCardsInDeck : MonoBehaviour
         }
     }
 
+    private int _duplicates;
+    public int Duplicates
+    {
+        get { return _duplicates; }
+        set
+        {
+            _duplicates = value;
+            if(DuplicatesText.text != null)
+            {
+                DuplicatesText.text = ($"Duplicates: {Duplicates}");
+            }
+        }
+    }
+
     void Start()
     {
         GameObject DDOL = GameObject.Find("DDOL");
@@ -90,6 +107,7 @@ public class NumCardsInDeck : MonoBehaviour
         comboNum = inventory.numCombo;
         repairNum = inventory.numRepair;
         DeckSize = inventory.deckList.Count;
+        Duplicates = inventory.duplicateCards;
     }
 
     public void AddCards(string cardType)

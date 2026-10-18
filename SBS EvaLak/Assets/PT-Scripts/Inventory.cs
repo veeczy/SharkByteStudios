@@ -14,6 +14,9 @@ public class Inventory : MonoBehaviour
     public List<bool> checkLockList; //bool list at index of card in fulldecklist to prove if card is unlocked or not
     public List<string> unlockedDeckList; //strings of cards that have been unlocked are added here
 
+    public List<string> duplicateList;
+    public int duplicateCards = 0;
+
     private GameObject tempGameObject;
 
     public bool cardScene = false;
@@ -61,6 +64,7 @@ public class Inventory : MonoBehaviour
         else { cardScene = false; }
 
         UpdateLockedCards();
+        duplicateCards = duplicateList.Count;
 
         if (cardScene) //if scene with cards in it
         {
