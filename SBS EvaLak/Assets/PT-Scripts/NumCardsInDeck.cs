@@ -24,7 +24,7 @@ public class NumCardsInDeck : MonoBehaviour
             _buffNum = value;
             if (buffText.text != null)
             {
-                buffText.text = "Num Buffs: " + buffNum.ToString();
+                buffText.text = "Num Buffs: " + buffNum;
             }
         }
     }
@@ -37,7 +37,7 @@ public class NumCardsInDeck : MonoBehaviour
             _damageNum = value;
             if (damageText.text != null)
             {
-                damageText.text = "Num Basics: " + damageNum.ToString();
+                damageText.text = "Num Basics: " + damageNum;
             }
         }
     }
@@ -50,7 +50,7 @@ public class NumCardsInDeck : MonoBehaviour
             _comboNum = value;
             if (comboText.text != null)
             {
-                comboText.text = "Num Combos: " + comboNum.ToString();
+                comboText.text = "Num Combos: " + comboNum;
             }
         }
     }
@@ -63,7 +63,7 @@ public class NumCardsInDeck : MonoBehaviour
             _repairNum = value;
             if (repairText.text != null)
             {
-                repairText.text = "Num Repairs: " + repairNum.ToString();
+                repairText.text = "Num Repairs: " + repairNum;
             }
         }
     }
@@ -78,7 +78,7 @@ public class NumCardsInDeck : MonoBehaviour
             if (DeckSizeText.text != null)
             {
                 int fullDeckLength = inventory.deckSize;
-                string tempString = "/" + fullDeckLength.ToString();
+                string tempString = "/" + fullDeckLength;
                 DeckSizeText.text = ($"Deck Size: {DeckSize}/{fullDeckLength}");
             }
         }
@@ -91,7 +91,7 @@ public class NumCardsInDeck : MonoBehaviour
         set
         {
             _duplicates = value;
-            if(DuplicatesText.text != null)
+            if (DuplicatesText.text != null)
             {
                 DuplicatesText.text = ($"Duplicates: {Duplicates}");
             }
@@ -105,7 +105,7 @@ public class NumCardsInDeck : MonoBehaviour
         set
         {
             _scrapValue = value;
-            if(ScrapValueText.text != null)
+            if (ScrapValueText.text != null)
             {
                 ScrapValueText.text = ($"Scrap: {ScrapValue}");
             }
