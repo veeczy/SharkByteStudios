@@ -17,12 +17,25 @@ public class HangarManager : MonoBehaviour
     [Header("Level Select Cutscene")]
     public GameObject mech;
     public GameObject[] planets;
+    public GameObject planetNameButton;
 
     public Transform defaultPosition;
     public Transform levelSelect;
 
     public float moveDuration = 2f;
     public float fadeDuration = 1.5f;
+
+    [Header("Battle Deploy Cutscene")]
+    public Transform platform;
+    public Transform platformRaisedTarget;
+
+    public Transform mechHeadCamTarget;
+    public Transform deploymentCamTarget;
+    public Transform mechLoweredTarget;
+    public Transform catwalkEdgeTarget;
+
+    public float platformMoveDuration = 2f;
+    public float mechLowerDuration = 3f;
 
     [Header("Default Spot")]
     public Transform defaultTransform;
@@ -53,6 +66,7 @@ public class HangarManager : MonoBehaviour
     private Vector3 deckRightClosed;
     private Vector3 shopLeftClosed;
     private Vector3 shopRightClosed;
+    private Coroutine planetFadeCoroutine;
 
     public void Awake()
     {
@@ -67,6 +81,8 @@ public class HangarManager : MonoBehaviour
         {
             audio.outputAudioMixerGroup = musicMixerGroup;
         }
+
+        planetNameButton.SetActive(false); 
 
         foreach (GameObject planet in planets)
         {
@@ -86,6 +102,7 @@ public class HangarManager : MonoBehaviour
     {
         if (!isStarting && playerCam != null)
         {
+            HidePlanets();
             CloseAllDoors();
             StartCoroutine(LevelSelectCutscene());
         }
@@ -104,7 +121,7 @@ public class HangarManager : MonoBehaviour
 
         float elapsedTime = 0f;
 
-        StartCoroutine(FadeInPlanets());
+        planetFadeCoroutine = StartCoroutine(FadeInPlanets());
 
         while ( elapsedTime < moveDuration)
         {
@@ -152,9 +169,26 @@ public class HangarManager : MonoBehaviour
                 yield return null;
             }
 
+            planetNameButton.SetActive(true);
+
             color.a = 0.5f;
             mat.color = color;
         }
+    }
+    private void HidePlanets()
+    {
+        if (planetFadeCoroutine != null)
+        {
+            StopCoroutine(planetFadeCoroutine);
+            planetFadeCoroutine = null;
+        }
+
+        foreach (GameObject planet in planets)
+        {
+            planet.SetActive(false);
+        }
+
+        planetNameButton.SetActive(false);
     }
     #endregion
 
@@ -163,6 +197,8 @@ public class HangarManager : MonoBehaviour
     {
         if (!isStarting)
         {
+            HidePlanets();
+
             StartCoroutine(CloseDoors(shopDoorLeft, shopDoorRight, shopLeftClosed, shopRightClosed));
 
             StartCoroutine(DeckBuildCutscene());
@@ -225,6 +261,8 @@ public class HangarManager : MonoBehaviour
     {
         if (!isStarting)
         {
+            HidePlanets();
+
             StartCoroutine(CloseDoors(deckBuildDoorLeft, deckBuildDoorRight, deckLeftClosed, deckRightClosed));
 
             StartCoroutine(ShopCutscene());
@@ -285,6 +323,7 @@ public class HangarManager : MonoBehaviour
     {
         if (!isStarting)
         {
+            HidePlanets();
             CloseAllDoors();
             StartCoroutine(MechUpgradesCutscene());
         }
@@ -324,6 +363,8 @@ public class HangarManager : MonoBehaviour
     {
         if (!isStarting)
         {
+            HidePlanets();
+
             StartCoroutine(ReturnToDefault());
         }
     }
@@ -386,6 +427,63 @@ public class HangarManager : MonoBehaviour
         leftDoor.position = leftPosition;
         rightDoor.position = rightPosition;
 
+    }
+    #endregion
+
+    #region BattleDeploymentLogic
+    public void StartBattle(string sceneName)
+    {
+        if (!isStarting)
+        {
+            HidePlanets();
+
+            StartCoroutine(BattleDeploymentCutscene(sceneName));
+        }
+    }
+    public IEnumerator BattleDeploymentCutscene(string sceneName)
+    {
+        isStarting = true;
+
+        yield return StartCoroutine(MoveObject(playerCam.transform, catwalkEdgeTarget, cameraMoveDuration));   //player moves to the edge of the catwalk 
+
+        yield return StartCoroutine(MoveObject(platform, platformRaisedTarget, platformMoveDuration));   //platform rises to show the path to the mech 
+
+        yield return StartCoroutine(MoveObject(playerCam.transform, mechHeadCamTarget, cameraMoveDuration));  //player walks towards designated mech target (chest or head)
+
+        playerCam.transform.SetPositionAndRotation(deploymentCamTarget.position, deploymentCamTarget.rotation);   //camera switches to lower target that shows the mech going down
+
+        //yield return new WaitForSeconds(1f);  //1 second delay
+
+        StartCoroutine(MoveObject(mech.transform, mechLoweredTarget, mechLowerDuration));  //mech lowers
+
+        yield return new WaitForSeconds(Mathf.Max(0f, mechLowerDuration - 0.3f));  //timer for scene to load before the mech reaches the transform 
+
+        loadingPanel.SetActive(true);
+
+        SceneManager.LoadScene(sceneName);
+    }
+    public IEnumerator MoveObject(Transform obj, Transform target, float duration)
+    {
+        Vector3 startPosition = obj.position;
+        Quaternion startRotation = obj.rotation;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+
+            float smoothT = Mathf.SmoothStep(0f, 1f, t);
+
+            obj.position = Vector3.Lerp(startPosition, target.position, smoothT);
+            obj.rotation = Quaternion.Slerp(startRotation, target.rotation, smoothT);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        obj.position = target.position;
+        obj.rotation = target.rotation;
     }
     #endregion
     public virtual void ReturnToMainMenu()

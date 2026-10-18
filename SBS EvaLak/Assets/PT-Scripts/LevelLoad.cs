@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class LevelLoad : MonoBehaviour, IPointerClickHandler
+public class LevelLoad : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad;
+    [SerializeField] private string sceneName;
+    public HangarManager hangarManager;
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OpenLevel()
     {
-        Debug.Log("Loading scene");
-        SceneManager.LoadScene(sceneToLoad);
+        hangarManager.StartBattle(sceneName);
     }
 }
