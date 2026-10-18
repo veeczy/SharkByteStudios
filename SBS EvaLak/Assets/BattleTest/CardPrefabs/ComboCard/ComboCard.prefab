@@ -162,6 +162,9 @@ MonoBehaviour:
   energyCost: 2
   selected: 0
   selectionBorder: {fileID: 5018192604856036142}
+  playSound: {fileID: 8300000, guid: 905a9cc985aedbb43aa57f61ce95fda6, type: 3}
+  selectSound: {fileID: 8300000, guid: 2a942cc3107fca84da364fa1c4f89265, type: 3}
+  soundVolume: 1
 --- !u!114 &8278951741294343650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +302,9 @@ MonoBehaviour:
   energyCost: 2
   selected: 0
   selectionBorder: {fileID: 0}
+  playSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  soundVolume: 1
 --- !u!1 &5771628188982718959
 GameObject:
   m_ObjectHideFlags: 0
