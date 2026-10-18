@@ -490,4 +490,9 @@ public class HangarManager : MonoBehaviour
     {
         SceneManager.LoadScene("PT_MainMenu");
     }
+
+    public void GoToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 }
