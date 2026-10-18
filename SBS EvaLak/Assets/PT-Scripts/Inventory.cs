@@ -80,7 +80,7 @@ public class Inventory : MonoBehaviour
             {
                 tempGameObject = GameObject.Find(name); //see if card with name is in scene
                 if (tempGameObject != null) { cardGameObjectList.Add(tempGameObject); } // if so add to game object list
-                else { Debug.Log("Could not find " + name); } // if not then break to next one
+                else { Debug.Log("Could not find " + name + " in scene: " + sceneName); } // if not then break to next one
             }
         }
     }
