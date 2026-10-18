@@ -10,6 +10,7 @@ public class NumCardsInDeck : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI DeckSizeText;
     [SerializeField] private TextMeshProUGUI DuplicatesText;
+    [SerializeField] private TextMeshProUGUI ScrapValueText;
 
     private Inventory inventory;
 
@@ -97,6 +98,20 @@ public class NumCardsInDeck : MonoBehaviour
         }
     }
 
+    private int _scrapValue;
+    public int ScrapValue
+    {
+        get { return _scrapValue; }
+        set
+        {
+            _scrapValue = value;
+            if(ScrapValueText.text != null)
+            {
+                ScrapValueText.text = ($"Scrap: {ScrapValue}");
+            }
+        }
+    }
+
     void Start()
     {
         GameObject DDOL = GameObject.Find("DDOL");
@@ -108,6 +123,7 @@ public class NumCardsInDeck : MonoBehaviour
         repairNum = inventory.numRepair;
         DeckSize = inventory.deckList.Count;
         Duplicates = inventory.duplicateCards;
+        ScrapValue = inventory.totalScrap;
     }
 
     public void AddCards(string cardType)

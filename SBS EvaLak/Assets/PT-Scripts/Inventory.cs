@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
 
     public List<string> duplicateList;
     public int duplicateCards = 0;
+    public List<int> scrapValueList; //scrap value should correlate with the card at the same index in fulldecklist
 
     private GameObject tempGameObject;
 
@@ -34,6 +35,7 @@ public class Inventory : MonoBehaviour
     public int numCombo = 0;
     public int numRepair = 0;
 
+    public int totalScrap;
     private void Start()
     {
         checkLockList = new List<bool>(new bool [fullDeckList.Count]);

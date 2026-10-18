@@ -2,14 +2,18 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerPrefsManager : MonoBehaviour
 {
     [Header("Floats")]
     public float gameVolume;
-
+    public int scrapValue;
     //[Header("Strings")]
+
+    public Inventory inventory;
+    public GameObject DDOL;
 
 
     void Start() // every time a scene starts, set the data to what it is stored
@@ -22,15 +26,27 @@ public class PlayerPrefsManager : MonoBehaviour
 
             PlayerPrefs.SetFloat("Game_Volume", gameVolume);
         }
-        
-        
-        
-        
+
+        if (PlayerPrefs.HasKey("ScrapValue")) //do this for every ppref variable
+        {
+            scrapValue = PlayerPrefs.GetInt("ScrapValue"); //grab it
+
+            Debug.Log(scrapValue);
+
+            PlayerPrefs.SetInt("ScrapValue", scrapValue);
+        }
+
+        DDOL = GameObject.Find("DDOL");
+        inventory = DDOL.GetComponent<Inventory>();
+        scrapValue = inventory.totalScrap;
+
     }
 
     void Update() //check is ppref is updated 
     {
         //gameVolume = PlayerPrefs.GetFloat("Game_Volume");
+        //scrapValue = inventory.totalScrap;
+        PlayerPrefs.SetInt("ScrapValue", inventory.totalScrap);
 
     }
 
