@@ -72,7 +72,7 @@ public class Inventory : MonoBehaviour
                 numCardsInDeck = numCardsUI.GetComponent<NumCardsInDeck>();
             }
 
-            if(sceneName == sceneNameList[1] && deckList.Count == 0) { SceneManager.LoadScene("PT_Level_Select"); } //if enter battle with empty deck, it sends you back to level select
+            if(sceneName == sceneNameList[1] && deckList.Count == 0) { SceneManager.LoadScene("PT_Hangar02"); } //if enter battle with empty deck, it sends you back to level select
 
             //check to see if deck game objects are in the scene and if they are append them to the list
             foreach (string name in deckList)

@@ -72,7 +72,7 @@ public class MainMenuManager : MonoBehaviour
         camTransform.rotation = targetRotation;
         
 
-        SceneManager.LoadScene("PT_Hangar");
+        SceneManager.LoadScene("PT_Hangar02");
     }
 
     public void QuitGame()
