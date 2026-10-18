@@ -69,29 +69,18 @@ public class RewardCards : MonoBehaviour
                 reward = false; //reset reward being given for next loop
             }
         }
-    }
 
-    public void RewardDuplicates()
-    {
-
+        inventory.UpdateLockedCards();
     }
 
     public void DisplayCards()
     {
         foreach (var card in fullDeckList)
         {
-            for(int i = 0; i < rewardNumber; i++)
-            {
-                if (card == cardReward1 || card == cardReward2 || card == cardReward3)
-                { 
-                    temp = GameObject.Find(card);
-                    if (i == 0) { temp.transform.position = cardRewardCenter.transform.position; }
-                    else if (i == 1) { temp.transform.position = cardRewardLeft.transform.position; }
-                    else if (i == 2) { temp.transform.position = cardRewardRight.transform.position; }
-                    else { break; } 
-                }
-            }
-            
-        } 
+            temp = GameObject.Find(card);
+            if (card == cardReward1) { temp.transform.position = cardRewardCenter.transform.position; }
+            else if (card == cardReward2) { temp.transform.position = cardRewardLeft.transform.position; }
+            else if (card == cardReward3) { temp.transform.position = cardRewardRight.transform.position; }
+        }
     }
 }

@@ -75,11 +75,12 @@ public class Inventory : MonoBehaviour
             if(sceneName == sceneNameList[1] && deckList.Count == 0) { SceneManager.LoadScene("PT_Hangar02"); } //if enter battle with empty deck, it sends you back to level select
 
             //check to see if deck game objects are in the scene and if they are append them to the list
-            foreach (string name in deckList)
+            cardGameObjectList = new List<GameObject>(); //empty list from what it was filled with in old scenes
+            foreach (string name in fullDeckList)
             {
                 tempGameObject = GameObject.Find(name); //see if card with name is in scene
                 if (tempGameObject != null) { cardGameObjectList.Add(tempGameObject); } // if so add to game object list
-                else { Debug.Log("Could not find " + name); } // if not then break to next one
+                else { Debug.Log("Could not find " + name + " in scene: " + sceneName); } // if not then break to next one
             }
         }
     }
