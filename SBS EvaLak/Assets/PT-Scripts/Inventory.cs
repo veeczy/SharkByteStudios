@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
     public int totalScrap;
     private void Start()
     {
-        checkLockList = new List<bool>(new bool [fullDeckList.Count]);
+        checkLockList = new List<bool>(new bool[fullDeckList.Count]);
         UpdateLockedCards();
         //random population
         //while (deckList.Count < deckLength)
@@ -55,7 +55,7 @@ public class Inventory : MonoBehaviour
         int tempIndex = 0;
         foreach (var card in fullDeckList)
         {
-            if(unlockedDeckList.Contains(card)) { tempIndex = fullDeckList.IndexOf(card); checkLockList[tempIndex] = true; }
+            if (unlockedDeckList.Contains(card)) { tempIndex = fullDeckList.IndexOf(card); checkLockList[tempIndex] = true; }
             //else { Debug.Log(card + " is currently locked."); }
         }
     }
@@ -73,12 +73,12 @@ public class Inventory : MonoBehaviour
             //THIS WILL BREAK IF YOU ENTER THE BATTLE FIRST (i think) WE NEED TO MAKE THIS ONLY LOAD ON DECKBUILDER SCENE 
             // FIXED BELOW FOR YOU DREW! - Vee
             if (sceneName == sceneNameList[0]) // if it is in deckbuilder scene run this extra stuff
-            { 
+            {
                 numCardsUI = GameObject.Find("NumCardsUI");
                 numCardsInDeck = numCardsUI.GetComponent<NumCardsInDeck>();
             }
 
-            if(sceneName == sceneNameList[1] && deckList.Count == 0) { SceneManager.LoadScene("PT_Hangar02"); } //if enter battle with empty deck, it sends you back to level select
+            if (sceneName == sceneNameList[1] && deckList.Count == 0) { SceneManager.LoadScene("PT_Hangar02"); } //if enter battle with empty deck, it sends you back to level select
 
             //check to see if deck game objects are in the scene and if they are append them to the list
             cardGameObjectList = new List<GameObject>(); //empty list from what it was filled with in old scenes
@@ -152,5 +152,13 @@ public class Inventory : MonoBehaviour
             shuffleDeck[k] = shuffleDeck[n];
             shuffleDeck[n] = temp;
         }
+    }
+    public void AddScrap()
+    {
+        totalScrap += 4;
+    }
+    public void RemoveScrap(int totalScrapRemove)
+    {
+        totalScrap -= totalScrapRemove;
     }
 }

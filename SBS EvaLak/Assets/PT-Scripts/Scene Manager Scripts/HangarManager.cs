@@ -69,6 +69,7 @@ public class HangarManager : MonoBehaviour
     private Coroutine planetFadeCoroutine;
 
     private GameObject deckbuildButton;
+    private GameObject shopButton;
 
     public void Awake()
     {
@@ -77,9 +78,11 @@ public class HangarManager : MonoBehaviour
             playerCam = Camera.main;
         }
 
-        if(deckbuildButton == null) { deckbuildButton = GameObject.Find("DECKBUILDER"); }
+        if (deckbuildButton == null) { deckbuildButton = GameObject.Find("DECKBUILDER"); }
+        if (shopButton == null) { shopButton = GameObject.Find("SHOP"); }
         disableButton(deckbuildButton);
-        
+        disableButton(shopButton);
+
         audio = GetComponent<AudioSource>();
 
         if (audio != null && musicMixerGroup != null)
@@ -87,7 +90,7 @@ public class HangarManager : MonoBehaviour
             audio.outputAudioMixerGroup = musicMixerGroup;
         }
 
-        planetNameButton.SetActive(false); 
+        planetNameButton.SetActive(false);
 
         foreach (GameObject planet in planets)
         {
@@ -117,7 +120,7 @@ public class HangarManager : MonoBehaviour
         isStarting = true;
 
         Transform camTransform = playerCam.transform;
-        
+
         Vector3 startPosition = camTransform.position;
         Quaternion startrotation = camTransform.rotation;
 
@@ -128,7 +131,7 @@ public class HangarManager : MonoBehaviour
 
         planetFadeCoroutine = StartCoroutine(FadeInPlanets());
 
-        while ( elapsedTime < moveDuration)
+        while (elapsedTime < moveDuration)
         {
             float t = elapsedTime / moveDuration;
 
@@ -321,6 +324,8 @@ public class HangarManager : MonoBehaviour
 
         camTransform.position = cameraTargetPosition;
         camTransform.rotation = cameraTargetRotation;
+
+        enableButton(shopButton);
     }
     #endregion
 
@@ -377,7 +382,7 @@ public class HangarManager : MonoBehaviour
     public IEnumerator ReturnToDefault()
     {
         Transform camTransform = playerCam.transform;
-        
+
         Vector3 currentPosition = camTransform.position;
         Quaternion currentRotation = camTransform.rotation;
 
@@ -505,5 +510,5 @@ public class HangarManager : MonoBehaviour
     }
 
     public void enableButton(GameObject button) { button.SetActive(true); }
-    public void disableButton(GameObject button) {button.SetActive(false); }
+    public void disableButton(GameObject button) { button.SetActive(false); }
 }
