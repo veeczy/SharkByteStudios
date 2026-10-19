@@ -35,8 +35,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/PT_Hangar.unity
     guid: d2b41dc3460fac543a5153ada1d4162f
-  - enabled: 0
-    path: Assets/Scenes/Scrapped/Bootstrapper-Old.unity
-    guid: f1871a6be1f00694bb8eac1c1e11ac62
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

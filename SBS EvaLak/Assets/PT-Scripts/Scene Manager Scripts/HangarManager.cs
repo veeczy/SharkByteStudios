@@ -78,11 +78,13 @@ public class HangarManager : MonoBehaviour
             playerCam = Camera.main;
         }
 
+        //DB button S button set active/inactive
         if (deckbuildButton == null) { deckbuildButton = GameObject.Find("DECKBUILDER"); }
         if (shopButton == null) { shopButton = GameObject.Find("SHOP"); }
         disableButton(deckbuildButton);
         disableButton(shopButton);
 
+        //audio
         audio = GetComponent<AudioSource>();
 
         if (audio != null && musicMixerGroup != null)
@@ -90,13 +92,16 @@ public class HangarManager : MonoBehaviour
             audio.outputAudioMixerGroup = musicMixerGroup;
         }
 
+        //init setting level select button false
         planetNameButton.SetActive(false);
 
-        foreach (GameObject planet in planets)
+        //init plant fade
+        foreach (GameObject planet in planets)      
         {
             planet.SetActive(false);
         }
 
+        //init door pos for shop and deckbuild
         deckLeftClosed = deckBuildDoorLeft.position;
         deckRightClosed = deckBuildDoorRight.position;
 
@@ -108,14 +113,14 @@ public class HangarManager : MonoBehaviour
     #region LevelSelectCutsceneLogic
     public virtual void OpenLevelSelect()
     {
-        if (!isStarting && playerCam != null)
+        if (!isStarting && playerCam != null)       //level select button push start 
         {
             HidePlanets();
             CloseAllDoors();
             StartCoroutine(LevelSelectCutscene());
         }
     }
-    public IEnumerator LevelSelectCutscene()
+    public IEnumerator LevelSelectCutscene()    //turn player towards level select, fade in planets 
     {
         isStarting = true;
 
@@ -129,7 +134,7 @@ public class HangarManager : MonoBehaviour
 
         float elapsedTime = 0f;
 
-        planetFadeCoroutine = StartCoroutine(FadeInPlanets());
+        planetFadeCoroutine = StartCoroutine(FadeInPlanets());    //planets fade in as player moves towards panel 
 
         while (elapsedTime < moveDuration)
         {
@@ -149,7 +154,7 @@ public class HangarManager : MonoBehaviour
 
         isStarting = false;
     }
-    private IEnumerator FadeInPlanets()
+    private IEnumerator FadeInPlanets()      //planets fade in as they load 
     {
         yield return null;
 
@@ -183,7 +188,7 @@ public class HangarManager : MonoBehaviour
             mat.color = color;
         }
     }
-    private void HidePlanets()
+    private void HidePlanets()    //hide planets for when the player goes to a different seftion
     {
         if (planetFadeCoroutine != null)
         {
@@ -201,7 +206,7 @@ public class HangarManager : MonoBehaviour
     #endregion
 
     #region DeckBuildCutsceneLogic
-    public virtual void OpenDeckBuild()
+    public virtual void OpenDeckBuild()     //deck build button push start 
     {
         if (!isStarting)
         {
@@ -212,7 +217,7 @@ public class HangarManager : MonoBehaviour
             StartCoroutine(DeckBuildCutscene());
         }
     }
-    public IEnumerator DeckBuildCutscene()
+    public IEnumerator DeckBuildCutscene()       //opens and closes doors when interacted with respective buttons
     {
 
         Vector3 startPositionLeft = deckBuildDoorLeft.transform.position;
@@ -235,7 +240,7 @@ public class HangarManager : MonoBehaviour
             yield return null;
         }
 
-        Transform camTransform = playerCam.transform;
+        Transform camTransform = playerCam.transform;                   //player moving 
 
         Vector3 cameraStartPosition = camTransform.position;
         Quaternion cameraStartRotation = camTransform.rotation;
@@ -266,7 +271,7 @@ public class HangarManager : MonoBehaviour
     #endregion
 
     #region ShopCutsceneLogic
-    public virtual void OpenShop()
+    public virtual void OpenShop()           //shop open button
     {
         if (!isStarting)
         {
@@ -277,7 +282,7 @@ public class HangarManager : MonoBehaviour
             StartCoroutine(ShopCutscene());
         }
     }
-    public IEnumerator ShopCutscene()
+    public IEnumerator ShopCutscene()       //shop open doors 
     {
         Vector3 startPositionLeft = shopDoorLeft.transform.position;
         Vector3 startPositionRight = shopDoorRight.transform.position;
@@ -299,7 +304,7 @@ public class HangarManager : MonoBehaviour
             yield return null;
         }
 
-        Transform camTransform = playerCam.transform;
+        Transform camTransform = playerCam.transform;            //player move 
 
         Vector3 cameraStartPosition = camTransform.position;
         Quaternion cameraStartRotation = camTransform.rotation;
@@ -330,7 +335,7 @@ public class HangarManager : MonoBehaviour
     #endregion
 
     #region MechUpgradesLogic
-    public virtual void MechUpgrades()
+    public virtual void MechUpgrades()      //go to mech button
     {
         if (!isStarting)
         {
@@ -339,7 +344,7 @@ public class HangarManager : MonoBehaviour
             StartCoroutine(MechUpgradesCutscene());
         }
     }
-    public IEnumerator MechUpgradesCutscene()
+    public IEnumerator MechUpgradesCutscene()       //moves player to transform in front of mech 
     {
         Transform camTransform = playerCam.transform;
 
@@ -370,7 +375,7 @@ public class HangarManager : MonoBehaviour
     #endregion
 
     #region DefaultPosition
-    public virtual void DefaultPosition()
+    public virtual void DefaultPosition()   //go back to default middle position
     {
         if (!isStarting)
         {
@@ -379,7 +384,7 @@ public class HangarManager : MonoBehaviour
             StartCoroutine(ReturnToDefault());
         }
     }
-    public IEnumerator ReturnToDefault()
+    public IEnumerator ReturnToDefault()        //moves player from current poisition back to middle position
     {
         Transform camTransform = playerCam.transform;
 
@@ -387,7 +392,6 @@ public class HangarManager : MonoBehaviour
         Quaternion currentRotation = camTransform.rotation;
 
         Vector3 defaultPosition = defaultTransform.position;
-        Quaternion defaultRotation = defaultTransform.rotation;
 
         float elapsedTime = 0f;
 
@@ -398,19 +402,17 @@ public class HangarManager : MonoBehaviour
             float smoothT = Mathf.SmoothStep(0f, 1f, t);
 
             camTransform.position = Vector3.Lerp(currentPosition, defaultPosition, smoothT);
-            camTransform.rotation = Quaternion.Slerp(currentRotation, defaultRotation, smoothT);
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         camTransform.position = defaultPosition;
-        camTransform.rotation = defaultRotation;
     }
     #endregion
 
     #region CloseAllDoor
-    private void CloseAllDoors()
+    private void CloseAllDoors()   // co routine to close all doors when the player moves to a different location
     {
         StartCoroutine(CloseDoors(deckBuildDoorLeft, deckBuildDoorRight, deckLeftClosed, deckRightClosed));
 
@@ -444,7 +446,7 @@ public class HangarManager : MonoBehaviour
     #endregion
 
     #region BattleDeploymentLogic
-    public void StartBattle(string sceneName)
+    public void StartBattle(string sceneName)       //button to start the cutscene called by the planet select 
     {
         if (!isStarting)
         {
@@ -453,7 +455,7 @@ public class HangarManager : MonoBehaviour
             StartCoroutine(BattleDeploymentCutscene(sceneName));
         }
     }
-    public IEnumerator BattleDeploymentCutscene(string sceneName)
+    public IEnumerator BattleDeploymentCutscene(string sceneName)       //goes through each co routine in order 
     {
         isStarting = true;
 
@@ -475,7 +477,7 @@ public class HangarManager : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
-    public IEnumerator MoveObject(Transform obj, Transform target, float duration)
+    public IEnumerator MoveObject(Transform obj, Transform target, float duration)       //movement logic
     {
         Vector3 startPosition = obj.position;
         Quaternion startRotation = obj.rotation;
