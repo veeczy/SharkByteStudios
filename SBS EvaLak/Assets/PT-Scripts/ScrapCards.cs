@@ -21,7 +21,10 @@ public class ScrapCards : MonoBehaviour
     {
         Initialize();
     }
+    void Update()
+    {
 
+    }
     public void Initialize()
     {
         DDOL = GameObject.Find("DDOL");
@@ -71,5 +74,6 @@ public class ScrapCards : MonoBehaviour
         inventory.duplicateList = duplicateList;
         inventory.duplicateCards = duplicateList.Count;
         numCardsInDeck.ScrapValue = totalScrap;
+        duplicatesText = duplicateList.Count;
     }
 }

@@ -1,0 +1,2 @@
+C:\Users\supsb\Documents\GitHub\SharkByteStudios\SBS EvaLak\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\supsb\Documents\GitHub\SharkByteStudios\SBS EvaLak\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

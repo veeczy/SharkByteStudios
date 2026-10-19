@@ -1494,7 +1494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0a6594d11dc8c9a459391238f658012c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3525,11 +3525,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1633232248}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!1 &342076493 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0a6594d11dc8c9a459391238f658012c, type: 3}
-  m_PrefabInstance: {fileID: 168270492}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &342076494 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0a6594d11dc8c9a459391238f658012c, type: 3}
@@ -9161,7 +9156,7 @@ MonoBehaviour:
   musicMixerGroup: {fileID: -8533044866549789367, guid: add929fa9701c62428c78c74f6f83e26, type: 2}
   playerCam: {fileID: 1671712498}
   loadingPanel: {fileID: 1918078545}
-  mech: {fileID: 342076493}
+  mech: {fileID: 1847079052}
   planets:
   - {fileID: 1552763577}
   - {fileID: 998715989}
@@ -16943,6 +16938,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833135149}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1847079052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 493787054911615222, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+  m_PrefabInstance: {fileID: 243955351226234745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1847542469
 GameObject:
   m_ObjectHideFlags: 0
@@ -19714,6 +19714,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelLoad
   sceneName: 
   hangarManager: {fileID: 0}
+--- !u!1001 &243955351226234745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 493787054911615222, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_Name
+      value: T-mech_low
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.00131717
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.99999917
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180.151
+      objectReference: {fileID: 0}
+    - target: {fileID: 977729828465748556, guid: 96dec980ec5f315489f35c53da430264, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96dec980ec5f315489f35c53da430264, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -19729,3 +19786,4 @@ SceneRoots:
   - {fileID: 1546174852}
   - {fileID: 777887878}
   - {fileID: 1633232248}
+  - {fileID: 243955351226234745}
