@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using System;
 
 public class DDOLBridge : MonoBehaviour
 {
     private GameObject DDOL;
-    private Inventory inventory;
+    [SerializeField] private Inventory inventory;
 
-    private GameObject addRemoveRef;
-    private AddRemoveCardScript addRemoveScript;
+    [SerializeField] private GameObject addRemoveRef;
+    [SerializeField] private AddRemoveCardScript addRemoveScript;
     [SerializeField] private ShopCardsShown shopCardsShown;
 
     public GameObject myButtonGameObject;
@@ -19,6 +20,8 @@ public class DDOLBridge : MonoBehaviour
     [SerializeField] private int rareCost = 2;
     [SerializeField] private int legendaryCost = 4;
 
+    private string sceneName;
+
     void Start()
     {
         //Debug.Log("DDOLBRIDGE START");
@@ -27,8 +30,6 @@ public class DDOLBridge : MonoBehaviour
 
     public void AddRemoveCard()
     {
-        inventory = DDOL.GetComponent<Inventory>();
-
         Debug.Log("BUTTON CLICKED");
 
         myButtonGameObject = EventSystem.current.currentSelectedGameObject;
@@ -56,7 +57,7 @@ public class DDOLBridge : MonoBehaviour
 
     public void PurchaseCard()
     {
-        inventory = DDOL.GetComponent<Inventory>();
+        //inventory = DDOL.GetComponent<Inventory>();
 
         myButtonGameObject = EventSystem.current.currentSelectedGameObject;
         if (myButtonGameObject == null) { Debug.Log("Unable to find GameObject."); }
@@ -112,29 +113,26 @@ public class DDOLBridge : MonoBehaviour
 
     void Init()
     {
-        DDOL = GameObject.Find("DDOL");
+
+
         if (DDOL == null)
         {
-            Debug.Log("DDOL not found");
-            return;
+            DDOL = GameObject.Find("DDOL");
         }
 
-        addRemoveRef = GameObject.Find("Add/Remove Cards");
-        if (addRemoveRef == null)
+
+        if (inventory == null)
         {
-            Debug.Log("Add/Remove not found");
-
-
-            return;
+            inventory = DDOL.GetComponent<Inventory>();
         }
 
-        //inventory = DDOL.GetComponent<Inventory>();
-        //if (inventory == null)
-        //{
-        //    Debug.Log("Inventory not found");
-        //    return;
-        //}
-        addRemoveScript = addRemoveRef.GetComponent<AddRemoveCardScript>();
+        sceneName = inventory.sceneName;
+
+        if (addRemoveRef == null && sceneName == "PT_Deck_Build")
+        {
+            addRemoveScript = addRemoveRef.GetComponent<AddRemoveCardScript>();
+        }
+
     }
 
     private void UpdateAndUnlock(string cardType)
