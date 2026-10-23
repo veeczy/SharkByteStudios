@@ -7,7 +7,7 @@ public class Deck : MonoBehaviour
 {
     [SerializeField] private DeckManager deckManager;
     [SerializeField] private PlayModifiers mod;
-    [SerializeField] private Enemy enemy;
+    [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private CardZone drawPile;
     [SerializeField] private CardZone hand;
     [SerializeField] private CardZone playArea;
@@ -80,7 +80,7 @@ public class Deck : MonoBehaviour
 
         mod.EndHand(); // tell mod script that the hand has stopped playing
 
-        enemy.Attack(); // Actually do the enemy attack turn after the player turn
+        enemyManager.Attack(); // Actually do the enemy attack turn after the player turn
 
         RefillHand();
 

@@ -4,6 +4,8 @@ public class Damage : CardEffect
 {
     public int damage = 50;
 
+    public bool targetPlayer;
+
     public bool useDamageRange = false;
     public int minDamage = 25;
     public int maxDamage = 75;
@@ -13,7 +15,17 @@ public class Damage : CardEffect
     public override void Activate()
     {
         PlayModifiers mod = GameObject.FindWithTag("Modifiers").GetComponent<PlayModifiers>();
-        Healthbar enemyHP = GameObject.FindWithTag("Enemy").GetComponent<Healthbar>();
+
+        Healthbar HP;
+
+        if (targetPlayer)
+        {
+            HP = GameObject.FindWithTag("Player").GetComponent<Healthbar>();
+        }
+        else
+        {
+            HP = GameObject.FindWithTag("Enemy").GetComponent<Healthbar>();
+        }
 
         int finalDamage = damage;
 
@@ -22,11 +34,11 @@ public class Damage : CardEffect
             finalDamage = Random.Range(minDamage, maxDamage + 1);
         }
 
-        temporaryHealth = enemyHP.health; 
+        temporaryHealth = HP.health;
 
         temporaryHealth -= finalDamage * mod.damageMult;
 
-        enemyHP.health = Mathf.RoundToInt(temporaryHealth);
+        HP.health = Mathf.RoundToInt(temporaryHealth);
 
         mod.damageMult = 1;
         mod.combo = 0;
