@@ -80,7 +80,7 @@ public class Deck : MonoBehaviour
 
         mod.EndHand(); // tell mod script that the hand has stopped playing
 
-        enemyManager.Attack(); // Actually do the enemy attack turn after the player turn
+        yield return enemyManager.AttackRoutine(); // Actually do the enemy attack turn after the player turn
 
         RefillHand();
 

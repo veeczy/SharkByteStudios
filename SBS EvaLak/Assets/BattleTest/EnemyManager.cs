@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,8 +6,10 @@ public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private CardZone enemyDeck;
     [SerializeField] private CardZone enemyHand;
+    [SerializeField] private CardZone enemyPlayArea;
     [SerializeField] private CardZone enemyGraveyard;
     [SerializeField] private int handSize = 3;
+    [SerializeField] private float playDelay = 1f;
 
     void Start()
     {
@@ -15,12 +18,22 @@ public class EnemyManager : MonoBehaviour
 
     public void Attack()
     {
+        StartCoroutine(AttackRoutine());
+    }
+
+    public IEnumerator AttackRoutine()
+    {
         // Index 0 is the leftmost card
         List<Card> cards = enemyHand.GetAllCards();
 
         if (cards.Count > 0)
         {
             Card card = cards[0];
+            enemyPlayArea.Add(card);
+
+            // Wait for the card to arrive in the play area
+            yield return new WaitForSeconds(playDelay);
+
             card.OnPlay();
             enemyGraveyard.Add(card);
         }
