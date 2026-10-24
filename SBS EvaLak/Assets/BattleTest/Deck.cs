@@ -7,7 +7,7 @@ public class Deck : MonoBehaviour
 {
     [SerializeField] private DeckManager deckManager;
     [SerializeField] private PlayModifiers mod;
-    [SerializeField] private Enemy enemy;
+    [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private CardZone drawPile;
     [SerializeField] private CardZone hand;
     [SerializeField] private CardZone playArea;
@@ -18,6 +18,11 @@ public class Deck : MonoBehaviour
     [SerializeField] private int numDiscards;
 
     public bool isPlaying;
+
+    private void Start()
+    {
+        enemyManager = FindAnyObjectByType<EnemyManager>(); // find enemy after it is spawned
+    }
 
     public void DrawCards(int count)
     {
@@ -80,7 +85,7 @@ public class Deck : MonoBehaviour
 
         mod.EndHand(); // tell mod script that the hand has stopped playing
 
-        enemy.Attack(); // Actually do the enemy attack turn after the player turn
+        yield return enemyManager.AttackRoutine(); // Actually do the enemy attack turn after the player turn
 
         RefillHand();
 

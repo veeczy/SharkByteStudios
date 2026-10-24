@@ -13,6 +13,9 @@ public class CardZone : MonoBehaviour
     // Cards dropped in a reorderable zone move to the slot nearest them (currently hand only)
     [SerializeField] private bool reorderable;
 
+    // Tick on enemy zones
+    [SerializeField] private bool enemyZone = true;
+
     private const float pileArriveDistance = 0.05f;
 
     private List<Card> cards = new List<Card>();
@@ -34,7 +37,7 @@ public class CardZone : MonoBehaviour
         {
             if (!child.TryGetComponent(out Card card)) continue;
             string name = child.name;
-            if(!ownedCards.Contains(name)) continue; //only if it is inside your owned cards
+            if (!enemyZone && !ownedCards.Contains(name)) continue; //only if it is inside your owned cards, and the card zone is not used by an enemy
             Add(card);
 
             if (!isPile) continue;

@@ -19,7 +19,9 @@ public class Card : MonoBehaviour
         if (!selected && !DeckManager.Instance.CanSelect(this)) return;
 
         selected = !selected;
-        selectionBorder.SetActive(selected);
+
+        if (selectionBorder != null)
+            selectionBorder.SetActive(selected);
 
         if (selectSound != null)
             AudioSource.PlayClipAtPoint(selectSound, Camera.main.transform.position, soundVolume);
