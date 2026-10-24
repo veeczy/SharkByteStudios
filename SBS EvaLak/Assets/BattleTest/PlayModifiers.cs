@@ -8,6 +8,10 @@ public class PlayModifiers : MonoBehaviour
     this script keeps track of values carried across cards like that
     */
 
+    public float playerMaxHealth = 500;
+
+    [HideInInspector] public float enemyMaxHealth;
+
     [HideInInspector] public float damageMult = 1;
 
     [HideInInspector] public int combo = 0;

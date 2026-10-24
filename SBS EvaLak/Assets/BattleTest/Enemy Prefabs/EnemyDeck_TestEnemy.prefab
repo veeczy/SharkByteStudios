@@ -730,6 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5409435471310181865}
   - component: {fileID: 458799176945858877}
+  - component: {fileID: -3829328884691847265}
   m_Layer: 0
   m_Name: EnemyDeck_TestEnemy
   m_TagString: EnemyPrefab
@@ -782,6 +783,20 @@ MonoBehaviour:
   reorderable: 0
   enemyZone: 1
   inventory: {fileID: 0}
+--- !u!114 &-3829328884691847265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6785190150474628448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 973a93df40d5db34cb89bdc2422a29a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  enemyMaxHealth: 750
+  enemyHP: {fileID: 0}
 --- !u!1 &7519742246638742682
 GameObject:
   m_ObjectHideFlags: 0
