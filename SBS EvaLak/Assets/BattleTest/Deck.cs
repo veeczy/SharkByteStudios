@@ -19,6 +19,11 @@ public class Deck : MonoBehaviour
 
     public bool isPlaying;
 
+    private void Start()
+    {
+        enemyManager = FindAnyObjectByType<EnemyManager>(); // find enemy after it is spawned
+    }
+
     public void DrawCards(int count)
     {
         for (int i = 0; i < count; i++)

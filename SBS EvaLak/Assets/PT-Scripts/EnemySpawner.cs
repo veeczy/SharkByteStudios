@@ -1,36 +1,21 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject robotEnemy;
-    [SerializeField] private GameObject corruptedRobot;
-    [SerializeField] private GameObject reptileEnemy;
+    [SerializeField] private List<GameObject> enemyPrefabs;
 
-    private int num;
-    void Start()
+    private GameObject currentEnemy;
+
+    void Awake()
     {
-        num = Random.Range(0, 2);
-        //Debug.Log(num);
-        switch (num)
-        {
-            case 0:
-                robotEnemy.SetActive(true);
-                corruptedRobot.SetActive(false);
-                reptileEnemy.SetActive(false);
-                break;
-            case 1:
-                robotEnemy.SetActive(false);
-                corruptedRobot.SetActive(true);
-                reptileEnemy.SetActive(false);
-                break;
-            case 2:
-                robotEnemy.SetActive(false);
-                corruptedRobot.SetActive(false);
-                reptileEnemy.SetActive(true);
-                break;
-        }
+        SpawnEnemy(Random.Range(0, enemyPrefabs.Count));
     }
 
+    public void SpawnEnemy(int index)
+    {
+        if (currentEnemy != null) Destroy(currentEnemy);
 
+        currentEnemy = Instantiate(enemyPrefabs[index], transform);
+    }
 }

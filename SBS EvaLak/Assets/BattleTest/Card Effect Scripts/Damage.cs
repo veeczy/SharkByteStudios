@@ -36,11 +36,17 @@ public class Damage : CardEffect
 
         temporaryHealth = HP.health;
 
-        temporaryHealth -= finalDamage * mod.damageMult;
+        if (!targetPlayer)
+        {
+            temporaryHealth -= finalDamage * mod.damageMult;
+            mod.damageMult = 1;
+            mod.combo = 0;
+        } 
+        else
+        {
+            temporaryHealth -= finalDamage;
+        }
 
         HP.health = Mathf.RoundToInt(temporaryHealth);
-
-        mod.damageMult = 1;
-        mod.combo = 0;
     }
 }

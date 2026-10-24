@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private CardZone enemyDeck;
+    private CardZone enemyDeck;
     [SerializeField] private CardZone enemyHand;
     [SerializeField] private CardZone enemyPlayArea;
     [SerializeField] private CardZone enemyGraveyard;
     [SerializeField] private int handSize = 3;
     [SerializeField] private float playDelay = 1f;
+    [SerializeField] private bool recycleCardsToDeck = true; // send played cards back to deck, so enemy can't run out of cards
 
     void Start()
     {
+        enemyDeck = GameObject.FindWithTag("EnemyPrefab").GetComponent<CardZone>();
         RefillHand();
     }
 
@@ -35,7 +37,11 @@ public class EnemyManager : MonoBehaviour
             yield return new WaitForSeconds(playDelay);
 
             card.OnPlay();
-            enemyGraveyard.Add(card);
+
+            if (recycleCardsToDeck)
+                enemyDeck.Add(card);
+            else
+                enemyGraveyard.Add(card);
         }
 
         RefillHand();
