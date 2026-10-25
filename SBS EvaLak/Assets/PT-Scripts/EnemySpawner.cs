@@ -7,9 +7,37 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject currentEnemy;
 
+    private GameObject DDOL;
+    private Inventory inventory;
+    private string planetInfo;
+
     void Awake()
     {
-        SpawnEnemy(Random.Range(0, enemyPrefabs.Count));
+        DDOL = GameObject.Find("DDOL");
+        inventory = DDOL.GetComponent<Inventory>();
+        planetInfo = inventory.planetInfo;
+
+        switch (planetInfo)
+        {
+            case "Nature":
+                SpawnEnemy(1);
+                break;
+            case "Robot":
+                SpawnEnemy(2);
+                break;
+            case "Round":
+                SpawnEnemy(0);
+                break;
+            case "Undead":
+                //SpawnEnemy(3);
+
+                //there is no undead enemy model so ill just reuse the default
+                SpawnEnemy(Random.Range(0, enemyPrefabs.Count));
+                break;
+            default: //if cant find planet info
+                SpawnEnemy(Random.Range(0, enemyPrefabs.Count));
+                break;
+        }
     }
 
     public void SpawnEnemy(int index)

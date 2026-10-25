@@ -36,6 +36,8 @@ public class Inventory : MonoBehaviour
     public int numRepair = 0;
 
     public int totalScrap;
+
+    public string planetInfo;
     private void Start()
     {
         checkLockList = new List<bool>(new bool[fullDeckList.Count]);

@@ -5859,6 +5859,13 @@ MonoBehaviour:
   enemyGraveyard: {fileID: 1295773704}
   handSize: 3
   playDelay: 1
+  recycleCardsToDeck: 0
+  cards: []
+  cardsType: []
+  playerHealth: 0
+  playerHealthMax: 0
+  enemyHealth: 0
+  enemyHealthMax: 0
 --- !u!114 &1576349837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5873,6 +5880,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefabs:
   - {fileID: 6785190150474628448, guid: 2e1bfc0ce27885b4db18b14ae25eb68d, type: 3}
+  - {fileID: 5225163921381540292, guid: e008f952886f29f40889ebfe6cde57b2, type: 3}
+  - {fileID: 5636169437941528985, guid: 948186fe4344c28489c659e63606816a, type: 3}
 --- !u!1 &1589827012
 GameObject:
   m_ObjectHideFlags: 0
@@ -6858,6 +6867,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0eac2b0f82205f49b7ed20b1dd08c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayModifiers
+  playerMaxHealth: 500
+  enemyMaxHealth: 0
   damageMult: 1
   combo: 0
 --- !u!1 &1859065388

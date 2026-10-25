@@ -292,6 +292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelLoad
   sceneName: BattleSceneTest
   hangarManager: {fileID: 995425722}
+  planetName: Round
+  DDOL: {fileID: 0}
 --- !u!1 &9349760
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,13 +397,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9349760}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1952,6 +1954,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelLoad
   sceneName: BattleSceneTest
   hangarManager: {fileID: 995425722}
+  planetName: Undead
+  DDOL: {fileID: 0}
 --- !u!1 &366467778
 GameObject:
   m_ObjectHideFlags: 0
@@ -2737,6 +2741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelLoad
   sceneName: BattleSceneTest
   hangarManager: {fileID: 995425722}
+  planetName: Robot
+  DDOL: {fileID: 0}
 --- !u!1001 &567583402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3330,7 +3336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 360, y: -180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.503231, y: 338.6}
+  m_AnchoredPosition: {x: 12.503231, y: 351.5}
   m_SizeDelta: {x: 305.9, y: 174.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &645691200
@@ -5948,6 +5954,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 581ae9baf5d2d0f4ca8b4cc6fe649e41, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6276cde107c17704a9de26e9f4249bb0, type: 2}
     - target: {fileID: 919132149155446097, guid: 581ae9baf5d2d0f4ca8b4cc6fe649e41, type: 3}
       propertyPath: m_Name
       value: Computer_Terminal
@@ -6342,6 +6352,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 581ae9baf5d2d0f4ca8b4cc6fe649e41, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6276cde107c17704a9de26e9f4249bb0, type: 2}
     - target: {fileID: 919132149155446097, guid: 581ae9baf5d2d0f4ca8b4cc6fe649e41, type: 3}
       propertyPath: m_Name
       value: Computer_Terminal (1)
@@ -6916,13 +6930,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580809475}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7124,13 +7138,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645791882}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8360,6 +8374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelLoad
   sceneName: BattleSceneTest
   hangarManager: {fileID: 995425722}
+  planetName: Nature
+  DDOL: {fileID: 0}
 --- !u!1 &1946135619
 GameObject:
   m_ObjectHideFlags: 0
@@ -8389,9 +8405,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8544783}
   - {fileID: 1932772869}
   - {fileID: 538909136}
-  - {fileID: 8544783}
   - {fileID: 364764555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8801,13 +8817,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004191881}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
