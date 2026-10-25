@@ -88,15 +88,6 @@ public class CardZone : MonoBehaviour
         card.gameObject.SetActive(true);
     }
 
-    public void SwapZone(Card card)
-    {
-        if (card.Zone != null) card.Zone.cards.Remove(card);
-        card.Zone = this;
-        cards.Add(card);
-
-        if (isPile && card.selected) card.ToggleSelected(); // clear selection
-    }
-
     public Card RandomCard()
     {
         return cards[Random.Range(0, cards.Count)];
