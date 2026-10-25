@@ -17,7 +17,7 @@ public class HangarManager : MonoBehaviour
     [Header("Level Select Cutscene")]
     public GameObject mech;
     public GameObject[] planets;
-    public GameObject planetNameButton;
+    public GameObject [] planetNameButton;
 
     public Transform defaultPosition;
     public Transform levelSelect;
@@ -93,7 +93,10 @@ public class HangarManager : MonoBehaviour
         }
 
         //init setting level select button false
-        planetNameButton.SetActive(false);
+        foreach (GameObject button in planetNameButton)
+        {
+            button.SetActive(false);
+        }
 
         //init plant fade
         foreach (GameObject planet in planets)      
@@ -157,17 +160,21 @@ public class HangarManager : MonoBehaviour
     private IEnumerator FadeInPlanets()      //planets fade in as they load 
     {
         yield return null;
-
-        foreach (GameObject planet in planets)
+        for (int i = 0; i <planets.Length; i++)
         {
-            planet.SetActive(true);
+            planets[i].SetActive(true);
+            planetNameButton[i].SetActive(true);
 
-            Renderer render = planet.GetComponent<Renderer>();
+            Renderer render = planets[i].GetComponent<Renderer>();
             Material mat = render.material;
+
+            CanvasGroup buttonCanvas = planetNameButton[i].GetComponent<CanvasGroup>();
 
             Color color = mat.color;
             color.a = 0f;
             mat.color = color;
+
+            buttonCanvas.alpha = 0f;
 
             float elapsedTime = 0f;
 
@@ -175,17 +182,19 @@ public class HangarManager : MonoBehaviour
             {
                 float t = elapsedTime / fadeDuration;
 
-                color.a = Mathf.Lerp(0f, 1f, t);
+                color.a = Mathf.Lerp(0f, 0.5f, t);
                 mat.color = color;
+
+                buttonCanvas.alpha = Mathf.Lerp(0f, 1f, t);
 
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
-            planetNameButton.SetActive(true);
-
             color.a = 0.5f;
             mat.color = color;
+
+            buttonCanvas.alpha = 1f;
         }
     }
     private void HidePlanets()    //hide planets for when the player goes to a different seftion
@@ -201,7 +210,10 @@ public class HangarManager : MonoBehaviour
             planet.SetActive(false);
         }
 
-        planetNameButton.SetActive(false);
+        foreach (GameObject button in planetNameButton)
+        {
+            button.SetActive(false);
+        }
     }
     #endregion
 

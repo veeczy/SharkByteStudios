@@ -9,19 +9,19 @@ EditorBuildSettings:
     path: Assets/Scenes/BootStrap.unity
     guid: 4d795cc85b25d0940bda0c5a9b9dac87
   - enabled: 1
-    path: Assets/Scenes/PT_MainMenu.unity
+    path: Assets/Scenes/PrototyeScenes/PT_MainMenu.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/PT_Hangar02.unity
+    path: Assets/Scenes/HangarLevel.unity
     guid: ae3e1c3102ec30f479cdd005e4a60571
   - enabled: 1
-    path: Assets/Scenes/PT_Deck_Build.unity
+    path: Assets/Scenes/PrototyeScenes/PT_Deck_Build.unity
     guid: 520c1b2163f3b5347b01f8e970754914
   - enabled: 1
-    path: Assets/Scenes/PT_Shop.unity
+    path: Assets/Scenes/PrototyeScenes/PT_Shop.unity
     guid: 70102b49611085c4ca42ebfcd9bcb6d7
   - enabled: 1
-    path: Assets/Scenes/BattleSceneTest.unity
+    path: Assets/Scenes/PrototyeScenes/BattleSceneTest.unity
     guid: eec1c9138c6913b4a9fedc0dc3571873
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
@@ -30,10 +30,10 @@ EditorBuildSettings:
     path: Assets/Scenes/WinScene.unity
     guid: 52c79608ac20302499e2bed69702fbdd
   - enabled: 0
-    path: Assets/Scenes/PT_Level_Select.unity
+    path: Assets/Scenes/PrototyeScenes/PT_Level_Select.unity
     guid: b1d44c93a69871646be12bad1c02e95e
   - enabled: 0
-    path: Assets/Scenes/PT_Hangar.unity
+    path: Assets/Scenes/PrototyeScenes/PT_Hangar.unity
     guid: d2b41dc3460fac543a5153ada1d4162f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
