@@ -130,6 +130,7 @@ public class DDOLBridge : MonoBehaviour
 
         if (addRemoveRef == null && sceneName == "PT_Deck_Build")
         {
+            addRemoveRef = GameObject.Find("Add/Remove Cards");
             addRemoveScript = addRemoveRef.GetComponent<AddRemoveCardScript>();
         }
 

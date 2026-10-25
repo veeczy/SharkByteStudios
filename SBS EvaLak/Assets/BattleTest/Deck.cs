@@ -57,7 +57,7 @@ public class Deck : MonoBehaviour
         numDiscards++;
     }
 
-    public void Play()
+    public void Play() 
     {
         if (!isPlaying) StartCoroutine(PlayRoutine());
     }
@@ -85,7 +85,7 @@ public class Deck : MonoBehaviour
 
         mod.EndHand(); // tell mod script that the hand has stopped playing
 
-        yield return enemyManager.AttackRoutine(); // Actually do the enemy attack turn after the player turn
+        enemyManager.AttackRoutine(); // Actually do the enemy attack turn after the player turn
 
         RefillHand();
 

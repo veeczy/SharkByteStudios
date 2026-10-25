@@ -543,7 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e1dabc5c6343842a16bc8eefc50cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MultBuff
-  multIncrease: 0.5
+  multIncrease: 1
 --- !u!114 &-1167083660160699694
 MonoBehaviour:
   m_ObjectHideFlags: 0
