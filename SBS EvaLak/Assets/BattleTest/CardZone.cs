@@ -60,6 +60,7 @@ public class CardZone : MonoBehaviour
             if (card.TryGetComponent(out CardDrag drag) && drag.IsDragging) continue;
 
             Vector3 target = transform.position;
+
             if (!isPile) target += transform.right * ((i - (n - 1) * 0.5f) * cardSpacing);
 
             Transform cardTransform = card.transform;
@@ -85,6 +86,15 @@ public class CardZone : MonoBehaviour
 
         if (isPile && card.selected) card.ToggleSelected(); // clear selection
         card.gameObject.SetActive(true);
+    }
+
+    public void SwapZone(Card card)
+    {
+        if (card.Zone != null) card.Zone.cards.Remove(card);
+        card.Zone = this;
+        cards.Add(card);
+
+        if (isPile && card.selected) card.ToggleSelected(); // clear selection
     }
 
     public Card RandomCard()

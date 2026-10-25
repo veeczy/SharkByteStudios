@@ -10,6 +10,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private CardZone enemyHand;
     [SerializeField] private CardZone enemyPlayArea;
     [SerializeField] private CardZone enemyGraveyard;
+
+    [SerializeField] private CardZone enemyHealspot;
     [SerializeField] private int handSize = 3;
     [SerializeField] private float playDelay = 1f;
     [SerializeField] private bool recycleCardsToDeck = false; // send played cards back to deck, so enemy can't run out of cards
@@ -51,7 +53,7 @@ public class EnemyManager : MonoBehaviour
     public IEnumerator Attack()
     {
         if (enemyHealth > 0) { AttackRoutine(); }
-        yield return new WaitForSeconds(0.2f); 
+        yield return new WaitForSeconds(0.2f);
     }
 
     public void AttackRoutine()
@@ -61,7 +63,7 @@ public class EnemyManager : MonoBehaviour
         if (cards.Count > 0) //if enemy deck has more than zero cards
         {
             //here im leaving this so we can change this to a switch statement with different ai that is chosen on conditions, maybe the ai will get smarter if health is lower?
-            BasicEnemyAI(); 
+            BasicEnemyAI();
         }
 
         RefillHand(); //after playing cards, refill enemy deck
@@ -72,7 +74,7 @@ public class EnemyManager : MonoBehaviour
         while (enemyHand.Count < handSize && enemyDeck.Count > 0)
             enemyHand.Add(enemyDeck.RandomCard());
 
-        if(enemyDeck.Count < handSize) { RefillDeck(); }
+        if (enemyDeck.Count < handSize) { RefillDeck(); }
     }
 
     private void BasicEnemyAI()
@@ -101,7 +103,7 @@ public class EnemyManager : MonoBehaviour
         }
         else if (comboCount > 1) //if the enemy is holding more than one combo card, play them together
         {
-            if(canBuff) 
+            if (canBuff)
             {
                 index = cardsType.IndexOf("buff");
                 playCard = cards[index];
@@ -121,11 +123,11 @@ public class EnemyManager : MonoBehaviour
                 CountCards();
                 //comboCount--;
             }
-            playedCards = true; 
+            playedCards = true;
         }
         else if (cardsType.Contains("damage"))
         {
-            if(canBuff)
+            if (canBuff)
             {
                 index = cardsType.IndexOf("buff");
                 playCard = cards[index];
@@ -194,10 +196,26 @@ public class EnemyManager : MonoBehaviour
 
     public void SendCard(Card card)
     {
-        if (recycleCardsToDeck)
-            enemyDeck.Add(card);
+        if (card.TryGetComponent(out Heal heal))
+        {
+            if (recycleCardsToDeck)
+                enemyDeck.Add(card);
+            else
+            {
+                enemyHealspot.Add(card);
+            }
+
+        }
+
         else
-            enemyGraveyard.Add(card);
+        {
+            if (recycleCardsToDeck)
+                enemyDeck.Add(card);
+            else
+                enemyGraveyard.Add(card);
+        }
+
+
     }
 
     public void RefillDeck()
