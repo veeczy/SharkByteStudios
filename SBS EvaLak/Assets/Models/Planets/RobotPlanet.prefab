@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3891816415417571229
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.50935197
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.50935197
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.50935197
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.3444698
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.37199974
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3333001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7515559484316852488, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c3cbb2ea7a1cc764ea51b136dfcad1c0, type: 2}
+    - target: {fileID: -4177547438607667944, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c3cbb2ea7a1cc764ea51b136dfcad1c0, type: 2}
+    - target: {fileID: 919132149155446097, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      propertyPath: m_Name
+      value: RobotPlanet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2782388688271240998}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9101894003832875162}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3412295058382336852}
+  m_SourcePrefab: {fileID: 100100000, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+--- !u!1 &4234487254995872460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 20f2ed6998110aa46b60560e0c70eec7, type: 3}
+  m_PrefabInstance: {fileID: 3891816415417571229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2782388688271240998
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234487254995872460}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9101894003832875162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234487254995872460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17506fe885d2e8c48ba4de68cee73155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetRotation
+  rotationSpeed: 5
+  rotationAxis: {x: 0, y: 1, z: 0}
+--- !u!114 &3412295058382336852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234487254995872460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3e99b3f59662a43ba4ea63d33a52db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelLoad
+  sceneName: BattleSceneTest
+  hangarManager: {fileID: 0}
+  planetName: Robot
+  DDOL: {fileID: 0}
