@@ -29,13 +29,32 @@ public class CameraControl : MonoBehaviour
     private bool turnRight = false;
     private bool turnUp = false;
     private bool turnDown = false;
-    private enum CameraState { left, right, normal, up, down, reverse }
-    [SerializeField] CameraState Direction = CameraState.normal; //default facing normal
+    public enum CameraState { left, right, normal, up, down, reverse }
+    public CameraState Direction = CameraState.normal; //default facing normal
+
+    [Header("Hangar Button Stuff")]
+    [SerializeField] private GameObject mechUpgradeButton;
+    [SerializeField] private GameObject levelSelectButton;
+    [SerializeField] private GameObject deckDoorButton;
+    [SerializeField] private GameObject shopDoorButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         touchManager = GameObject.Find("TouchManager").GetComponent<TouchManager>();
+
+        //button for movement
+        if (mechUpgradeButton == null) { mechUpgradeButton = GameObject.Find("Mech Upgrades"); }
+        if (levelSelectButton == null) { levelSelectButton = GameObject.Find("LevelSelect"); }
+
+        if (deckDoorButton == null) { deckDoorButton = GameObject.Find("DeckBuild"); }
+        if (shopDoorButton == null) { shopDoorButton = GameObject.Find("Shop"); }
+
+        //set inactive at start unless looking at it
+        disableButton(mechUpgradeButton);
+        disableButton(levelSelectButton);
+        disableButton(deckDoorButton);
+        disableButton(shopDoorButton);
     }
 
     // Update is called once per frame
@@ -50,6 +69,34 @@ public class CameraControl : MonoBehaviour
         //If swipe or scroll then call method to move camera
 
         //Debug.Log(Direction);
+        if(Direction == CameraState.normal) //if facing forward (towards level select)
+        {
+            enableButton(levelSelectButton); 
+            disableButton(mechUpgradeButton);
+            disableButton(deckDoorButton);
+            disableButton(shopDoorButton);
+        }
+        if(Direction == CameraState.reverse) //if facing reverse (towards Mech Upgrade)
+        {
+            disableButton(levelSelectButton); 
+            enableButton(mechUpgradeButton);
+            disableButton(deckDoorButton);
+            disableButton(shopDoorButton);
+        }
+        if(Direction == CameraState.right) //if facing right (towards Deck Build)
+        {
+            disableButton(levelSelectButton); 
+            disableButton(mechUpgradeButton);
+            enableButton(deckDoorButton);
+            disableButton(shopDoorButton);
+        }
+        if(Direction == CameraState.left) //if facing left (towards Shop)
+        {
+            disableButton(levelSelectButton); 
+            disableButton(mechUpgradeButton);
+            disableButton(deckDoorButton);
+            enableButton(shopDoorButton);
+        }
     }
 
     private void CameraRotate()
@@ -178,4 +225,7 @@ public class CameraControl : MonoBehaviour
     {
         enabled = !enabled;
     }
+
+    public void enableButton(GameObject button) { button.SetActive(true); }
+    public void disableButton(GameObject button) { button.SetActive(false); }
 }

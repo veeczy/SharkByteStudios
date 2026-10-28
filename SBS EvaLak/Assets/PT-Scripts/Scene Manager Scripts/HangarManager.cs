@@ -68,9 +68,10 @@ public class HangarManager : MonoBehaviour
     private Vector3 shopRightClosed;
     private Coroutine planetFadeCoroutine;
 
+    [Header("Buttons")]
     private GameObject deckbuildButton;
     private GameObject shopButton;
-    private GameObject mechUpgradeButton;
+    private GameObject planetPanel;
 
     public void Awake()
     {
@@ -79,9 +80,11 @@ public class HangarManager : MonoBehaviour
             playerCam = Camera.main;
         }
 
-        //DB button S button set active/inactive
+        //button for movement
         if (deckbuildButton == null) { deckbuildButton = GameObject.Find("DECKBUILDER"); }
         if (shopButton == null) { shopButton = GameObject.Find("SHOP"); }
+        if(planetPanel == null) {planetPanel = GameObject.Find("PLANET BUTTONS");}
+        //set inactive at start unless looking at it
         disableButton(deckbuildButton);
         disableButton(shopButton);
 
@@ -98,6 +101,7 @@ public class HangarManager : MonoBehaviour
         {
             button.SetActive(false);
         }
+        planetPanel.SetActive(false);
 
         //init plant fade
         foreach (GameObject planet in planets)      
@@ -161,6 +165,7 @@ public class HangarManager : MonoBehaviour
     private IEnumerator FadeInPlanets()      //planets fade in as they load 
     {
         yield return null;
+        planetPanel.SetActive(true);
         for (int i = 0; i <planets.Length; i++)
         {
             planets[i].SetActive(true);
@@ -215,6 +220,8 @@ public class HangarManager : MonoBehaviour
         {
             button.SetActive(false);
         }
+
+        planetPanel.SetActive(false);
     }
     #endregion
 
