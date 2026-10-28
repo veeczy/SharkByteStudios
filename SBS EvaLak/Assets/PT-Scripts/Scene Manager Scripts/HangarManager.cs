@@ -70,6 +70,7 @@ public class HangarManager : MonoBehaviour
 
     private GameObject deckbuildButton;
     private GameObject shopButton;
+    private GameObject mechUpgradeButton;
 
     public void Awake()
     {
@@ -453,6 +454,7 @@ public class HangarManager : MonoBehaviour
         rightDoor.position = rightPosition;
 
         disableButton(deckbuildButton);
+        disableButton(shopButton);
 
     }
     #endregion

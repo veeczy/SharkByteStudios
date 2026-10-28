@@ -30,7 +30,7 @@ public class CameraControl : MonoBehaviour
     private bool turnUp = false;
     private bool turnDown = false;
     private enum CameraState { left, right, normal, up, down, reverse }
-    CameraState Direction = CameraState.normal; //default facing normal
+    [SerializeField] CameraState Direction = CameraState.normal; //default facing normal
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
