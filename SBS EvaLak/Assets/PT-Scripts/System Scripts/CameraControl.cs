@@ -57,7 +57,7 @@ public class CameraControl : MonoBehaviour
         if (!canRotate)
         { return; }
 
-        if (swipeX == 1 && turnRight) //only commenting for one block, logic is all the same. if you swipe your finger
+        if (swipeX == -1) //only commenting for one block, logic is all the same. if you swipe your finger
         {                             //right and the camera is in a position to turn right, run the block
             if (Direction == CameraState.normal)//if your camera is facing center, or normal
             {
@@ -87,7 +87,7 @@ public class CameraControl : MonoBehaviour
             }
         }
 
-        else if (swipeX == -1 && turnLeft)
+        else if (swipeX == 1)
         {
             if (Direction == CameraState.normal)
             {
