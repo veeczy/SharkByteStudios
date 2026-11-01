@@ -72,6 +72,7 @@ public class HangarManager : MonoBehaviour
     private GameObject deckbuildButton;
     private GameObject shopButton;
     private GameObject planetPanel;
+    private GameObject mechUpgradeButton;
 
     public void Awake()
     {
@@ -84,9 +85,12 @@ public class HangarManager : MonoBehaviour
         if (deckbuildButton == null) { deckbuildButton = GameObject.Find("DECKBUILDER"); }
         if (shopButton == null) { shopButton = GameObject.Find("SHOP"); }
         if(planetPanel == null) {planetPanel = GameObject.Find("PLANET BUTTONS");}
+        if (mechUpgradeButton == null) { mechUpgradeButton = GameObject.Find("MECHUPGRADE"); }
+
         //set inactive at start unless looking at it
         disableButton(deckbuildButton);
         disableButton(shopButton);
+        disableButton(mechUpgradeButton);
 
         //audio
         audio = GetComponent<AudioSource>();
@@ -231,7 +235,7 @@ public class HangarManager : MonoBehaviour
         if (!isStarting)
         {
             HidePlanets();
-
+            disableButton(mechUpgradeButton);
             StartCoroutine(CloseDoors(shopDoorLeft, shopDoorRight, shopLeftClosed, shopRightClosed));
 
             StartCoroutine(DeckBuildCutscene());
@@ -296,7 +300,7 @@ public class HangarManager : MonoBehaviour
         if (!isStarting)
         {
             HidePlanets();
-
+            disableButton(mechUpgradeButton);
             StartCoroutine(CloseDoors(deckBuildDoorLeft, deckBuildDoorRight, deckLeftClosed, deckRightClosed));
 
             StartCoroutine(ShopCutscene());
@@ -362,6 +366,7 @@ public class HangarManager : MonoBehaviour
             HidePlanets();
             CloseAllDoors();
             StartCoroutine(MechUpgradesCutscene());
+            enableButton(mechUpgradeButton);
         }
     }
     public IEnumerator MechUpgradesCutscene()       //moves player to transform in front of mech 
@@ -400,8 +405,12 @@ public class HangarManager : MonoBehaviour
         if (!isStarting)
         {
             HidePlanets();
-
+           
             StartCoroutine(ReturnToDefault());
+
+            disableButton(mechUpgradeButton);
+            disableButton(shopButton);
+            disableButton(deckbuildButton);
         }
     }
     public IEnumerator ReturnToDefault()        //moves player from current poisition back to middle position
