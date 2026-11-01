@@ -531,6 +531,7 @@ MonoBehaviour:
   playSound: {fileID: 8300000, guid: ab9231fd9f4ff814ab66b425c5fec7d6, type: 3}
   selectSound: {fileID: 8300000, guid: 2a942cc3107fca84da364fa1c4f89265, type: 3}
   soundVolume: 1
+  description: 2X damage mult on next attack
 --- !u!114 &8348406451778923175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardDrag
   clickThresholdPixels: 5
+  holdSeconds: 0.6
 --- !u!1001 &2430882857217723407
 PrefabInstance:
   m_ObjectHideFlags: 0

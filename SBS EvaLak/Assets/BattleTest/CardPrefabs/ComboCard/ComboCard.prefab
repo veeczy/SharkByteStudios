@@ -165,6 +165,17 @@ MonoBehaviour:
   playSound: {fileID: 8300000, guid: 905a9cc985aedbb43aa57f61ce95fda6, type: 3}
   selectSound: {fileID: 8300000, guid: 2a942cc3107fca84da364fa1c4f89265, type: 3}
   soundVolume: 1
+  description: '- Combo Strike -
+
+
+    Deal 10 damage
+
+    ---
+
+    Doubles the damage
+    of the next
+
+    Combo Strike if played successively'
 --- !u!114 &8278951741294343650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardDrag
   clickThresholdPixels: 5
+  holdSeconds: 0.6
 --- !u!114 &8030109171196611330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +206,7 @@ MonoBehaviour:
   useDamageRange: 0
   minDamage: 20
   maxDamage: 30
+  targetPlayer: 0
 --- !u!1 &5018192604856036142
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +318,7 @@ MonoBehaviour:
   playSound: {fileID: 0}
   selectSound: {fileID: 0}
   soundVolume: 1
+  description: 
 --- !u!1 &5771628188982718959
 GameObject:
   m_ObjectHideFlags: 0

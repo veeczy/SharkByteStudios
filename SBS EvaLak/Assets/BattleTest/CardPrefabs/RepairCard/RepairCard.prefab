@@ -534,6 +534,7 @@ MonoBehaviour:
   playSound: {fileID: 8300000, guid: 5e6a57eebdb63264ea49ec8def1d91b9, type: 3}
   selectSound: {fileID: 8300000, guid: 2a942cc3107fca84da364fa1c4f89265, type: 3}
   soundVolume: 1
+  description: Repair 75 Health
 --- !u!114 &7088774492508799830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,6 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardDrag
   clickThresholdPixels: 5
+  holdSeconds: 0.6
 --- !u!1 &8490504588497049890
 GameObject:
   m_ObjectHideFlags: 0
