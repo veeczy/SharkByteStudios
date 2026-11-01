@@ -868,7 +868,10 @@ MonoBehaviour:
   HeadCardSlot: 
   ArmsCardSlot: 
   LegsCardSlot: 
-  cardEffectsActiveList: []
+  cardEffectsActiveList:
+  - 
+  - 
+  - 
   HeadCardSlotValue: 0
   ArmsCardSlotValue: 0
   LegsCardSlotValue: 0

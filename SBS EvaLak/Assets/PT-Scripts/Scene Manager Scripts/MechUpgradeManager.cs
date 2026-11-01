@@ -1,10 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
 
 public class MechUpgradeManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class MechUpgradeManager : MonoBehaviour
     [SerializeField] private string cardName;
     [SerializeField] private List<string> mechDeckList; //list of mech cards unlocked by player
     [SerializeField] private List<string> fullmechDeckList; //full mech deck, stored in inventory so rewards can access it
-
+    private string cardChange; //shorthand what does card change
     public enum CardType { head, arms, legs }
     public CardType type;
     [SerializeField] private List<CardType> mechCardType; //list of all locations for full mech deck
@@ -86,9 +87,9 @@ public class MechUpgradeManager : MonoBehaviour
 
         if (SortCards == null) { SortCards = GameObject.Find("SortCards"); }
 
-
         GetCards();
         DisplayCards();
+        GetInventoryData();
     }
 
     private void Update()
@@ -97,7 +98,7 @@ public class MechUpgradeManager : MonoBehaviour
 
         StartCoroutine(WaitForUpdate());
 
-        UpdateInventoryData();
+        //UpdateInventoryData();
     }
 
     void GetCards() //get all card slots from ui grid, put them in list
@@ -242,6 +243,7 @@ public class MechUpgradeManager : MonoBehaviour
                     UpdateButtonText(upHeadButton, card);
 
                     DetermineValue(card, SlotType);
+                    UpdateInventoryData();
                 }
                 else
                 {
@@ -254,6 +256,7 @@ public class MechUpgradeManager : MonoBehaviour
                     UpdateButtonText(upHeadButton, card);
 
                     DetermineValue(card, SlotType);
+                    UpdateInventoryData();
                 }
                 break;
             case CardType.arms:
@@ -266,6 +269,7 @@ public class MechUpgradeManager : MonoBehaviour
                     UpdateButtonText(downArmsButton, card);
 
                     DetermineValue(card, SlotType);
+                    UpdateInventoryData();
                 }
                 else
                 {
@@ -279,6 +283,7 @@ public class MechUpgradeManager : MonoBehaviour
                     UpdateButtonText(downArmsButton, card);
 
                     DetermineValue(card, SlotType);
+                    UpdateInventoryData();
                 }
                 break;
             case CardType.legs:
@@ -290,6 +295,7 @@ public class MechUpgradeManager : MonoBehaviour
                     UpdateButtonText(downLegsButton, card);
 
                     DetermineValue(card, SlotType);
+                    UpdateInventoryData();
                 }
                 else
                 {
@@ -302,6 +308,7 @@ public class MechUpgradeManager : MonoBehaviour
                     UpdateButtonText(downLegsButton, card);
 
                     DetermineValue(card, SlotType);
+                    UpdateInventoryData();
                 }
                 break;
             default:
@@ -329,30 +336,64 @@ public class MechUpgradeManager : MonoBehaviour
         int cardValue = cardEffectValueList[index];
         if(cardEffectList[index] != "") { cardEffect = cardEffectList[index]; } //if card effect is found for that card, save it
 
-        switch(slot)
+            switch (slot)
+            {
+                case CardType.head:
+                    HeadCardSlotValue = cardValue;
+                    if (cardEffect != "") { specialEffect1 = cardEffect; }
+                break;
+                case CardType.arms:
+                    ArmsCardSlotValue = cardValue;
+                    if (cardEffect != "") { specialEffect2 = cardEffect; }
+                    break;
+                case CardType.legs:
+                    LegsCardSlotValue = cardValue;
+                    if (cardEffect != "") { specialEffect3 = cardEffect; }
+                    break;
+                default:
+                    break;
+            }
+    }
+
+    private string UpdateTextData(string card)
+    {
+        if (card.Contains("Health")) { cardChange = "health"; }
+        else if (card.Contains("Energy")) { cardChange = "energy"; }
+        else if (card.Contains("Damage")) { cardChange = "damage"; }
+
+        return cardChange;
+    }
+
+    private void OpenTextData(string card, int slot)
+    {
+        if (card.Contains("health"))
         {
-            case CardType.head:
-                HeadCardSlotValue = cardValue;
-                if (cardEffect != "") { specialEffect1 = cardEffect; }
-                break;
-            case CardType.arms:
-                ArmsCardSlotValue = cardValue;
-                if (cardEffect != "") { specialEffect2 = cardEffect; }
-                break;
-            case CardType.legs:
-                LegsCardSlotValue = cardValue;
-                if (cardEffect != "") { specialEffect3 = cardEffect; }
-                break;
-            default:
-                break;
+            if (slot == 0) { HeadCardSlot = "HeadHealth"; }
+            else if (slot == 1) { ArmsCardSlot = "ArmsHealth"; }
+            else if (slot == 2) { LegsCardSlot = "LegsHealth"; }
+            else { Debug.Log("Error no Data."); }
+        }
+        else if (card.Contains("energy"))
+        {
+            if (slot == 0) { HeadCardSlot = "HeadEnergy"; }
+            else if (slot == 1) { ArmsCardSlot = "ArmsEnergy"; }
+            else if (slot == 2) { LegsCardSlot = "LegsEnergy"; }
+            else { Debug.Log("Error no Data."); }
+        }
+        else if (card.Contains("damage")) 
+        {
+            if (slot == 0) { HeadCardSlot = "HeadDamage"; }
+            else if (slot == 1) { ArmsCardSlot = "ArmsDamage"; }
+            else if (slot == 2) { LegsCardSlot = "LegsDamage"; }
+            else { Debug.Log("Error no Data."); }
         }
     }
 
     void UpdateInventoryData() //update data sent to inventory
     {
-        inventory.HeadCardSlot = HeadCardSlot; //string of card in each slot
-        inventory.ArmsCardSlot = ArmsCardSlot;
-        inventory.LegsCardSlot = LegsCardSlot;
+        inventory.HeadCardSlot = UpdateTextData(HeadCardSlot); //string of card in each slot
+        inventory.ArmsCardSlot = UpdateTextData(ArmsCardSlot);
+        inventory.LegsCardSlot = UpdateTextData(LegsCardSlot);
 
         cardEffectsActive = new List<string> { specialEffect1, specialEffect2, specialEffect3};
         inventory.cardEffectsActiveList = cardEffectsActive; //list of active effects from the cards in the mech upgrade script, to send to inventory
@@ -360,5 +401,39 @@ public class MechUpgradeManager : MonoBehaviour
         inventory.HeadCardSlotValue = HeadCardSlotValue; //int of value in each slot
         inventory.ArmsCardSlotValue = ArmsCardSlotValue;
         inventory.LegsCardSlotValue = LegsCardSlotValue;
+    }
+
+    void GetInventoryData() //upon returning to scene, initialize data
+    {
+        //Get Special Effects
+        if (inventory.cardEffectsActiveList[0] != null) { specialEffect1 = inventory.cardEffectsActiveList[0]; }
+        if (inventory.cardEffectsActiveList[1] != null) { specialEffect2 = inventory.cardEffectsActiveList[1]; }
+        if (inventory.cardEffectsActiveList[2] != null) { specialEffect3 = inventory.cardEffectsActiveList[2]; }
+        cardEffectsActive = new List<string> { specialEffect1, specialEffect2, specialEffect3 };
+
+
+        HeadCardSlotValue = inventory.HeadCardSlotValue; //Update Slot int Value
+        ArmsCardSlotValue = inventory.ArmsCardSlotValue;
+        LegsCardSlotValue = inventory.LegsCardSlotValue;
+
+        //Update Card Slot + Button Text
+        if (inventory.HeadCardSlot != "") { OpenTextData(inventory.HeadCardSlot, 0); UpdateButtonText(upHeadButton, HeadCardSlot); } //Update button text
+        if (inventory.ArmsCardSlot != "")
+        {
+            OpenTextData(inventory.ArmsCardSlot, 1);
+            UpdateButtonText(upArmsButton, ArmsCardSlot);
+            UpdateButtonText(downArmsButton, ArmsCardSlot);
+        }
+        if (inventory.LegsCardSlot != "") { OpenTextData(inventory.LegsCardSlot, 2); UpdateButtonText(downLegsButton, LegsCardSlot); }
+
+        //Hide Mech cards in use
+        if (fullmechDeckList.Contains(HeadCardSlot)) { index = fullmechDeckList.IndexOf(HeadCardSlot); temp = UICardObjectList[index]; temp.SetActive(false); } 
+        if (fullmechDeckList.Contains(ArmsCardSlot)) { index = fullmechDeckList.IndexOf(ArmsCardSlot); temp = UICardObjectList[index]; temp.SetActive(false); }
+        if (fullmechDeckList.Contains(LegsCardSlot)) { index = fullmechDeckList.IndexOf(LegsCardSlot); temp = UICardObjectList[index]; temp.SetActive(false); }
+    }
+
+    public void GoToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
