@@ -15,7 +15,7 @@ public class BootStrapManager : MonoBehaviour
     
     private IEnumerator LoadMainMenu()
     {
-        AsyncOperation loading = SceneManager.LoadSceneAsync("PT_MainMenu");
+        AsyncOperation loading = SceneManager.LoadSceneAsync("MainMenu");
 
         loading.allowSceneActivation = false;
 
