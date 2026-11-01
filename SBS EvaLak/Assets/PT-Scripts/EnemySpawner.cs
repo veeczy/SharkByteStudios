@@ -19,16 +19,16 @@ public class EnemySpawner : MonoBehaviour
 
         switch (planetInfo)
         {
-            case "Nature":
+            case "Nature Planet":
                 SpawnEnemy(1);
                 break;
-            case "Robot":
+            case "Robot Planet":
                 SpawnEnemy(2);
                 break;
-            case "Round":
+            case "Round Planet":
                 SpawnEnemy(0);
                 break;
-            case "Undead":
+            case "Undead Planet":
                 //SpawnEnemy(3);
 
                 //there is no undead enemy model so ill just reuse the default
