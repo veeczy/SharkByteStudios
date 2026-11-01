@@ -1111,6 +1111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d7170f3cab0b24d81c198e2c4ff5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MechUpgradeManager
+  cameraControl: {fileID: 0}
+  mainCamera: {fileID: 0}
   cardName: 
   mechDeckList: []
   fullmechDeckList: []
@@ -1139,10 +1141,11 @@ MonoBehaviour:
   tempimage: {fileID: 0}
   temp: {fileID: 0}
   index: 0
-  upHeadButton: {fileID: 0}
-  upArmsButton: {fileID: 0}
-  downArmsButton: {fileID: 0}
-  downLegsButton: {fileID: 0}
+  SlotType: 0
+  upHeadButton: {fileID: 1504928459}
+  upArmsButton: {fileID: 216327374}
+  downArmsButton: {fileID: 863123869}
+  downLegsButton: {fileID: 330899962}
   currentButton: {fileID: 0}
   lastButton: {fileID: 0}
 --- !u!4 &415031745

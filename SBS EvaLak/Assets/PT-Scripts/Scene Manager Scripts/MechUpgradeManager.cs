@@ -4,14 +4,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MechUpgradeManager : MonoBehaviour
 {
     [Header("Init")]
     private Inventory inventory;
     private GameObject DDOL;
-    private CameraControl cameraControl;
-    private GameObject mainCamera;
+    [SerializeField] private CameraControl cameraControl;
+    [SerializeField] private GameObject mainCamera;
 
     [Header("Card Information")]
     [SerializeField] private string cardName;
@@ -43,7 +44,7 @@ public class MechUpgradeManager : MonoBehaviour
     [SerializeField] private Image tempimage;
     [SerializeField] private GameObject temp;
     [SerializeField] private int index;
-    private CardType SlotType;
+    [SerializeField] private CardType SlotType;
 
     //buttons from Camera Control
     [SerializeField] private GameObject upHeadButton;
@@ -52,16 +53,23 @@ public class MechUpgradeManager : MonoBehaviour
     [SerializeField] private GameObject downLegsButton;
 
     private TextMeshProUGUI cardNameText;
-    [SerializeField]  private GameObject currentButton;
-    [SerializeField]  private GameObject lastButton;
+    [SerializeField] private GameObject currentButton;
+    [SerializeField] private GameObject lastButton;
 
     private void Start()
     {
         if (DDOL == null) { DDOL = GameObject.Find("DDOL"); inventory = DDOL.GetComponent<Inventory>(); }
         if (inventory != null) { mechDeckList = inventory.mechDeckList; fullmechDeckList = inventory.fullmechDeckList; }
         if (mainCamera == null) { mainCamera = GameObject.Find("Main Camera"); cameraControl = mainCamera.GetComponent<CameraControl>(); }
-        if (cameraControl != null) { upHeadButton = cameraControl.upHeadButton; upArmsButton = cameraControl.upArmsButton; downArmsButton = cameraControl.downArmsButton; downLegsButton = cameraControl.downLegsButton; }
-        
+        if (upHeadButton == null)
+        {
+            upHeadButton = GameObject.Find("Head");
+            upArmsButton = GameObject.Find("Arms Upper");
+
+            downArmsButton = GameObject.Find("Arms Lower");
+            downLegsButton = GameObject.Find("Legs");
+        }
+
         if (SortCards == null) { SortCards = GameObject.Find("SortCards"); }
 
 
@@ -71,7 +79,9 @@ public class MechUpgradeManager : MonoBehaviour
 
     private void Update()
     {
-        currentButton = EventSystem.current.currentSelectedGameObject;
+        if (currentButton != EventSystem.current.currentSelectedGameObject) { lastButton = currentButton; }
+
+        StartCoroutine(WaitForUpdate());
     }
 
     void GetCards() //get all card slots from ui grid
@@ -139,8 +149,11 @@ public class MechUpgradeManager : MonoBehaviour
 
     public void SelectCard() //when a card is pressed, itll be selected
     {
-        lastButton = currentButton;
-        currentButton = EventSystem.current.currentSelectedGameObject;
+        if (UICardObjectList.Contains(lastButton)) //if last button was a card slot
+        {
+            DeSelectCard(lastButton); //deselect last button
+        }
+
 
         //grab information
         Transform tempTransform;
@@ -170,8 +183,6 @@ public class MechUpgradeManager : MonoBehaviour
 
     public void SelectMechSlot() //when a slot is pressed, itll be compared to last button press to see if the card can go there
     {
-        lastButton = currentButton;
-        currentButton = EventSystem.current.currentSelectedGameObject;
         //GET MECH TYPE
         if (currentButton == upHeadButton) { SlotType = CardType.head; }
         if (currentButton == upArmsButton || currentButton == downArmsButton) { SlotType = CardType.arms; }
@@ -204,5 +215,83 @@ public class MechUpgradeManager : MonoBehaviour
     public void AddCard(string card)
     {
         //add the card if it works
+        switch(SlotType)
+        {
+            case CardType.head:
+                if (HeadCardSlot == "") //if nothing saved in card slot
+                {
+                    HeadCardSlot = card;
+                    lastButton.SetActive(false);
+
+                    UpdateButtonText(upHeadButton, card);
+                }
+                else
+                {
+                    index = mechDeckList.IndexOf(HeadCardSlot);
+                    UICardObjectList[index].SetActive(true);
+
+                    HeadCardSlot = card;
+                    lastButton.SetActive(false);
+
+                    UpdateButtonText(upHeadButton, card);
+                }
+                break;
+            case CardType.arms:
+                if (ArmsCardSlot == "") //if nothing saved in card slot
+                {
+                    ArmsCardSlot = card;
+                    lastButton.SetActive(false);
+
+                    UpdateButtonText(upArmsButton, card);
+                    UpdateButtonText(downArmsButton, card);
+                }
+                else
+                {
+                    index = mechDeckList.IndexOf(ArmsCardSlot);
+                    UICardObjectList[index].SetActive(true);
+
+                    ArmsCardSlot = card;
+                    lastButton.SetActive(false);
+
+                    UpdateButtonText(upArmsButton, card);
+                    UpdateButtonText(downArmsButton, card);
+                }
+                break;
+            case CardType.legs:
+                if (LegsCardSlot == "") //if nothing saved in card slot
+                {
+                    LegsCardSlot = card;
+                    lastButton.SetActive(false);
+
+                    UpdateButtonText(downLegsButton, card);
+                }
+                else
+                {
+                    index = mechDeckList.IndexOf(LegsCardSlot);
+                    UICardObjectList[index].SetActive(true);
+
+                    LegsCardSlot = card;
+                    lastButton.SetActive(false);
+
+                    UpdateButtonText(downLegsButton, card);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    void UpdateButtonText(GameObject button, string text)
+    {
+        GameObject textObject = button.transform.GetChild(0).gameObject;
+        TextMeshProUGUI textMesh = textObject.GetComponent<TextMeshProUGUI>();
+        textMesh.text = text;
+    }
+
+    private IEnumerator WaitForUpdate()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        currentButton = EventSystem.current.currentSelectedGameObject;
     }
 }
