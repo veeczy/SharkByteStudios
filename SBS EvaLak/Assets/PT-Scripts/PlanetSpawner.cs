@@ -17,18 +17,19 @@ public class PlanetSpawner : MonoBehaviour
         inventory = DDOL.GetComponent<Inventory>();
         planetInfo = inventory.planetInfo;
 
+        Debug.Log(planetInfo);
         switch (planetInfo)
         {
-            case "Nature":
+            case "Nature Planet":
                 naturePlanet.SetActive(true);
                 break;
-            case "Robot":
+            case "Robot Planet":
                 robotPlanet.SetActive(true);
                 break;
-            case "Round":
+            case "Round Planet":
                 roundPlanet.SetActive(true);
                 break;
-            case "Undead":
+            case "Undead Planet":
                 undeadPlanet.SetActive(true);
                 break;
             default:
