@@ -45,10 +45,10 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private List<string> sceneNameList = new List<string>() { "MechUpgrade", "HangarLevel" };
 
     [Header("Mech Upgrade Stuff")]
-    [SerializeField] private GameObject upHeadButton;
-    [SerializeField] private GameObject upArmsButton;
-    [SerializeField] private GameObject downArmsButton;
-    [SerializeField] private GameObject downLegsButton;
+    [SerializeField] public GameObject upHeadButton;
+    [SerializeField] public GameObject upArmsButton;
+    [SerializeField] public GameObject downArmsButton;
+    [SerializeField] public GameObject downLegsButton;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
