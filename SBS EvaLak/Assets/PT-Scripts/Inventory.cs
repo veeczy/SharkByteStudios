@@ -80,7 +80,7 @@ public class Inventory : MonoBehaviour
                 numCardsInDeck = numCardsUI.GetComponent<NumCardsInDeck>();
             }
 
-            if (sceneName == sceneNameList[1] && deckList.Count == 0) { SceneManager.LoadScene("PT_Hangar02"); } //if enter battle with empty deck, it sends you back to level select
+            if (sceneName == sceneNameList[1] && deckList.Count == 0) { SceneManager.LoadScene("HangarLevel"); } //if enter battle with empty deck, it sends you back to level select
 
             //check to see if deck game objects are in the scene and if they are append them to the list
             cardGameObjectList = new List<GameObject>(); //empty list from what it was filled with in old scenes
