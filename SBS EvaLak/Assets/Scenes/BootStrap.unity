@@ -830,14 +830,56 @@ MonoBehaviour:
   duplicateList: []
   duplicateCards: 0
   scrapValueList: 010000000100000001000000020000000200000002000000030000000300000003000000020000000200000002000000010000000100000001000000030000000300000002000000010000000100000001000000030000000200000002000000020000000200000002000000020000000200000001000000010000000100000001000000010000000100000001000000
+  fullmechDeckList:
+  - HeadEnergy
+  - ArmsEnergy
+  - LegsEnergy
+  - HeadDamage
+  - ArmsDamage
+  - LegsDamage
+  - HeadHealth
+  - ArmsHealth
+  - LegsHealth
+  mechDeckList:
+  - HeadEnergy
+  - ArmsEnergy
+  - LegsEnergy
+  - HeadDamage
+  - ArmsDamage
+  - LegsDamage
+  - HeadHealth
+  - ArmsHealth
+  - LegsHealth
+  cardEffectList:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  cardEffectValueList: 0100000001000000010000000500000005000000050000000a0000000a0000000a000000
   cardScene: 0
   sceneName: 
   deckSize: 25
+  totalScrap: 0
+  HeadCardSlot: 
+  ArmsCardSlot: 
+  LegsCardSlot: 
+  cardEffectsActiveList:
+  - 
+  - 
+  - 
+  HeadCardSlotValue: 0
+  ArmsCardSlotValue: 0
+  LegsCardSlotValue: 0
+  planetInfo: 
   numMult: 0
   numDamage: 0
   numCombo: 0
   numRepair: 0
-  totalScrap: 0
 --- !u!114 &1252743145
 MonoBehaviour:
   m_ObjectHideFlags: 0
