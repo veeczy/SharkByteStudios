@@ -12,10 +12,7 @@ public class Inventory : MonoBehaviour
     public List<string> deckList; //this is what the player owns
     public List<GameObject> cardGameObjectList; //to put the prefabs from the scene into when the cards are matching
 
-    public List<string> fullmechDeckList; //this is all the possible cards for mech 
-    public List<string> mechDeckList; //this is what the player owns for mech
-
-    //FOR STANDARD ACTION CARDS
+    [Header("Init Action Cards")] //FOR STANDARD ACTION CARDS
     public List<bool> checkLockList; //bool list at index of card in fulldecklist to prove if card is unlocked or not
     public List<string> unlockedDeckList; //strings of cards that have been unlocked are added here
 
@@ -23,13 +20,16 @@ public class Inventory : MonoBehaviour
     public int duplicateCards = 0;
     public List<int> scrapValueList; //scrap value should correlate with the card at the same index in fulldecklist
 
-    //FOR COMPONENT CARDS
-    public List<string> cardEffectsActive;
+    [Header("Init Component Cards")] //FOR COMPONENT CARDS
+    public List<string> fullmechDeckList; //this is all the possible cards for mech 
+    public List<string> mechDeckList; //this is what the player owns for mech
+    public List<string> cardEffectList; //list of all possible effects for full mech deck
+    public List<int> cardEffectValueList; //these are the values for the effects of each card, so if damage is 5 then that should be 5 at the index for that card here
 
     [Header("Data")]
+    public bool cardScene = false;
     private GameObject tempGameObject;
 
-    public bool cardScene = false;
     private List<string> sceneNameList = new List<string>() { "PT_Deck_Build", "BattleSceneTest", "WinScene" };
     public string sceneName;
     public int deckSize = 25; //at some point other scripts will update this
@@ -37,6 +37,16 @@ public class Inventory : MonoBehaviour
 
     private static System.Random rng = new System.Random();
 
+    [Header("Mech Data")]
+    public string HeadCardSlot; //string of the effect they change
+    public string ArmsCardSlot;
+    public string LegsCardSlot;
+
+    public List<string> cardEffectsActiveList; //list of active effects from the cards in the mech upgrade script, to send to inventory
+
+    public int HeadCardSlotValue; //int of the value of the effect
+    public int ArmsCardSlotValue;
+    public int LegsCardSlotValue;
 
     [Header("UI Data")]
     private GameObject numCardsUI;

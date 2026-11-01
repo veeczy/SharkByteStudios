@@ -16,25 +16,25 @@ public class MechUpgradeManager : MonoBehaviour
 
     [Header("Card Information")]
     [SerializeField] private string cardName;
-    [SerializeField] private List<string> mechDeckList = new List<string>(); //list of mech cards unlocked by player
-    [SerializeField] private List<string> fullmechDeckList = new List<string>(); //full mech deck, stored in inventory so rewards can access it
+    [SerializeField] private List<string> mechDeckList; //list of mech cards unlocked by player
+    [SerializeField] private List<string> fullmechDeckList; //full mech deck, stored in inventory so rewards can access it
 
     public enum CardType { head, arms, legs }
     public CardType type;
-    [SerializeField] private List<CardType> mechCardType = new List<CardType>(); //list of all locations for full mech deck
+    [SerializeField] private List<CardType> mechCardType; //list of all locations for full mech deck
 
-    [SerializeField] private List<string> cardEffectList = new List<string>(); //list of all possible effects for full mech deck
+    [SerializeField] private List<string> cardEffectList; //list of all possible effects for full mech deck
+    private string cardEffect;
 
-    public List<string> cardEffectsActive = new List<string>(); //list of active effects from the cards in the mech upgrade script, to send to inventory
+    public List<string> cardEffectsActive; //list of active effects from the cards in the mech upgrade script, to send to inventory
+
+    [SerializeField] private List<int> cardEffectValueList; //these are the values for the effects of each card, so if damage is 5 then that should be 5 at the index for that card here
 
 
     [Header("UI Setup")]
     public List<GameObject> UICardObjectList;
     [SerializeField] private GameObject SortCards;
     //data stored for button press
-    [SerializeField] private string HeadCardSlot;
-    [SerializeField] private string ArmsCardSlot;
-    [SerializeField] private string LegsCardSlot;
 
     [SerializeField] private Color HeadColor;
     [SerializeField] private Color ArmsColor;
@@ -56,10 +56,24 @@ public class MechUpgradeManager : MonoBehaviour
     [SerializeField] private GameObject currentButton;
     [SerializeField] private GameObject lastButton;
 
+    [Header("Send To Inventory")]
+    [SerializeField] private string HeadCardSlot;
+    [SerializeField] private string ArmsCardSlot;
+    [SerializeField] private string LegsCardSlot;
+
+    [SerializeField] private string specialEffect1; //if there is a special effect, like an ability to play twice it stores here
+    [SerializeField] private string specialEffect2;
+    [SerializeField] private string specialEffect3;
+
+    [SerializeField] private int HeadCardSlotValue; //int of the value of the effect, FOR LATER rn it defaults to plus 1
+    [SerializeField] private int ArmsCardSlotValue;
+    [SerializeField] private int LegsCardSlotValue;
+
+
     private void Start()
     {
         if (DDOL == null) { DDOL = GameObject.Find("DDOL"); inventory = DDOL.GetComponent<Inventory>(); }
-        if (inventory != null) { mechDeckList = inventory.mechDeckList; fullmechDeckList = inventory.fullmechDeckList; }
+        if (inventory != null) { mechDeckList = inventory.mechDeckList; fullmechDeckList = inventory.fullmechDeckList; cardEffectList = inventory.cardEffectList; cardEffectValueList = inventory.cardEffectValueList; }
         if (mainCamera == null) { mainCamera = GameObject.Find("Main Camera"); cameraControl = mainCamera.GetComponent<CameraControl>(); }
         if (upHeadButton == null)
         {
@@ -82,9 +96,11 @@ public class MechUpgradeManager : MonoBehaviour
         if (currentButton != EventSystem.current.currentSelectedGameObject) { lastButton = currentButton; }
 
         StartCoroutine(WaitForUpdate());
+
+        UpdateInventoryData();
     }
 
-    void GetCards() //get all card slots from ui grid
+    void GetCards() //get all card slots from ui grid, put them in list
     {
         GameObject temp;
         foreach (Transform child in SortCards.transform) //get children buttons from the grid
@@ -99,7 +115,7 @@ public class MechUpgradeManager : MonoBehaviour
         }
     }
 
-    Color GetColor(string card) 
+    Color GetColor(string card) //grab the color data for the card and update it when rendering the cards, this can also be where the sprite is updated in future
     {
         
         index = fullmechDeckList.IndexOf(card);
@@ -147,7 +163,7 @@ public class MechUpgradeManager : MonoBehaviour
         }
     }
 
-    public void SelectCard() //when a card is pressed, itll be selected
+    public void SelectCard() //when a card is pressed, itll be selected THIS IS WHAT CARD SLOTS USE
     {
         if (UICardObjectList.Contains(lastButton)) //if last button was a card slot
         {
@@ -164,7 +180,7 @@ public class MechUpgradeManager : MonoBehaviour
         cardName = cardNameText.text; //get card name
 
         tempimage = currentButton.GetComponent<Image>();
-        float alpha = tempimage.color.a;
+        float alpha;
         tempcolor = tempimage.color;
         alpha = .75f;
         tempcolor.a = alpha;
@@ -172,7 +188,7 @@ public class MechUpgradeManager : MonoBehaviour
         Debug.Log(currentButton.name);
     }
 
-    void DeSelectCard(GameObject card)
+    void DeSelectCard(GameObject card) //removes visual to show card was de-selected by clicking another item that doesnt work
     {
         temp = card;
         tempimage = card.GetComponent<Image>();
@@ -181,7 +197,7 @@ public class MechUpgradeManager : MonoBehaviour
         tempimage.color = tempcolor;
     }
 
-    public void SelectMechSlot() //when a slot is pressed, itll be compared to last button press to see if the card can go there
+    public void SelectMechSlot() //when a slot is pressed, itll be compared to last button press to see if the card can go there THIS IS WHAT MECH SLOTS USE
     {
         //GET MECH TYPE
         if (currentButton == upHeadButton) { SlotType = CardType.head; }
@@ -212,7 +228,7 @@ public class MechUpgradeManager : MonoBehaviour
         }
     }
 
-    public void AddCard(string card)
+    public void AddCard(string card) //add card to mech
     {
         //add the card if it works
         switch(SlotType)
@@ -224,6 +240,8 @@ public class MechUpgradeManager : MonoBehaviour
                     lastButton.SetActive(false);
 
                     UpdateButtonText(upHeadButton, card);
+
+                    DetermineValue(card, SlotType);
                 }
                 else
                 {
@@ -234,6 +252,8 @@ public class MechUpgradeManager : MonoBehaviour
                     lastButton.SetActive(false);
 
                     UpdateButtonText(upHeadButton, card);
+
+                    DetermineValue(card, SlotType);
                 }
                 break;
             case CardType.arms:
@@ -244,6 +264,8 @@ public class MechUpgradeManager : MonoBehaviour
 
                     UpdateButtonText(upArmsButton, card);
                     UpdateButtonText(downArmsButton, card);
+
+                    DetermineValue(card, SlotType);
                 }
                 else
                 {
@@ -255,6 +277,8 @@ public class MechUpgradeManager : MonoBehaviour
 
                     UpdateButtonText(upArmsButton, card);
                     UpdateButtonText(downArmsButton, card);
+
+                    DetermineValue(card, SlotType);
                 }
                 break;
             case CardType.legs:
@@ -264,6 +288,8 @@ public class MechUpgradeManager : MonoBehaviour
                     lastButton.SetActive(false);
 
                     UpdateButtonText(downLegsButton, card);
+
+                    DetermineValue(card, SlotType);
                 }
                 else
                 {
@@ -274,6 +300,8 @@ public class MechUpgradeManager : MonoBehaviour
                     lastButton.SetActive(false);
 
                     UpdateButtonText(downLegsButton, card);
+
+                    DetermineValue(card, SlotType);
                 }
                 break;
             default:
@@ -281,17 +309,56 @@ public class MechUpgradeManager : MonoBehaviour
         }
     }
 
-    void UpdateButtonText(GameObject button, string text)
+    void UpdateButtonText(GameObject button, string text) //update a button's text so it shows visually what is changed
     {
         GameObject textObject = button.transform.GetChild(0).gameObject;
         TextMeshProUGUI textMesh = textObject.GetComponent<TextMeshProUGUI>();
         textMesh.text = text;
     }
 
-    private IEnumerator WaitForUpdate()
+    private IEnumerator WaitForUpdate() //waits for X time to record last button press so it doesnt instantly update
     {
         yield return new WaitForSeconds(1.5f);
 
         currentButton = EventSystem.current.currentSelectedGameObject;
+    }
+
+    void DetermineValue(string card, CardType slot) //update data to send to inventory based on card name, index
+    {
+        index = fullmechDeckList.IndexOf(card);
+        int cardValue = cardEffectValueList[index];
+        if(cardEffectList[index] != "") { cardEffect = cardEffectList[index]; } //if card effect is found for that card, save it
+
+        switch(slot)
+        {
+            case CardType.head:
+                HeadCardSlotValue = cardValue;
+                if (cardEffect != "") { specialEffect1 = cardEffect; }
+                break;
+            case CardType.arms:
+                ArmsCardSlotValue = cardValue;
+                if (cardEffect != "") { specialEffect2 = cardEffect; }
+                break;
+            case CardType.legs:
+                LegsCardSlotValue = cardValue;
+                if (cardEffect != "") { specialEffect3 = cardEffect; }
+                break;
+            default:
+                break;
+        }
+    }
+
+    void UpdateInventoryData() //update data sent to inventory
+    {
+        inventory.HeadCardSlot = HeadCardSlot; //string of card in each slot
+        inventory.ArmsCardSlot = ArmsCardSlot;
+        inventory.LegsCardSlot = LegsCardSlot;
+
+        cardEffectsActive = new List<string> { specialEffect1, specialEffect2, specialEffect3};
+        inventory.cardEffectsActiveList = cardEffectsActive; //list of active effects from the cards in the mech upgrade script, to send to inventory
+
+        inventory.HeadCardSlotValue = HeadCardSlotValue; //int of value in each slot
+        inventory.ArmsCardSlotValue = ArmsCardSlotValue;
+        inventory.LegsCardSlotValue = LegsCardSlotValue;
     }
 }
