@@ -5966,6 +5966,25 @@ Transform:
   - {fileID: 893806140}
   m_Father: {fileID: 1668045595}
   m_LocalEulerAnglesHint: {x: 0, y: -6.154, z: 0}
+--- !u!1 &660374944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+  m_PrefabInstance: {fileID: 1842785403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &660374948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660374944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21c56922ee653a4296a387048245d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RocketShipHover
+  hoverSpeed: -2
+  hoverHeight: 0.03
 --- !u!1 &661337296
 GameObject:
   m_ObjectHideFlags: 0
@@ -16538,6 +16557,78 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839902271}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1842785403
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 12.529114
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12.529114
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 12.529114
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.47
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6127207
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.14044185
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6989165
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.34112334
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 17.742
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.988
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 40.167
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      propertyPath: m_Name
+      value: Spaceship_Colored
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 660374948}
+  m_SourcePrefab: {fileID: 100100000, guid: 333f13ef6c27ab640b3bf405c98f3401, type: 3}
 --- !u!1001 &1850899296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17487,97 +17578,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1971354850
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 13.416573
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 13.416573
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 13.416573
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.6758606
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.23522925
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.4501455
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7065297
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.05081309
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7041907
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.048471663
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 8.052
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -89.823
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.178
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      propertyPath: m_Name
-      value: spaceship
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1971354852}
-  m_SourcePrefab: {fileID: 100100000, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
---- !u!1 &1971354851 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d7938d7e9fc30e469218f6e4a969116, type: 3}
-  m_PrefabInstance: {fileID: 1971354850}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1971354852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1971354851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b21c56922ee653a4296a387048245d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RocketShipHover
-  hoverSpeed: -2
-  hoverHeight: 0.03
 --- !u!1 &1994340425
 GameObject:
   m_ObjectHideFlags: 0
@@ -18974,5 +18974,5 @@ SceneRoots:
   - {fileID: 1016947734}
   - {fileID: 1384694913}
   - {fileID: 1661834821}
-  - {fileID: 1971354850}
   - {fileID: 2091220489}
+  - {fileID: 1842785403}
