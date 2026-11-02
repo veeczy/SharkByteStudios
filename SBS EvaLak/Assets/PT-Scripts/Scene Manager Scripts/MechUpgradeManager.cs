@@ -357,9 +357,10 @@ public class MechUpgradeManager : MonoBehaviour
 
     private string UpdateTextData(string card)
     {
+        cardChange = "";
         if (card.Contains("Health")) { cardChange = "health"; }
-        else if (card.Contains("Energy")) { cardChange = "energy"; }
-        else if (card.Contains("Damage")) { cardChange = "damage"; }
+        if (card.Contains("Energy")) { cardChange = "energy"; }
+        if (card.Contains("Damage")) { cardChange = "damage"; }
 
         return cardChange;
     }

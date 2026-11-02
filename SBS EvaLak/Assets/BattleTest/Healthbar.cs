@@ -6,7 +6,7 @@ using TMPro;
 public class Healthbar : MonoBehaviour
 {
     public int health;
-    public int maxHealth = 250;
+    public int maxHealth = 500;
 
     public bool showDamageNumbers = true;
     public TextMeshPro damageNumberPrefab;
@@ -17,9 +17,34 @@ public class Healthbar : MonoBehaviour
     public TextMeshProUGUI healthText;
 
     private int lastHealth;
+    public bool isPlayer = false; //check if player
+
+    private Inventory inventory;
+    private GameObject DDOL;
+    [SerializeField] private string HeadSlot;
+    [SerializeField] private string ArmsSlot;
+    [SerializeField] private string LegsSlot;
+    [SerializeField] private int HeadValue;
+    [SerializeField] private int ArmsValue;
+    [SerializeField] private int LegsValue;
 
     void Start()
     {
+        if (DDOL == null) { DDOL = GameObject.Find("DDOL"); inventory = DDOL.GetComponent<Inventory>(); }
+        if (inventory != null) 
+        {
+            HeadSlot = inventory.HeadCardSlot;
+            ArmsSlot = inventory.ArmsCardSlot;
+            LegsSlot = inventory.LegsCardSlot;
+
+            HeadValue = inventory.HeadCardSlotValue;
+            ArmsValue = inventory.ArmsCardSlotValue;
+            LegsValue = inventory.LegsCardSlotValue;
+        }
+
+        Debug.Log(maxHealth);
+        if (isPlayer) { CheckMech(); }
+
         health = maxHealth;
         lastHealth = health;
     }
@@ -65,5 +90,39 @@ public class Healthbar : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    void CheckMech()
+    {
+        float addHealth;
+        if(HeadSlot == "health") 
+        {
+            addHealth = IntPercentage(HeadValue); //convert to percentage 
+            addHealth = maxHealth * addHealth; //calc new health
+            maxHealth = Mathf.RoundToInt(addHealth); //new max health is rounded to int
+        }
+
+        if(ArmsSlot == "health")
+        {
+            addHealth = IntPercentage(ArmsValue); //convert to percentage 
+            addHealth = maxHealth * addHealth; //calc new health
+            maxHealth = Mathf.RoundToInt(addHealth); //new max health is rounded to int
+        }
+
+        if(LegsSlot == "health")
+        {
+            addHealth = IntPercentage(LegsValue); //convert to percentage 
+            addHealth = maxHealth * addHealth; //calc new health
+            maxHealth = Mathf.RoundToInt(addHealth); //new max health is rounded to int
+        }
+    }
+
+    float IntPercentage(int value)
+    {
+        float floatvalue = ((float)value) / 100; //make percentage
+        Debug.Log(floatvalue);
+        floatvalue = floatvalue + 1; //plus 1 so its instead of 5% -> 105% 
+        Debug.Log(floatvalue);
+        return floatvalue;
     }
 }
