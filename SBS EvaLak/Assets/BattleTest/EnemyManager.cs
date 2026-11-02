@@ -138,7 +138,6 @@ public class EnemyManager : MonoBehaviour
                 StartCoroutine(PlayCards(playCard));
                 UpdateCards();
                 CountCards();
-                canBuff = false;
 
                 index = cardsType.IndexOf("damage");
                 playCard = cards[index];
@@ -147,16 +146,17 @@ public class EnemyManager : MonoBehaviour
                 UpdateCards();
                 CountCards();
                 playedCards = true;
+                canBuff = false;
             }
-            else 
-            { 
+            else
+            {
                 index = cardsType.IndexOf("damage");
                 playCard = cards[index];
 
                 StartCoroutine(PlayCards(playCard));
                 UpdateCards();
                 CountCards();
-                playedCards = true; 
+                playedCards = true;
             }
         }
         else { playCard = cards[0]; StartCoroutine(PlayCards(playCard)); } //else just play the card in first slot
@@ -206,10 +206,10 @@ public class EnemyManager : MonoBehaviour
 
         SendCard(card);
 
-        if (card.TryGetComponent(out Damage damage))
-        {
-            animationController.SetHurt();
-        }
+        //if (card.TryGetComponent(out Damage damage))
+        //{
+        //    animationController.SetHurt();
+        //}
     }
 
     public void SendCard(Card card)
