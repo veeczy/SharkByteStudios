@@ -39,7 +39,7 @@ public class Damage : CardEffect
         if (!targetPlayer)
         {
             temporaryHealth -= finalDamage * mod.damageMult;
-            mod.damageMult = 1;
+            mod.damageMult = mod.basedamageMult;
             mod.combo = 0;
         } 
         else

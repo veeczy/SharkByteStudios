@@ -139,15 +139,25 @@ public class EnemyManager : MonoBehaviour
                 UpdateCards();
                 CountCards();
                 canBuff = false;
+
+                index = cardsType.IndexOf("damage");
+                playCard = cards[index];
+
+                StartCoroutine(PlayCards(playCard));
+                UpdateCards();
+                CountCards();
+                playedCards = true;
             }
+            else 
+            { 
+                index = cardsType.IndexOf("damage");
+                playCard = cards[index];
 
-            index = cardsType.IndexOf("damage");
-            playCard = cards[index];
-
-            StartCoroutine(PlayCards(playCard));
-            UpdateCards();
-            CountCards();
-            playedCards = true;
+                StartCoroutine(PlayCards(playCard));
+                UpdateCards();
+                CountCards();
+                playedCards = true; 
+            }
         }
         else { playCard = cards[0]; StartCoroutine(PlayCards(playCard)); } //else just play the card in first slot
     }

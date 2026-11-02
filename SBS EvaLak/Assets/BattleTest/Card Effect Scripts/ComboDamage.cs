@@ -44,7 +44,7 @@ public class ComboDamage : CardEffect
             playerHP.health = Mathf.RoundToInt(temporaryHealth);
         }
 
-        mod.damageMult = 1;
+        mod.damageMult = mod.basedamageMult;
         mod.combo++;
     }
 }

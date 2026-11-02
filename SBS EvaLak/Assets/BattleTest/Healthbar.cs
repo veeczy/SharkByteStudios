@@ -120,9 +120,7 @@ public class Healthbar : MonoBehaviour
     float IntPercentage(int value)
     {
         float floatvalue = ((float)value) / 100; //make percentage
-        Debug.Log(floatvalue);
         floatvalue = floatvalue + 1; //plus 1 so its instead of 5% -> 105% 
-        Debug.Log(floatvalue);
         return floatvalue;
     }
 }

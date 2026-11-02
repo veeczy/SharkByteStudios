@@ -13,14 +13,36 @@ public class DeckManager : MonoBehaviour
 
     public int handSize = 7;
 
-    public int energyCapacity = 8;
+    public int energyCapacity = 5;
 
     public Image energyBar;
     public TextMeshProUGUI energyText;
 
+    private Inventory inventory;
+    private GameObject DDOL;
+    [SerializeField] private string HeadSlot;
+    [SerializeField] private string ArmsSlot;
+    [SerializeField] private string LegsSlot;
+    [SerializeField] private int HeadValue;
+    [SerializeField] private int ArmsValue;
+    [SerializeField] private int LegsValue;
+
     void Awake()
     {
         Instance = this;
+        if (DDOL == null) { DDOL = GameObject.Find("DDOL"); inventory = DDOL.GetComponent<Inventory>(); }
+        if (inventory != null)
+        {
+            HeadSlot = inventory.HeadCardSlot;
+            ArmsSlot = inventory.ArmsCardSlot;
+            LegsSlot = inventory.LegsCardSlot;
+
+            HeadValue = inventory.HeadCardSlotValue;
+            ArmsValue = inventory.ArmsCardSlotValue;
+            LegsValue = inventory.LegsCardSlotValue;
+        }
+
+        CheckMech();
     }
 
     void Start()
@@ -66,5 +88,23 @@ public class DeckManager : MonoBehaviour
     private void InitialDraw()
     {
         deck.DrawCards(handSize);
+    }
+
+    void CheckMech()
+    {
+        if (HeadSlot == "energy")
+        {
+            energyCapacity = energyCapacity + HeadValue;
+        }
+
+        if (ArmsSlot == "energy")
+        {
+            energyCapacity = energyCapacity + ArmsValue;
+        }
+
+        if (LegsSlot == "energy")
+        {
+            energyCapacity = energyCapacity + LegsValue;
+        }
     }
 }
