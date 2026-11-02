@@ -36,6 +36,8 @@ public class EnemyManager : MonoBehaviour
     private bool canBuff;
     private bool playedCards = false;
 
+    private AnimationController animationController;
+
     void Start()
     {
         enemyDeck = GameObject.FindWithTag("EnemyPrefab").GetComponent<CardZone>();
@@ -46,6 +48,7 @@ public class EnemyManager : MonoBehaviour
     {
         PlayerHP = GameObject.FindWithTag("Player").GetComponent<Healthbar>();
         playerHealthMax = PlayerHP.maxHealth;
+        animationController = GameObject.FindWithTag("Player").GetComponent<AnimationController>();
         enemyHP = GameObject.FindWithTag("Enemy").GetComponent<Healthbar>();
         enemyHealthMax = enemyHP.maxHealth;
     }
@@ -192,6 +195,11 @@ public class EnemyManager : MonoBehaviour
         card.OnPlay();
 
         SendCard(card);
+
+        if (card.TryGetComponent(out Damage damage))
+        {
+            animationController.SetHurt();
+        }
     }
 
     public void SendCard(Card card)

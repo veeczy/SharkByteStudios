@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: energyCost
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 585595510651995964, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.348
+      objectReference: {fileID: 0}
+    - target: {fileID: 585595510651995964, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.859
+      objectReference: {fileID: 0}
     - target: {fileID: 1087359275778356404, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -68,6 +76,10 @@ PrefabInstance:
       propertyPath: healValue
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 8525757655353210275, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b23917089a6f5648b9f991bfd69c47f, type: 3}
     - target: {fileID: 8537205161000447763, guid: 010e9ce50a8b78b4eb6b189d08f56f05, type: 3}
       propertyPath: m_text
       value: 'REPAIR
