@@ -25,6 +25,8 @@ public class CardZone : MonoBehaviour
 
     public Inventory inventory;
     private List<string> ownedCards;
+
+
     private void Awake()
     {
         GameObject ddolGameObject = GameObject.Find("DDOL");
