@@ -5470,7 +5470,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 3623b3e10d580e34d8fba4d44423e4f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f053389c48f87f4a90379465d50ba66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5918,10 +5918,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2469937140886496914, guid: ba16051a635914f4997586ead6619b09, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1371244645}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1402297098019071452, guid: ba16051a635914f4997586ead6619b09, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba16051a635914f4997586ead6619b09, type: 3}
 --- !u!4 &892823974 stripped
 Transform:

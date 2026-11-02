@@ -48,7 +48,7 @@ public class EnemyManager : MonoBehaviour
     {
         PlayerHP = GameObject.FindWithTag("Player").GetComponent<Healthbar>();
         playerHealthMax = PlayerHP.maxHealth;
-        animationController = GameObject.FindWithTag("Player").GetComponent<AnimationController>();
+        animationController = GameObject.Find("main_mech_rigged").GetComponent<AnimationController>();
         enemyHP = GameObject.FindWithTag("Enemy").GetComponent<Healthbar>();
         enemyHealthMax = enemyHP.maxHealth;
     }
